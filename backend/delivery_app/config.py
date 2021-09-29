@@ -1,7 +1,7 @@
 """
 config 파일
-기본으로 sqlite
-production 환경에서 환경변수이용해서 mysql 사용하도록 해놈
+기본으로 개발환경에서 sqlite
+production 환경에서 환경변수 이용해서 mysql 사용하도록 해놈
 """
 import os
 

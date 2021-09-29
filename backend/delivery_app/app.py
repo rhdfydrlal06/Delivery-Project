@@ -4,10 +4,11 @@ delivery_app 생성 및 실행
 from flask import Flask
 from flask_cors import CORS
 
+
 def create_app():
     '''
-    falsk 객체를 만들어 반환
-    input: 
+    flask 객체를 만들어 반환
+    input:
     output: app
     '''
     app = Flask(__name__)
@@ -18,6 +19,7 @@ def create_app():
         return "Hello DeliveryApp"
 
     return app
+
 
 application = create_app()
 
