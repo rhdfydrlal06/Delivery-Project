@@ -3,3 +3,5 @@ venv
 *.db
 migrations
 nohup.out
+
+.DS_Store
