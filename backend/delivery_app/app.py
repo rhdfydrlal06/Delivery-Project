@@ -11,6 +11,7 @@ import config
 
 db = SQLAlchemy()
 
+
 def create_app():
     '''
     flask 객체를 만들어 반환
@@ -27,12 +28,12 @@ def create_app():
     from apis import geodata_api
     app.register_blueprint(geodata_api.bp, url_prefix='/api/geodata')
 
-
     @app.route("/")
     def landing():
         return "Hello DeliveryApp"
 
     return app
+
 
 application = None
 

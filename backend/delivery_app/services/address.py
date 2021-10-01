@@ -1,3 +1,7 @@
+"""
+Address 모델에 접근하는 서비스들
+현재 임시 데이터로 대체
+"""
 from models.address import Address
 
 address_sample = [
@@ -9,7 +13,7 @@ address_sample = [
         'longitude': 126.97806,
         'graph1': '/static/graph/sample_graph.png',
         'graph2': '/static/graph/sample_graph.png',
-        'description2': '그래프 설명 1입니다.',
+        'description1': '그래프 설명 1입니다.',
         'description2': '그래프 설명 2입니다.',
     },
     {
@@ -20,7 +24,7 @@ address_sample = [
         'longitude': 129.07556,
         'graph1': '/static/graph/sample_graph.png',
         'graph2': '/static/graph/sample_graph.png',
-        'description2': '그래프 설명 1입니다.',
+        'description1': '그래프 설명 1입니다.',
         'description2': '그래프 설명 2입니다.',
     },
     {
@@ -31,7 +35,7 @@ address_sample = [
         'longitude': 128.60250,
         'graph1': '/static/graph/sample_graph.png',
         'graph2': '/static/graph/sample_graph.png',
-        'description2': '그래프 설명 1입니다.',
+        'description1': '그래프 설명 1입니다.',
         'description2': '그래프 설명 2입니다.',
     },
     {
@@ -42,10 +46,10 @@ address_sample = [
         'longitude': 126.70528,
         'graph1': '/static/graph/sample_graph.png',
         'graph2': '/static/graph/sample_graph.png',
-        'description2': '그래프 설명 1입니다.',
+        'description1': '그래프 설명 1입니다.',
         'description2': '그래프 설명 2입니다.',
     },
-    {####
+    {
         'id': 5,
         'location1': '광주광역시',
         'location2': None,
@@ -53,7 +57,7 @@ address_sample = [
         'longitude': 126.85306,
         'graph1': '/static/graph/sample_graph.png',
         'graph2': '/static/graph/sample_graph.png',
-        'description2': '그래프 설명 1입니다.',
+        'description1': '그래프 설명 1입니다.',
         'description2': '그래프 설명 2입니다.',
     },
     {
@@ -64,7 +68,7 @@ address_sample = [
         'longitude': 127.38500,
         'graph1': '/static/graph/sample_graph.png',
         'graph2': '/static/graph/sample_graph.png',
-        'description2': '그래프 설명 1입니다.',
+        'description1': '그래프 설명 1입니다.',
         'description2': '그래프 설명 2입니다.',
     },
     {
@@ -75,7 +79,7 @@ address_sample = [
         'longitude': 129.31667,
         'graph1': '/static/graph/sample_graph.png',
         'graph2': '/static/graph/sample_graph.png',
-        'description2': '그래프 설명 1입니다.',
+        'description1': '그래프 설명 1입니다.',
         'description2': '그래프 설명 2입니다.',
     },
     {
@@ -86,7 +90,7 @@ address_sample = [
         'longitude': 127.28167,
         'graph1': '/static/graph/sample_graph.png',
         'graph2': '/static/graph/sample_graph.png',
-        'description2': '그래프 설명 1입니다.',
+        'description1': '그래프 설명 1입니다.',
         'description2': '그래프 설명 2입니다.',
     },
     {
@@ -97,7 +101,7 @@ address_sample = [
         'longitude': 127.046277,
         'graph1': '/static/graph/sample_graph.png',
         'graph2': '/static/graph/sample_graph.png',
-        'description2': '그래프 설명 1입니다.',
+        'description1': '그래프 설명 1입니다.',
         'description2': '그래프 설명 2입니다.',
     },
     {
@@ -108,7 +112,7 @@ address_sample = [
         'longitude': 128.2260705,
         'graph1': '/static/graph/sample_graph.png',
         'graph2': '/static/graph/sample_graph.png',
-        'description2': '그래프 설명 1입니다.',
+        'description1': '그래프 설명 1입니다.',
         'description2': '그래프 설명 2입니다.',
     },
     {
@@ -119,7 +123,7 @@ address_sample = [
         'longitude': 127.49139,
         'graph1': '/static/graph/sample_graph.png',
         'graph2': '/static/graph/sample_graph.png',
-        'description2': '그래프 설명 1입니다.',
+        'description1': '그래프 설명 1입니다.',
         'description2': '그래프 설명 2입니다.',
     },
     {
@@ -130,7 +134,7 @@ address_sample = [
         'longitude': 126.672835,
         'graph1': '/static/graph/sample_graph.png',
         'graph2': '/static/graph/sample_graph.png',
-        'description2': '그래프 설명 1입니다.',
+        'description1': '그래프 설명 1입니다.',
         'description2': '그래프 설명 2입니다.',
     },
     {
@@ -141,7 +145,7 @@ address_sample = [
         'longitude': 127.1479532,
         'graph1': '/static/graph/sample_graph.png',
         'graph2': '/static/graph/sample_graph.png',
-        'description2': '그래프 설명 1입니다.',
+        'description1': '그래프 설명 1입니다.',
         'description2': '그래프 설명 2입니다.',
     },
     {
@@ -152,7 +156,7 @@ address_sample = [
         'longitude': 126.464532,
         'graph1': '/static/graph/sample_graph.png',
         'graph2': '/static/graph/sample_graph.png',
-        'description2': '그래프 설명 1입니다.',
+        'description1': '그래프 설명 1입니다.',
         'description2': '그래프 설명 2입니다.',
     },
     {
@@ -163,7 +167,7 @@ address_sample = [
         'longitude': 128.75,
         'graph1': '/static/graph/sample_graph.png',
         'graph2': '/static/graph/sample_graph.png',
-        'description2': '그래프 설명 1입니다.',
+        'description1': '그래프 설명 1입니다.',
         'description2': '그래프 설명 2입니다.',
     },
     {
@@ -174,7 +178,7 @@ address_sample = [
         'longitude': 128.25,
         'graph1': '/static/graph/sample_graph.png',
         'graph2': '/static/graph/sample_graph.png',
-        'description2': '그래프 설명 1입니다.',
+        'description1': '그래프 설명 1입니다.',
         'description2': '그래프 설명 2입니다.',
     },
     {
@@ -185,11 +189,17 @@ address_sample = [
         'longitude': 126.547420,
         'graph1': '/static/graph/sample_graph.png',
         'graph2': '/static/graph/sample_graph.png',
-        'description2': '그래프 설명 1입니다.',
+        'description1': '그래프 설명 1입니다.',
         'description2': '그래프 설명 2입니다.',
     },
 ]
 
+
 def get_addresses():
+    '''
+    Address모델로부터 모든 address를 얻어 반환
+    input:
+    output: address list
+    '''
     result = address_sample
     return result

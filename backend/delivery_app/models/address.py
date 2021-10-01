@@ -1,7 +1,21 @@
+"""
+Address 모델
+"""
 from app import db
 
 
 class Address(db.Model):
+    '''
+    id: 키값
+    address1: 시도 이름
+    address2: 시군구 이름
+    latitude: 위도
+    longitude: 경도
+    graph1: 시간-지역별 주문량 그래프
+    graph2: 배달상점분포 그래프
+    description1: 시간-지역별 주문량 그래프 설명
+    description2: 배달상점분포 그래프 설명
+    '''
     __tablename__ = "address"
 
     id              = db.Column(db.Integer, primary_key=True, nullable=False, autoincrement=True)
@@ -23,4 +37,3 @@ class Address(db.Model):
         self.graph2 = graph2
         self.description1 = description1
         self.description2 = description2
-
