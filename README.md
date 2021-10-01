@@ -1,3 +1,19 @@
+## 프론트엔드 실행하기
+1. yarn install / npm install로 라이브러리 설치
+2. yarn start / npm run start
+
+## 프론트엔드 파일 구성
+- src
+    - Compoments
+        - CustomMap.js : leaflet라이브러리를 이용한 기본 지도
+        - NavBar.js : 상단 메뉴 컴포넌트
+        - Greet.js : 테스트용 컴포넌트(삭제 예정)
+    - Pages : 페이지를 모아놓은 폴더입니다.
+        - SetPages.js : 각 페이지 컴포넌트를 모아놓은 파일
+        - Home.js : 서비스 소개가 들어가는 첫 페이지
+        - DeliveryNum.js : 코로나확진자수/배달건수 비교 페이지
+    - styles : 컴포넌트 스타일을 모아놓은 폴더입니다.
+
 ## 백엔드 실행하기
 1. requirements.txt로 파이썬 패키지 설치
 2. flask db init
