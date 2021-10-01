@@ -61,7 +61,7 @@ address_sample = [
         'description2': '그래프 설명 2입니다.',
     },
     {
-        'id': 5,
+        'id': 6,
         'location1': '대전광역시',
         'location2': None,
         'latitude': 36.35111,
@@ -72,7 +72,7 @@ address_sample = [
         'description2': '그래프 설명 2입니다.',
     },
     {
-        'id': 5,
+        'id': 7,
         'location1': '울산광역시',
         'location2': None,
         'latitude': 35.53889,
@@ -83,7 +83,7 @@ address_sample = [
         'description2': '그래프 설명 2입니다.',
     },
     {
-        'id': 5,
+        'id': 8,
         'location1': '세종특별자치시',
         'location2': None,
         'latitude': 36.48750,
@@ -94,7 +94,7 @@ address_sample = [
         'description2': '그래프 설명 2입니다.',
     },
     {
-        'id': 5,
+        'id': 9,
         'location1': '경기도',
         'location2': None,
         'latitude': 37.586432,
@@ -105,7 +105,7 @@ address_sample = [
         'description2': '그래프 설명 2입니다.',
     },
     {
-        'id': 5,
+        'id': 10,
         'location1': '강원도',
         'location2': None,
         'latitude': 37.8304115,
@@ -116,7 +116,7 @@ address_sample = [
         'description2': '그래프 설명 2입니다.',
     },
     {
-        'id': 5,
+        'id': 11,
         'location1': '충청북도',
         'location2': None,
         'latitude': 36.635684,
@@ -127,7 +127,7 @@ address_sample = [
         'description2': '그래프 설명 2입니다.',
     },
     {
-        'id': 5,
+        'id': 12,
         'location1': '충청남도',
         'location2': None,
         'latitude': 36.658827,
@@ -138,7 +138,7 @@ address_sample = [
         'description2': '그래프 설명 2입니다.',
     },
     {
-        'id': 5,
+        'id': 13,
         'location1': '전라북도',
         'location2': None,
         'latitude': 35.8242238,
@@ -149,7 +149,7 @@ address_sample = [
         'description2': '그래프 설명 2입니다.',
     },
     {
-        'id': 5,
+        'id': 14,
         'location1': '전라남도',
         'location2': None,
         'latitude': 34.816862,
@@ -160,7 +160,7 @@ address_sample = [
         'description2': '그래프 설명 2입니다.',
     },
     {
-        'id': 5,
+        'id': 15,
         'location1': '경상북도',
         'location2': None,
         'latitude': 36.25,
@@ -171,7 +171,7 @@ address_sample = [
         'description2': '그래프 설명 2입니다.',
     },
     {
-        'id': 5,
+        'id': 16,
         'location1': '경상남도',
         'location2': None,
         'latitude': 35.25,
@@ -182,7 +182,7 @@ address_sample = [
         'description2': '그래프 설명 2입니다.',
     },
     {
-        'id': 5,
+        'id': 17,
         'location1': '제주특별자치도',
         'location2': None,
         'latitude': 33.376163,
@@ -202,4 +202,31 @@ def get_addresses():
     output: address list
     '''
     result = address_sample
+    return result
+
+
+def get_address(address_id):
+    '''
+    입력받은 id에 해당하는 지역 데이터 1개 반환
+    input: address_id
+    output: {
+        id,
+        location1,
+        location2,
+        latitude,
+        logitude,
+        graph1,
+        graph2,
+        description1,
+        description2
+    }
+    '''
+
+    result = {}
+
+    for address in address_sample:
+        if address_id == address['id']:
+            result = address
+            break
+
     return result

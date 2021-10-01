@@ -20,6 +20,7 @@ def create_app():
     '''
     app = Flask(__name__, static_url_path='/static')
     CORS(app, supports_credentials=True)
+    app.config['JSON_AS_ASCII'] = False
 
     app.config.from_object(config)
     db.init_app(app)
