@@ -15,11 +15,12 @@
     - styles : 컴포넌트 스타일을 모아놓은 폴더입니다.
 
 ## 백엔드 실행하기
-1. requirements.txt로 파이썬 패키지 설치
-2. flask db init
-3. flask db migrate
-4. flask db upgrade
-5. backend/delivery_app/app.py 실행
+1. backend 폴더안에있는 requirements.txt로 파이썬 패키지 설치
+2. backend/delivery_app 폴더로 이동
+3. flask db init
+4. flask db migrate
+5. flask db upgrade
+6. app.py 실행
 
 ### 요청 url
 - `GET localhost:5000/api/geodata/list`
