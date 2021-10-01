@@ -1,3 +1,22 @@
+## 백엔드 실행하기
+1. requirements.txt로 파이썬 패키지 설치
+2. flask db init
+3. flask db migrate
+4. flask db upgrade
+5. backend/delivery_app/app.py 실행
+
+### 요청 url
+- `GET localhost:5000/api/geodata/list`
+    - 모든 지역에 관한 기본 데이터 반환(id, 이름, 좌표)
+- `GET localhost:5000/api/geodata/graph/order-per-time/<id>`
+    - id에 해당하는 지역의 데이터, 시간-지역별 주문량 그래프와 설명을 반환
+- `GET localhost:5000/api/geodata/graph/stores/<id>`
+    - id에 해당하는 지역의 데이터, 배달상점분포 그래프와 설명을 반환
+- `<id>는 /api/geodata/list 요청을 통해 얻은 지역들의 id`
+
+### api 문서
+- [api문서](https://lumbar-sloth-e92.notion.site/api-c6f79e4c2e4d41b888ebccd34a9450e2)
+
 # (서비스 명)
 - 최종 서비스 명을 위 괄호 부분에 작성하세요.
 - 최종 서비스의 한 줄 소개를 작성하세요.
