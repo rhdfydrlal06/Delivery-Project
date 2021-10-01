@@ -2,7 +2,7 @@
 Address 모델에 접근하는 서비스들
 현재 임시 데이터로 대체
 """
-from models.address import Address
+from models.address import *
 
 address_sample = [
     {
@@ -194,6 +194,28 @@ address_sample = [
     },
 ]
 
+def set_default():
+    '''
+    address 테이블 임시로 채우는 함수
+    '''
+    try:
+        for data in address_sample:
+            new_address = Address(
+                data['location1'], 
+                data['location2'], 
+                data['latitude'], 
+                data['longitude'], 
+                data['graph1'], 
+                data['graph2'], 
+                data['description1'], 
+                data['description2']
+            )
+            db.session.add(new_address)
+        db.session.commit()
+    except Exception:
+        db.session.rollback()
+        raise Exception
+
 
 def get_addresses():
     '''
@@ -201,7 +223,10 @@ def get_addresses():
     input:
     output: address list
     '''
-    result = address_sample
+    result = Address.query.all()
+    if len(result) == 0:
+        set_default()
+        result = Address.query.all()
     return result
 
 

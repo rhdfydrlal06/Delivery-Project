@@ -27,14 +27,14 @@ def geo_list():
         geodata = get_addresses()
         for data in geodata:
             result.append({
-                "id": data['id'],
-                "location1": data['location1'],
-                "location2": data['location2'],
-                "latitude": data['latitude'],
-                "longitude": data['longitude']
+                "id": data.id,
+                "location1": data.location1,
+                "location2": data.location2,
+                "latitude": data.latitude,
+                "longitude": data.longitude
             })
         return jsonify(data=result)
-    except:
+    except Exception:
         return jsonify(message='error')
 
 

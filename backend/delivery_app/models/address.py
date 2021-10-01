@@ -1,14 +1,14 @@
 """
-Address 모델
+location 모델
 """
-from app import db
+from db_connect import db
 
 
 class Address(db.Model):
     '''
     id: 키값
-    address1: 시도 이름
-    address2: 시군구 이름
+    location1: 시도 이름
+    location2: 시군구 이름
     latitude: 위도
     longitude: 경도
     graph1: 시간-지역별 주문량 그래프
@@ -19,8 +19,8 @@ class Address(db.Model):
     __tablename__ = "address"
 
     id              = db.Column(db.Integer, primary_key=True, nullable=False, autoincrement=True)
-    address1        = db.Column(db.String(32), nullable=False)
-    address2        = db.Column(db.String(32), nullable=True)
+    location1        = db.Column(db.String(32), nullable=False)
+    location2        = db.Column(db.String(32), nullable=True)
     latitude        = db.Column(db.Float, nullable=False)
     longitude       = db.Column(db.Float, nullable=False)
     graph1          = db.Column(db.String(1024), nullable=True)
@@ -28,9 +28,9 @@ class Address(db.Model):
     description1    = db.Column(db.Text, nullable=True)
     description2    = db.Column(db.Text, nullable=True)
 
-    def __init__(self, address1, address2, latitude, longitude, graph1, graph2, description1, description2):
-        self.address1 = address1
-        self.address2 = address2
+    def __init__(self, location1, location2, latitude, longitude, graph1, graph2, description1, description2):
+        self.location1 = location1
+        self.location2 = location2
         self.latitude = latitude
         self.longitude = longitude
         self.graph1 = graph1

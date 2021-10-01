@@ -3,13 +3,10 @@ delivery_app 생성 및 실행
 """
 from flask import Flask
 from flask_cors import CORS
-from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 
 import config
-
-
-db = SQLAlchemy()
+from db_connect import db
 
 
 def create_app():
@@ -36,10 +33,9 @@ def create_app():
     return app
 
 
-application = None
+application = create_app()
 
 if __name__ == "__main__":
     HOST = '0.0.0.0'
     PORT = 5000
-    application = create_app()
     application.run(host=HOST, port=PORT, debug=True)
