@@ -1,14 +1,12 @@
 """
 delivery_app 생성 및 실행
 """
-from flask import Flask, jsonify
+from flask import Flask
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 
 import config
-
-from apis import geodata_api
 
 
 db = SQLAlchemy()
@@ -26,6 +24,7 @@ def create_app():
     db.init_app(app)
     Migrate().init_app(app, db)
 
+    from apis import geodata_api
     app.register_blueprint(geodata_api.bp, url_prefix='/api/geodata')
 
 
@@ -35,10 +34,10 @@ def create_app():
 
     return app
 
-
-application = create_app()
+application = None
 
 if __name__ == "__main__":
     HOST = '0.0.0.0'
     PORT = 5000
+    application = create_app()
     application.run(host=HOST, port=PORT, debug=True)
