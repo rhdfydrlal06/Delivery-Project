@@ -20,7 +20,14 @@
 3. flask db init
 4. flask db migrate
 5. flask db upgrade
-6. app.py 실행
+6. flask run : 개발환경 실행
+7. `배포환경 실행` : `backend 폴더`에서 `source production.sh` 실행
+8. `pre-commit 으로 백엔드 코드 포맷팅하기`
+    - requirements.txt 설치 -> pre-commit 패키지가 설치됩니다.
+    - .pre-commit-config.yaml파일이 있는 backend 폴더에서 `pre-commit install`명령을 실행합니다.
+    - 잘 실행이 됬다면 .git/hooks 폴더에 pre-commit이라는 파일이 생깁니다.
+    - 이제 commit을 하면 python파일을 검사해 코드를 포맷팅해줍니다.
+    - 포맷팅된 파일을 다시 add하고 commit을 하면 됩니다.
 
 ### 요청 url
 - `GET localhost:5000/api/geodata/list`
