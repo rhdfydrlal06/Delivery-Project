@@ -1,37 +1,26 @@
 import React, { Component } from "react"
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet"
 
-class Maps extends Component {
-  constructor() {
-    super()
-    this.state = {
-      lat: 36.38,
-      lng: 127.51,
-      zoom: 6.5,
-    }
+const Map = () => {
+  // 지도 css는 이 곳에 작성해주세요
+  const mapStyle = {
+    height: "100%",
   }
-
-  render() {
-    const position = [this.state.lat, this.state.lng]
-
-    return (
-      <>
-        <MapContainer style={{ height: "100%" }} center={position} zoom={this.state.zoom}>
-          <TileLayer
-            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-            url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
-          />
-          <Marker position={position}>
-            <Popup>
-              <span>
-                A pretty CSS3 popup. <br /> Easily customizable.
-              </span>
-            </Popup>
-          </Marker>
-        </MapContainer>
-      </>
-    )
-  }
+  return (
+    <>
+      <MapContainer style={mapStyle} center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
+        <TileLayer
+          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        <Marker position={[51.505, -0.09]}>
+          <Popup>
+            A pretty CSS3 popup. <br /> Easily customizable.
+          </Popup>
+        </Marker>
+      </MapContainer>
+    </>
+  )
 }
 
-export default Maps
+export default Map
