@@ -1,5 +1,6 @@
 import { useHistory } from "react-router"
 import styled from "styled-components"
+import { Link } from "react-router-dom"
 
 const NavBox = styled.div`
   display: flex;
@@ -36,12 +37,12 @@ const NavBar = () => {
   }
   return (
     <NavBox>
-      <Logo onClick={() => handleClick(home)}>딜리버리 푸드 파이터</Logo>
+      <Link to="/">딜리버리 푸드 파이터</Link>
       <MenuBox>
-        <Menu onClick={() => handleClick(adress1)}>menu1</Menu>
-        <Menu>menu2</Menu>
-        <Menu>menu3</Menu>
-        <Menu>menu4</Menu>
+        <Link to="/covid-19-delivery">menu1</Link>
+        <Link to="/covid-19-delivery">menu2</Link>
+        <Link to="/covid-19-delivery">menu3</Link>
+        <Link to="/covid-19-delivery">menu4</Link>
       </MenuBox>
     </NavBox>
   )

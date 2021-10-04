@@ -1,12 +1,12 @@
 import { useHistory } from "react-router"
-import CustomMap from "../Components/CustomMap"
+import Map from "../components/Map"
 import {
   WholeContainer,
   MainBodyContainer,
   ContentsBoxRight,
   ContentsBoxLeft,
 } from "../styles/Container"
-import NavBar from "../Components/NavBar"
+import NavBar from "../components/NavBar"
 import { MainButton } from "../styles/Buttons"
 
 const DeliveryNum = () => {
@@ -26,7 +26,7 @@ const DeliveryNum = () => {
           <MainButton onClick={handleSubmit}>메인 페이지로</MainButton>
         </ContentsBoxLeft>
         <ContentsBoxRight>
-          <CustomMap />
+          <Map />
         </ContentsBoxRight>
       </MainBodyContainer>
     </WholeContainer>

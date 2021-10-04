@@ -1,5 +1,5 @@
 import { useHistory } from "react-router"
-import CustomMap from "../Components/CustomMap"
+import Map from "../components/Map"
 import {
   WholeContainer,
   MainBodyContainer,
@@ -7,7 +7,7 @@ import {
   ContentsBoxLeft,
 } from "../styles/Container"
 import { MainButton } from "../styles/Buttons"
-import NavBar from "../Components/NavBar"
+import NavBar from "../components/NavBar"
 
 const Home = () => {
   const history = useHistory()
@@ -38,7 +38,7 @@ const Home = () => {
           <MainButton onClick={handleSubmit}>설명 보기</MainButton>
         </ContentsBoxLeft>
         <ContentsBoxRight>
-          <CustomMap />
+          <Map />
         </ContentsBoxRight>
       </MainBodyContainer>
     </WholeContainer>
