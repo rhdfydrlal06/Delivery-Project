@@ -1,5 +1,5 @@
 import "./App.css"
-import SetPages from "./Pages/SetPages"
+import SetPages from "./pages/SetPages"
 
 function App() {
   return (
