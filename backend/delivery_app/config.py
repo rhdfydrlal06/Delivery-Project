@@ -15,6 +15,7 @@ SECRET_KEY = "dev"
 if os.environ.get("FLASK_ENV") == "production":
     USER = os.environ.get("DB_USER")
     PASSWORD = os.environ.get("DB_PASSWORD")
+    DB_NAME = os.environ.get("DB_NAME")
     SECRET_KEY = os.environ.get("SECRET_KEY")
     SQLALCHEMY_DATABASE_URI = (
         f"mysql+pymysql://{USER}:{PASSWORD}@localhost/{DB_NAME}?charset=utf8mb4"

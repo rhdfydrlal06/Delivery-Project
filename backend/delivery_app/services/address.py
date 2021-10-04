@@ -2,7 +2,7 @@
 Address 모델에 접근하는 서비스들
 현재 임시 데이터로 대체
 """
-from models.address import db, Address
+from delivery_app.models.address import db, Address
 
 address_sample = [
     {

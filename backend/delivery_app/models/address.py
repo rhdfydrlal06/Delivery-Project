@@ -1,7 +1,7 @@
 """
 location 모델
 """
-from db_connect import db
+from delivery_app.db_connect import db
 
 
 class Address(db.Model):

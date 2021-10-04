@@ -4,7 +4,7 @@ geodata api
 """
 from flask import Blueprint, jsonify
 
-from services.address import get_addresses, get_address
+from delivery_app.services.address import get_addresses, get_address
 
 bp = Blueprint("geodata", __name__)
 
