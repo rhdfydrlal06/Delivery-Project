@@ -11,9 +11,8 @@ const NavBox = styled.div`
   margin: 5vh 0 3vh;
 `
 
-const Logo = styled.div`
-  font-size: 1.5em;
-  font-weight: bold;
+const LogoBox = styled.div`
+  height: 100px;
 `
 
 const MenuBox = styled.div`
@@ -37,7 +36,9 @@ const NavBar = () => {
   }
   return (
     <NavBox>
-      <Link to="/">딜리버리 푸드 파이터</Link>
+      <LogoBox>
+        <Link to="/">딜리버리 푸드파이터</Link>
+      </LogoBox>
       <MenuBox>
         <Link to="/covid-19-delivery">menu1</Link>
         <Link to="/covid-19-delivery">menu2</Link>
