@@ -19,8 +19,14 @@ export const LogoBox = styled.div`
 export const MapBox = styled.div`
   grid-column: 3/4;
   grid-row: 1/3;
-  margin: 32px 32px 32px 0px;
-  border: 1px solid black;
+  /* opacity: 0; */
+`
+
+export const TestBox = styled.div`
+  grid-column: 3/4;
+  grid-row: 2/3;
+  background-color: gray;
+  margin: 0px 32px 32px 0px;
 `
 
 export const MenuBox = styled.div`

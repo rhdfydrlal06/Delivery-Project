@@ -1,6 +1,6 @@
 import { useHistory } from "react-router"
 import Map from "../components/Map"
-import { WholeContainer, MapBox, ContentsBox, MenuBox, LogoBox } from "../styles/Container"
+import { WholeContainer, MapBox, ContentsBox, MenuBox, LogoBox, TestBox } from "../styles/Container"
 import Menu from "../components/Menu"
 
 const Home = () => {
