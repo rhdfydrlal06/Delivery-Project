@@ -5,10 +5,10 @@ from flask import Flask
 from flask_cors import CORS
 from flask_migrate import Migrate
 
-import config
-from db_connect import db
-from services.address import set_default as set_address_default
-from apis import geodata_api
+from delivery_app import config
+from delivery_app.db_connect import db
+from delivery_app.services.address import set_default as set_address_default
+from delivery_app.apis import geodata_api
 
 
 def create_app():
