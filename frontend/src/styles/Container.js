@@ -10,7 +10,7 @@ export const WholeContainer = styled.div`
 `
 
 export const LogoBox = styled.div`
-  grid-column: 1/2;
+  grid-column: 1/3;
   grid-row: 1/2;
   padding: 32px 24px 24px 32px;
   cursor: pointer;

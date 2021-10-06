@@ -1,14 +1,25 @@
-import { useState } from "react"
+import { useEffect } from "react"
 import Tabs from "@mui/material/Tabs"
 import Tab from "@mui/material/Tab"
 import Box from "@mui/material/Box"
+import { useHistory } from "react-router"
+import adress from "../../data/adress"
+import menuID from "../../recoil/atom"
+import { useRecoilState } from "recoil"
+import { MyTab, typographyTheme } from "../../styles/menu"
 
 const Menu = () => {
-  const [value, setValue] = useState(0)
+  const history = useHistory()
+  const [value, setValue] = useRecoilState(menuID)
 
   const handleChange = (event, newValue) => {
     setValue(newValue)
   }
+
+  useEffect(() => {
+    history.push(adress[value].path)
+    console.log(adress[value])
+  }, [value])
 
   return (
     <Box
@@ -27,9 +38,10 @@ const Menu = () => {
         sx={{ borderRight: 1, borderColor: "divider", width: "100%" }}
         scrollButtons={false}
       >
-        <Tab label="서비스 소개" />
-        <Tab label="배달 데이터 분석" />
-        <Tab label="게시판" />
+        <MyTab label="홈" />
+        <MyTab label="서비스 소개" />
+        <MyTab label="배달 데이터 분석" />
+        <MyTab label="게시판" />
       </Tabs>
     </Box>
   )

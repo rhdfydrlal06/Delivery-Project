@@ -1,24 +1,9 @@
-import { useHistory } from "react-router"
-import Map from "../components/Map"
-import { WholeContainer, MenuBox, ContentsBox, MapBox, LogoBox } from "../styles/Container"
-import { MainButton } from "../styles/Buttons"
-import Menu from "../components/Menu"
+import { ContentsBox } from "../styles/Container"
+import Layout from "../components/layout/Layout"
 
 const DeliveryNum = () => {
-  const history = useHistory()
-
-  const handleSubmit = () => {
-    history.push("/")
-  }
-
   return (
-    <WholeContainer>
-      <LogoBox onClick={handleSubmit}>
-        <img src="/img/delivery_logo.png" alt="logo" height="100%" />
-      </LogoBox>
-      <MenuBox>
-        <Menu />
-      </MenuBox>
+    <Layout>
       <ContentsBox>
         <h1>배달 데이터 분석</h1>
         <p>
@@ -33,10 +18,7 @@ const DeliveryNum = () => {
           모든것을 알아보아요~
         </p>
       </ContentsBox>
-      <MapBox>
-        <Map />
-      </MapBox>
-    </WholeContainer>
+    </Layout>
   )
 }
 
