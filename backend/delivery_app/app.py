@@ -17,7 +17,7 @@ def create_app():
     input:
     output: app
     """
-    app = Flask(__name__, static_url_path="/static")
+    app = Flask(__name__, static_url_path="/statics")
     CORS(app, supports_credentials=True)
     app.config["JSON_AS_ASCII"] = False
 
