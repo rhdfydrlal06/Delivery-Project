@@ -1,14 +1,7 @@
-import { useHistory } from "react-router"
 import { ContentsBox } from "../styles/Container"
 import Layout from "../components/layout/Layout"
 
 const DeliveryNum = () => {
-  const history = useHistory()
-
-  const handleSubmit = () => {
-    history.push("/")
-  }
-
   return (
     <Layout>
       <ContentsBox>

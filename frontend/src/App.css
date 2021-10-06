@@ -1,5 +1,11 @@
+@import url(//font.elice.io/EliceDigitalBaeum.css);
 * {
   margin: 0;
+}
+
+html,
+body {
+  font-family: "Elice Digital Baeum", sans-serif;
 }
 
 .App {
