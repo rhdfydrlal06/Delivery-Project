@@ -3,12 +3,9 @@
   margin: 0;
 }
 
-html,
-body {
-  font-family: "Elice Digital Baeum", sans-serif;
-}
-
 .App {
   height: 100vh;
+  max-height: 100vh;
   width: 100vw;
+  font-family: "Elice Digital Baeum", sans-serif;
 }
