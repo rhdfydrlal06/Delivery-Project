@@ -12,7 +12,7 @@ const Layout = props => {
       </MenuBox>
       <main>{props.children}</main>
       <MapBox>
-        <Map />
+        <Map changePickedRegion={props.changePickedRegion} />
       </MapBox>
     </WholeContainer>
   )
