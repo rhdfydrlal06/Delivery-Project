@@ -12,7 +12,7 @@ const mapStyle = {
 // 추후 작업 예정
 const regionStyle = {}
 
-const Map = () => {
+const Map = ({ changePickedRegion }) => {
   const [mapData, setMapData] = useState(mapJSON)
   const mapRef = useRef()
 
@@ -38,15 +38,13 @@ const Map = () => {
 
   const onEachRegion = (feature, layer) => {
     const graphTest = async (id) => {
-      const result = await storesGraphByIdRequest(id)
-      alert(JSON.stringify(result))
+      const result = await orderGraphByIdRequest(id)
+      return result.data
     }
 
     const handleRegionClick = e => {
       const regionName = feature.properties.CTP_KOR_NM
       const regionID = feature.properties.ID
-      console.log("click", regionName)
-      console.log("click", regionID)
 
       mapRef.current.setStyle({
         fillColor: "#3388ff",
@@ -56,7 +54,12 @@ const Map = () => {
         fillColor: "#ff0000",
       })
 
-      graphTest(regionID)
+      if (typeof changePickedRegion === 'function') {
+        graphTest(regionID)
+          .then((data) => {
+            changePickedRegion(data)
+          })
+      }
     }
 
     const setHover = e => {
