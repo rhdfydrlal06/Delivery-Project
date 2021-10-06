@@ -1,23 +1,9 @@
-import { useHistory } from "react-router"
-import Map from "../components/Map"
-import { WholeContainer, MapBox, ContentsBox, MenuBox, LogoBox, TestBox } from "../styles/Container"
-import Menu from "../components/Menu"
+import Layout from "../components/layout/Layout"
+import { ContentsBox } from "../styles/Container"
 
 const Home = () => {
-  const history = useHistory()
-
-  const handleSubmit = () => {
-    history.push("/")
-  }
-
   return (
-    <WholeContainer>
-      <LogoBox onClick={handleSubmit}>
-        <img src="/img/delivery_logo.png" alt="logo" height="100%" />
-      </LogoBox>
-      <MenuBox>
-        <Menu />
-      </MenuBox>
+    <Layout>
       <ContentsBox>
         <h1>딜리버리 푸드 파이터</h1>
         <p>
@@ -34,10 +20,7 @@ const Home = () => {
           모든것을 알아보아요~
         </p>
       </ContentsBox>
-      <MapBox>
-        <Map />
-      </MapBox>
-    </WholeContainer>
+    </Layout>
   )
 }
 

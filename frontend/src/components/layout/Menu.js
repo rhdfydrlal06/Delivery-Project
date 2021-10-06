@@ -1,14 +1,23 @@
-import { useState } from "react"
+import { useEffect } from "react"
 import Tabs from "@mui/material/Tabs"
 import Tab from "@mui/material/Tab"
 import Box from "@mui/material/Box"
+import { useHistory } from "react-router"
+import adress from "../../data/adress"
+import menuID from "../../recoil/atom"
+import { useRecoilState } from "recoil"
 
 const Menu = () => {
-  const [value, setValue] = useState(0)
+  const history = useHistory()
+  const [value, setValue] = useRecoilState(menuID)
 
   const handleChange = (event, newValue) => {
     setValue(newValue)
   }
+
+  useEffect(() => {
+    history.push(adress[value])
+  }, [value])
 
   return (
     <Box
