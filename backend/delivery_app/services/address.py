@@ -217,7 +217,7 @@ def set_default():
             )
             db.session.add(new_address)
         db.session.commit()
-    except:
+    except Exception:
         db.session.rollback()
         raise
 
