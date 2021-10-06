@@ -170,7 +170,7 @@ address_sample = [
         "location2": None,
         "latitude": 35.25,
         "longitude": 128.25,
-        "graph1": "/statics/graph/gyeongnam.png",
+        "graph1": "/statics/graph/corona/gyeongnam_corona.png",
         "graph2": "/statics/graph/sample_graph.png",
         "description1": "경상남도의 확진자수는 21년 7월 ~ 8월까지 가장 많이 증가했어요.",
         "description2": "그래프 설명 2입니다.",
