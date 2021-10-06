@@ -1,10 +1,11 @@
 import Layout from "../components/layout/Layout"
+import AnalysisContents from "../components/skeleton/AnalysisContents"
 import { ContentsBox } from "../styles/Container"
 
 const Intro = () => {
   return (
     <Layout>
-      <ContentsBox>여기에 내용을 작성해주세요</ContentsBox>
+      <AnalysisContents useButton={false} />
     </Layout>
   )
 }
