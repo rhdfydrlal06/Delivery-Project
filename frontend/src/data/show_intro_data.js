@@ -1,0 +1,93 @@
+// 작성자 : 김한빈
+// 작성일자 : 21년 10월 7일 16:23  
+// 작성내용 : 음식점 고객 방문 수 데이터를 시각화하는 코드 제작
+
+import { fontSize } from '@mui/system';
+import { ResponsiveBar } from '@nivo/bar'
+
+const ShowIntroData = () => {
+    const data = [
+        {
+          day: "2019년",
+          연평균_방문고객수: 53.3
+        },
+        {
+          day: "2020년",
+          연평균_방문고객수: 44.6
+        }
+    ]; 
+
+    const theme = {
+      axis: {
+        textColor: '#eee',
+        fontSize: '500px',
+        tickColor: '#eee',
+      },
+      grid: {
+        stroke: '#888',
+        strokeWidth: 1
+      },
+    };
+
+    return(
+      <ResponsiveBar
+      data={data}
+      theme={theme}
+      keys={["연평균_방문고객수"]}  
+      indexBy="day"
+      margin={{ top: 100, right: 150, bottom: 100, left: 100 }}
+      padding={0.4}
+      valueScale={{ type: "linear" }}
+      colors="#FFA500"
+      animate={true}
+      enableLabel={false}
+      axisTop={null}
+      axisRight={null}
+      axisLeft={{
+        tickSize: 5,
+        tickPadding: 5,
+        tickRotation: 0,
+        legendPosition: "middle",
+        legendOffset: -40
+      }}
+      legends={[
+        {
+            dataFrom: 'keys',
+            anchor: 'bottom-right',
+            direction: 'column',
+            justify: false,
+            translateX: 120,
+            translateY: 0,
+            itemsSpacing: 2,
+            itemWidth: 100,
+            itemHeight: 20,
+            itemDirection: 'left-to-right',
+            itemOpacity: 0.85,
+            symbolSize: 20,
+            effects: [
+                {
+                    on: 'hover',
+                    style: {
+                        itemOpacity: 1
+                    }
+                }
+            ]
+        }
+      ]}
+      borderRadius={1}
+      borderWidth={2}
+      borderColor="#000000"
+      theme={{
+        axis: {
+          ticks: {
+            text: {
+              fontSize: 18
+            }
+          }
+        }
+      }}
+      />
+    )
+}
+
+export default ShowIntroData

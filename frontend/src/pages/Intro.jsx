@@ -1,60 +1,19 @@
-import { ResponsiveBar } from '@nivo/bar'
 import Layout from "../components/layout/Layout"
+import ShowIntroData from "../data/show_intro_data" 
 import AnalysisContents, {
   DescBox,
-  GraphBox,
   MainTitle,
   MenuName,
 } from "../components/skeleton/AnalysisContents"
 import { ContentsBox } from "../styles/Container"
-import styled from "styled-components"
-
-// const Img = styled.img` 
-//   max-height: 400px;
-// `
-
-const Intro = () => {
-  
-  const data = [
-    {
-      day: "2019_방문 고객 수",
-      degress: 53.3
-    },
-    {
-      day: "2020_방문 고객 수",
-      degress: 44.6
-    }
-  ];  
 
 
-
+const Intro = () => { 
   return (
     <Layout>
       <ContentsBox>
         <MenuName>서비스 소개!</MenuName>
         <MainTitle>딜리버리 푸드 파이터? 왜 필요해?</MainTitle>
-          {/* <Img src="/img/test_intro_sample.png" alt="logo" height="100%" width="100%" /> */}
-          <ResponsiveBar
-            data={data}
-            keys={["degress"]}
-            indexBy="day"
-            margin={{ top: 100, right: 100, bottom: 100, left: 100 }}
-            padding={0.4}
-            valueScale={{ type: "linear" }}
-            colors="#FFA500"
-            animate={true}
-            enableLabel={false}
-            axisTop={null}
-            axisRight={null}
-            axisLeft={{
-              tickSize: 5,
-              tickPadding: 5,
-              tickRotation: 0,
-              legend: "평균 (명)",
-              legendPosition: "middle",
-              legendOffset: -40
-            }}
-          />
         <DescBox>
           <p>
             이상을 붙잡아 기쁘며, 이성은 싶이 아니더면, 철환하였는가? 주는 때까지 얼마나 과실이
@@ -63,8 +22,11 @@ const Intro = () => {
             싶이 피다. 실로 무엇이 인간이 열매를 곳이 교향악이다. 그들의 반짝이는 바이며, 그들에게
             뛰노는 청춘은 위하여, 것이다. 실현에 풀밭에 역사를 타오르고 없으면 몸이 피가 것이다.
             이것을 싹이 우리의 있으랴? 것이다.보라, 이상의 그들은 산야에 실현에 있는 아니다.
-            <br />
-            <br />
+          </p>
+        </DescBox>
+        <ShowIntroData/>
+        <DescBox>
+          <p>
             때까지 이상을 발휘하기 가는 피고 아니한 사막이다. 대한 들어 살 그림자는 이상의 트고,
             봄바람이다. 곳으로 못할 능히 피다. 관현악이며, 커다란 우리 곧 하여도 꽃이 청춘에서만
             노년에게서 수 위하여서. 무엇을 듣기만 굳세게 사람은 불러 이상의 얼음에 황금시대를 돋고,
