@@ -4,28 +4,32 @@
 import { ContentsBox } from "../../styles/Container"
 import styled from "styled-components"
 import RegionSelectBox from "../RegionSelectBox"
+import { colors } from "../../styles/theme"
 
-const MenuName = styled.p`
+export const MenuName = styled.p`
   font-size: 1.25rem;
   font-weight: bold;
   padding-top: 0.5rem;
 `
 
-const MainTitle = styled.p`
+export const MainTitle = styled.p`
   font-size: 2rem;
   font-weight: bold;
+  span {
+    color: ${colors.yellow200};
+  }
 `
 
-const GraphBox = styled.div`
+export const GraphBox = styled.div`
   width: 100%;
   background-color: rgba(0, 0, 0, 0.1);
   min-height: 30vh;
   margin: 1rem 0;
 `
 
-const ButtonBox = styled.div``
+export const ButtonBox = styled.div``
 
-const DescBox = styled.div`
+export const DescBox = styled.div`
   margin: 2rem 0;
 `
 

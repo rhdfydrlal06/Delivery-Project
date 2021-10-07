@@ -6,7 +6,7 @@ export const WholeContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 3fr 2fr;
   column-gap: 32px;
-  grid-template-rows: 15vh auto;
+  grid-template-rows: minmax(106px, 15vh) auto;
 `
 
 export const LogoBox = styled.div`
@@ -37,7 +37,7 @@ export const MenuBox = styled.div`
 export const ContentsBox = styled.div`
   grid-column: 2/3;
   grid-row: 2/3;
-  overflow: scroll;
+  overflow: auto;
   height: 85vh;
   padding-right: 20px;
 `

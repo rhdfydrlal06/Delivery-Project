@@ -1,8 +1,3 @@
-const adress = [
-  { name: "home", path: "/" },
-  { name: "intro", path: "/intro" },
-  { name: "analysis1", path: "/covid-19-delivery" },
-  { name: "board", path: "/board" },
-]
+const adress = { home: "/", intro: "/intro", analysis: "/covid-19-delivery", board: "/board" }
 
 export default adress

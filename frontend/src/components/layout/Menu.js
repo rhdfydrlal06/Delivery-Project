@@ -17,7 +17,7 @@ const Menu = () => {
   }
 
   useEffect(() => {
-    history.push(adress[value].path)
+    history.push(adress[value])
     console.log(adress[value])
   }, [value])
 
@@ -38,10 +38,10 @@ const Menu = () => {
         sx={{ borderRight: 1, borderColor: "divider", width: "100%" }}
         scrollButtons={false}
       >
-        <MyTab label="홈" />
-        <MyTab label="서비스 소개" />
-        <MyTab label="배달 데이터 분석" />
-        <MyTab label="게시판" />
+        {/* <MyTab value="home" label="홈" /> */}
+        <MyTab value="intro" label="서비스 소개" />
+        <MyTab value="analysis" label="배달 데이터 분석" />
+        {/* <MyTab value="board" label="게시판" /> */}
       </Tabs>
     </Box>
   )
