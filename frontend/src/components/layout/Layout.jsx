@@ -1,7 +1,7 @@
 import Menu from "./Menu"
 import Header from "./Header"
 import Map from "../Map"
-import { WholeContainer, MenuBox, MapBox } from "../../styles/Container"
+import { WholeContainer, MenuBox, MapBox } from "../../styles/container"
 
 const Layout = props => {
   return (
@@ -12,7 +12,7 @@ const Layout = props => {
       </MenuBox>
       <main>{props.children}</main>
       <MapBox>
-        <Map changePickedRegion={props.changePickedRegion} mapFeatures={props.mapFeatures}/>
+        <Map changePickedRegion={props.changePickedRegion} mapFeatures={props.mapFeatures} />
       </MapBox>
     </WholeContainer>
   )
