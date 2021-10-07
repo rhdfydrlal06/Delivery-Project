@@ -1,4 +1,4 @@
-import { ResponsiveBar } from '@nivo/bar'
+import { ResponsiveBar } from "@nivo/bar"
 import Layout from "../components/layout/Layout"
 import AnalysisContents, {
   DescBox,
@@ -6,55 +6,52 @@ import AnalysisContents, {
   MainTitle,
   MenuName,
 } from "../components/skeleton/AnalysisContents"
-import { ContentsBox } from "../styles/Container"
+import { ContentsBox } from "../styles/container"
 import styled from "styled-components"
 
-// const Img = styled.img` 
+// const Img = styled.img`
 //   max-height: 400px;
 // `
 
 const Intro = () => {
-  
   const data = [
     {
       day: "2019_방문 고객 수",
-      degress: 53.3
+      degress: 53.3,
     },
     {
       day: "2020_방문 고객 수",
-      degress: 44.6
-    }
-  ];  
-
-
+      degress: 44.6,
+    },
+  ]
 
   return (
     <Layout>
       <ContentsBox>
         <MenuName>서비스 소개!</MenuName>
         <MainTitle>딜리버리 푸드 파이터? 왜 필요해?</MainTitle>
-          {/* <Img src="/img/test_intro_sample.png" alt="logo" height="100%" width="100%" /> */}
-          <ResponsiveBar
-            data={data}
-            keys={["degress"]}
-            indexBy="day"
-            margin={{ top: 100, right: 100, bottom: 100, left: 100 }}
-            padding={0.4}
-            valueScale={{ type: "linear" }}
-            colors="#FFA500"
-            animate={true}
-            enableLabel={false}
-            axisTop={null}
-            axisRight={null}
-            axisLeft={{
-              tickSize: 5,
-              tickPadding: 5,
-              tickRotation: 0,
-              legend: "평균 (명)",
-              legendPosition: "middle",
-              legendOffset: -40
-            }}
-          />
+        {/* <Img src="/img/test_intro_sample.png" alt="logo" height="100%" width="100%" /> */}
+        <ResponsiveBar
+          data={data}
+          keys={["degress"]}
+          indexBy="day"
+          margin={{ top: 100, right: 100, bottom: 100, left: 100 }}
+          padding={0.4}
+          valueScale={{ type: "linear" }}
+          colors="#FFA500"
+          animate={true}
+          enableLabel={false}
+          axisTop={null}
+          axisRight={null}
+          axisLeft={{
+            tickSize: 5,
+            tickPadding: 5,
+            tickRotation: 0,
+            legend: "평균 (명)",
+            legendPosition: "middle",
+            legendOffset: -40,
+          }}
+        />
         <DescBox>
           <p>
             이상을 붙잡아 기쁘며, 이성은 싶이 아니더면, 철환하였는가? 주는 때까지 얼마나 과실이

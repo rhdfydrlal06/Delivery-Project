@@ -1,5 +1,5 @@
 import Layout from "../components/layout/Layout"
-import { ContentsBox } from "../styles/Container"
+import { ContentsBox } from "../styles/container"
 
 const Board = () => {
   return (
