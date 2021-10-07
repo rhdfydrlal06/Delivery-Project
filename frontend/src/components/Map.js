@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react"
 import { MapContainer, GeoJSON, LayersControl, TileLayer } from "react-leaflet"
-import mapJSON from "../data/korea_region.json"
+import mapData from "../data/korea_region.json"
 import "leaflet/dist/leaflet.css"
 import {
   geodataListRequest,
@@ -19,29 +19,8 @@ const regionStyle = {
   color: colors.yellow200,
 }
 
-const Map = ({ changePickedRegion }) => {
-  const [mapData, setMapData] = useState(mapJSON)
+const Map = ({ changePickedRegion, mapFeatures }) => {
   const mapRef = useRef()
-
-  useEffect(() => {
-    async function fetchData() {
-      const geodata = await geodataListRequest()
-      const enrichedMapFeatures = mapData.features.map(element => {
-        const geoID = geodata.data.find(d => d.location1 === element.properties.CTP_KOR_NM).id
-        element.properties.ID = geoID
-        return element
-      })
-      setMapData(prev => {
-        return {
-          ...prev,
-          features: enrichedMapFeatures,
-        }
-      })
-    }
-    if (!mapData.features[0].properties.ID) {
-      fetchData()
-    }
-  }, [mapData])
 
   const onEachRegion = (feature, layer) => {
     const graphTest = async id => {
@@ -58,7 +37,7 @@ const Map = ({ changePickedRegion }) => {
       })
 
       e.target.setStyle({
-        fillColor: colors.yellow200,
+        fillColor: colors.black900,
         fillOpacity: 0.5,
       })
 
@@ -102,7 +81,7 @@ const Map = ({ changePickedRegion }) => {
             <GeoJSON
               ref={mapRef}
               style={regionStyle}
-              data={mapData.features}
+              data={mapFeatures ? mapFeatures : mapData.features}
               onEachFeature={onEachRegion}
             />
           </LayersControl.Overlay>

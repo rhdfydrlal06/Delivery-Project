@@ -1,16 +1,37 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Layout from "../components/layout/Layout"
 import AnalysisContents from "../components/skeleton/AnalysisContents"
 
+import { geodataListRequest, orderGraphByIdRequest } from "../apis/geodataApi"
+import mapJSON from "../data/korea_region.json"
+
 const DeliveryNum = () => {
   const [pickedGeoData, setPickedGeoData] = useState()
+  const [wideRegionData, setWideRegionData] = useState()
+  const [mapFeatures, setMapFeatures] = useState()
 
-  const imageRootUrl = process.env.REACT_APP_BACKEND_URL
+  useEffect(() => {
+    const fetchData = async () => {
+      const geodata = await geodataListRequest()
+      const wideId = geodata.data.find(d => d.location1 === "전국").id
+      const wideData = await orderGraphByIdRequest(wideId)
+
+      const enrichedMapFeatures = mapJSON.features.map(element => {
+        const geoID = geodata.data.find(d => d.location1 === element.properties.CTP_KOR_NM).id
+        element.properties.ID = geoID
+        return element
+      })
+
+      setMapFeatures(enrichedMapFeatures)
+      setWideRegionData(wideData.data)
+    }
+
+    fetchData()
+  }, [])
+
   return (
-    <Layout changePickedRegion={setPickedGeoData}>
-      {
-        pickedGeoData && <AnalysisContents data={pickedGeoData} />
-      }
+    <Layout changePickedRegion={setPickedGeoData} mapFeatures={mapFeatures}>
+      { wideRegionData && <AnalysisContents data={pickedGeoData ? pickedGeoData : wideRegionData} />}
     </Layout>
   )
 }
