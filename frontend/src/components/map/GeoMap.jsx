@@ -1,18 +1,20 @@
-import { useMapEvent, GeoJSON, Popup } from "react-leaflet"
-import { orderGraphByIdRequest } from "../apis/geodataApi"
+import { useMap, useMapEvent, GeoJSON, Popup } from "react-leaflet"
+import { orderGraphByIdRequest } from "../../apis/geodataApi"
 import { useState, useRef } from "react"
-import { colors } from "../styles/theme"
+import { colors } from "../../styles/theme"
+import PopupMark from "./PopupMark"
+
+const setHover = e => {
+  e.target.setStyle({
+    fillOpacity: e.type === "mouseover" ? 0.5 : 0.2,
+  })
+}
 
 const GeoMap = ({ changePickedRegion, style, data }) => {
   const mapRef = useRef()
+  const map = useMap()
   const [position, setPosition] = useState(null)
-
-  const map = useMapEvent("click", e => {
-    setPosition(e.target.getCenter())
-    console.log("geomap")
-    // setPosition(map.getCenter()) //map의 중심좌표 반환
-    map.fitBounds(e.target.getBounds()) //e.target의 경계 좌표 반환 후 모서리에 줌 맞추기
-  })
+  const [regionName, setRegionName] = useState(null)
 
   const onEachRegion = (feature, layer) => {
     const graphTest = async id => {
@@ -21,8 +23,13 @@ const GeoMap = ({ changePickedRegion, style, data }) => {
     }
 
     const handleRegionClick = e => {
-      const regionName = feature.properties.CTP_KOR_NM
-      const regionID = feature.properties.ID
+      const _regionName = feature.properties.CTP_KOR_NM
+      const regionNum = feature.properties.CTPRVN_CD
+      const regionID = feature.properties.ID // undefined라고 뜸
+      const regionBounds = layer._bounds
+      const regionCenter = regionBounds.getCenter()
+
+      setRegionName(_regionName)
 
       mapRef.current.setStyle({
         fillColor: colors.yellow200,
@@ -38,12 +45,11 @@ const GeoMap = ({ changePickedRegion, style, data }) => {
           changePickedRegion(data)
         })
       }
-    }
 
-    const setHover = e => {
-      e.target.setStyle({
-        fillOpacity: e.type === "mouseover" ? 0.5 : 0.2,
-      })
+      setPosition(e.latlng)
+
+      // 클릭 시 해당 지역으로 줌 인
+      // map.fitBounds(regionBounds)
     }
 
     layer.on({
@@ -56,7 +62,7 @@ const GeoMap = ({ changePickedRegion, style, data }) => {
   return (
     <>
       <GeoJSON ref={mapRef} style={style} data={data} onEachFeature={onEachRegion}></GeoJSON>
-      {position === null ? null : <Popup position={position}>You are here</Popup>}
+      {position === null ? null : <PopupMark name={regionName} position={position} />}
     </>
   )
 }
