@@ -8,12 +8,20 @@ import { ResponsiveBar } from '@nivo/bar'
 const ShowIntroData = () => {
     const data = [
         {
-          day: "2019년",
-          연평균_방문고객수: 53.3
+          day: "2019년-방문건수",
+          일평균_방문고객수: 53.3,
         },
         {
-          day: "2020년",
-          연평균_방문고객수: 44.6
+          day: "2020년-방문건수",
+          일평균_방문고객수: 44.6
+        },
+        {
+          day: "2019년-배달건수",
+          일평균_배달건수: 164.8
+        },
+        {
+          day: "2020년-배달건수",
+          일평균_배달건수: 200.8
         }
     ]; 
 
@@ -33,12 +41,12 @@ const ShowIntroData = () => {
       <ResponsiveBar
       data={data}
       theme={theme}
-      keys={["연평균_방문고객수"]}  
+      keys={["일평균_방문고객수", "일평균_배달건수"]}  
       indexBy="day"
       margin={{ top: 100, right: 150, bottom: 100, left: 100 }}
-      padding={0.4}
+      padding={0.6}
       valueScale={{ type: "linear" }}
-      colors="#FFA500"
+      colors={["#FFA500", "#c0ed70"]}
       animate={true}
       enableLabel={false}
       axisTop={null}
@@ -49,6 +57,9 @@ const ShowIntroData = () => {
         tickRotation: 0,
         legendPosition: "middle",
         legendOffset: -40
+      }}
+      axisBottom={{
+        tickRotation: -40
       }}
       legends={[
         {
@@ -81,7 +92,7 @@ const ShowIntroData = () => {
         axis: {
           ticks: {
             text: {
-              fontSize: 18
+              fontSize: 16
             }
           }
         }
