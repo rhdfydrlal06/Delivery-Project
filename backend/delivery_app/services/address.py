@@ -10,9 +10,12 @@ address_sample = [
         "location2": None,
         "latitude": 36.0,
         "longitude": 127.51,
-        "graph1": "/statics/graph/corona/korea_corona.png",
+        "graph1": "/statics/graph/delivery_corona/korea_delivery_corona.png",
         "graph2": "/statics/graph/sample_graph.png",
-        "description1": "전국의 확진자수는 21년 7월 ~ 9월까지 가장 많이 증가했어요.",
+        "description1": "최저 주문건수를 기록한 달은 06이고 총 63847 건의 주문건수가 존재했습니다.\
+최고 주문건수를 기록한 달은 12이고 총 271089 건의 주문건수가 존재했습니다.\
+최저 확진자수를 기록한 달은 04이고 총 183 건의 주문건수가 존재했습니다.\
+최고 확진자수를 기록한 달은 07이고 총 13367 건의 주문건수가 존재했습니다.",
         "description2": "그래프 설명 2입니다.",
     },
     {
