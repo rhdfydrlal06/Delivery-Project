@@ -38,7 +38,7 @@ const AnalysisContents = ({ data, useButton = true }) => {
   return (
     <ContentsBox>
       <MenuName>메뉴 타이틀</MenuName>
-      <MainTitle>{data.location1} 월별 누적 확진자</MainTitle>
+      <MainTitle>{data.location1} 일별 확진자 수와 배달 주문건수 비교</MainTitle>
       <GraphBox>
         <p
           style={{
