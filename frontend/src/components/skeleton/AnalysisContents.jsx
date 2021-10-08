@@ -37,8 +37,8 @@ const AnalysisContents = ({ data, useButton = true }) => {
   const imageRootUrl = process.env.REACT_APP_BACKEND_URL
   return (
     <ContentsBox>
-      <MenuName>메뉴 타이틀</MenuName>
-      <MainTitle>{data.location1} 일별 확진자 수와 배달 주문건수 비교</MainTitle>
+      <MenuName>배달 데이터 분석</MenuName>
+      <MainTitle>{data.location1} 월별 확진자 수와 배달 주문건수 비교</MainTitle>
       <GraphBox>
         <p
           style={{
