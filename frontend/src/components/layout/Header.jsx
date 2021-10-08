@@ -1,16 +1,15 @@
-import { LogoBox } from "../../styles/Container"
-import { useHistory } from "react-router"
+import { LogoBox } from "../../styles/container"
 import menuID from "../../recoil/atom"
 import { useRecoilState } from "recoil"
 import { useEffect } from "react"
 import styled from "styled-components"
 
 const Img = styled.img`
-  max-height: 50px;
+  max-width: 10vw;
+  object-fit: contain;
 `
 
 const Header = () => {
-  const history = useHistory()
   const [value, setValue] = useRecoilState(menuID)
 
   const handleClick = () => {
