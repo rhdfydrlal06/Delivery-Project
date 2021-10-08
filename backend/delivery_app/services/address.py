@@ -20,9 +20,12 @@ address_sample = [
         "location2": None,
         "latitude": 37.56667,
         "longitude": 126.97806,
-        "graph1": "/statics/graph/corona/seoul_corona.png",
+        "graph1": "/statics/graph/delivery_corona/seoul_delivery_corona.png",
         "graph2": "/statics/graph/sample_graph.png",
-        "description1": "서울특별시의 확진자수는 21년 7월 ~ 9월까지 가장 많이 증가했어요.",
+        "description1": "최저 주문건수를 기록한 달은 06이고 총 63847 건의 주문건수가 존재했습니다.\
+최고 주문건수를 기록한 달은 12이고 총 271089 건의 주문건수가 존재했습니다.\
+최저 확진자수를 기록한 달은 04이고 총 183 건의 주문건수가 존재했습니다.\
+최고 확진자수를 기록한 달은 07이고 총 13367 건의 주문건수가 존재했습니다.",
         "description2": "그래프 설명 2입니다.",
     },
     {
@@ -30,9 +33,12 @@ address_sample = [
         "location2": None,
         "latitude": 35.17944,
         "longitude": 129.07556,
-        "graph1": "/statics/graph/corona/busan_corona.png",
+        "graph1": "/statics/graph/delivery_corona/busan_delivery_corona.png",
         "graph2": "/statics/graph/sample_graph.png",
-        "description1": "부산의 확진자수는 21년 7월 ~ 8월까지 가장 많이 증가했어요.",
+        "description1": "최저 주문건수를 기록한 달은 02이고 총 2629 건의 주문건수가 존재했습니다.\
+최고 주문건수를 기록한 달은 07이고 총 43826 건의 주문건수가 존재했습니다.\
+최저 확진자수를 기록한 달은 06이고 총 7 건의 주문건수가 존재했습니다.\
+최고 확진자수를 기록한 달은 07이고 총 1834 건의 주문건수가 존재했습니다.",
         "description2": "그래프 설명 2입니다.",
     },
     {
@@ -40,9 +46,12 @@ address_sample = [
         "location2": None,
         "latitude": 35.87222,
         "longitude": 128.60250,
-        "graph1": "/statics/graph/corona/daegu_corona.png",
+        "graph1": "/statics/graph/delivery_corona/daegu_delivery_corona.png",
         "graph2": "/statics/graph/sample_graph.png",
-        "description1": "대구광역시의 확진자수는 코로나 발생 초기에 대폭 증가했어요.",
+        "description1": "최저 주문건수를 기록한 달은 04이고 총 7461 건의 주문건수가 존재했습니다.\
+최고 주문건수를 기록한 달은 12이고 총 21805 건의 주문건수가 존재했습니다.\
+최저 확진자수를 기록한 달은 06이고 총 23 건의 주문건수가 존재했습니다.\
+최고 확진자수를 기록한 달은 03이고 총 4448 건의 주문건수가 존재했습니다.",
         "description2": "그래프 설명 2입니다.",
     },
     {
@@ -50,9 +59,12 @@ address_sample = [
         "location2": None,
         "latitude": 37.45639,
         "longitude": 126.70528,
-        "graph1": "/statics/graph/corona/incheon_corona.png",
+        "graph1": "/statics/graph/delivery_corona/incheon_delivery_corona.png",
         "graph2": "/statics/graph/sample_graph.png",
-        "description1": "인천광역시의 확진자수는 21년 7월 ~ 9월까지 가장 많이 증가했어요.",
+        "description1": "최저 주문건수를 기록한 달은 08이고 총 1525 건의 주문건수가 존재했습니다.\
+최고 주문건수를 기록한 달은 07이고 총 35118 건의 주문건수가 존재했습니다.\
+최저 확진자수를 기록한 달은 04이고 총 29 건의 주문건수가 존재했습니다.\
+최고 확진자수를 기록한 달은 07이고 총 2094 건의 주문건수가 존재했습니다.",
         "description2": "그래프 설명 2입니다.",
     },
     {
@@ -60,9 +72,12 @@ address_sample = [
         "location2": None,
         "latitude": 35.15972,
         "longitude": 126.85306,
-        "graph1": "/statics/graph/corona/gwangju_corona.png",
+        "graph1": "/statics/graph/delivery_corona/gwangju_delivery_corona.png",
         "graph2": "/statics/graph/sample_graph.png",
-        "description1": "광주광역시의 확진자수는 21년 7월 ~ 8월까지 가장 많이 증가했어요.",
+        "description1": "최저 주문건수를 기록한 달은 07이고 총 384 건의 주문건수가 존재했습니다.\
+최고 주문건수를 기록한 달은 12이고 총 14550 건의 주문건수가 존재했습니다.\
+최저 확진자수를 기록한 달은 05이고 총 2 건의 주문건수가 존재했습니다.\
+최고 확진자수를 기록한 달은 01이고 총 702 건의 주문건수가 존재했습니다.",
         "description2": "그래프 설명 2입니다.",
     },
     {
@@ -70,9 +85,12 @@ address_sample = [
         "location2": None,
         "latitude": 36.35111,
         "longitude": 127.38500,
-        "graph1": "/statics/graph/corona/daejeon_corona.png",
+        "graph1": "/statics/graph/delivery_corona/daejeon_delivery_corona.png",
         "graph2": "/statics/graph/sample_graph.png",
-        "description1": "대전광역시의 확진자수는 21년 7월 ~ 8월까지 가장 많이 증가했어요.",
+        "description1": "최저 주문건수를 기록한 달은 07이고 총 75 건의 주문건수가 존재했습니다.\
+최고 주문건수를 기록한 달은 06이고 총 17222 건의 주문건수가 존재했습니다.\
+최저 확진자수를 기록한 달은 04이고 총 4 건의 주문건수가 존재했습니다.\
+최고 확진자수를 기록한 달은 07이고 총 715 건의 주문건수가 존재했습니다.",
         "description2": "그래프 설명 2입니다.",
     },
     {
@@ -80,9 +98,12 @@ address_sample = [
         "location2": None,
         "latitude": 35.53889,
         "longitude": 129.31667,
-        "graph1": "/statics/graph/corona/ulsan_corona.png",
+        "graph1": "/statics/graph/delivery_corona/ulsan_delivery_corona.png",
         "graph2": "/statics/graph/sample_graph.png",
-        "description1": "울산광역시의 확진자수는 21년 4~5월, 21년 8~9월에 가장 많이 증가했어요.",
+        "description1": "최저 주문건수를 기록한 달은 11이고 총 1 건의 주문건수가 존재했습니다.\
+최고 주문건수를 기록한 달은 02이고 총 15581 건의 주문건수가 존재했습니다.\
+최저 확진자수를 기록한 달은 06이고 총 2 건의 주문건수가 존재했습니다.\
+최고 확진자수를 기록한 달은 04이고 총 725 건의 주문건수가 존재했습니다.",
         "description2": "그래프 설명 2입니다.",
     },
     {
@@ -90,9 +111,12 @@ address_sample = [
         "location2": None,
         "latitude": 36.48750,
         "longitude": 127.28167,
-        "graph1": "/statics/graph/corona/sejong_corona.png",
+        "graph1": "/statics/graph/delivery_corona/sejong_delivery_corona.png",
         "graph2": "/statics/graph/sample_graph.png",
-        "description1": "세종특별자치시의 확진자수는 21년 7월 ~ 9월까지 가장 많이 증가했어요.",
+        "description1": "최저 주문건수를 기록한 달은 09이고 총 85 건의 주문건수가 존재했습니다.\
+최고 주문건수를 기록한 달은 08이고 총 757 건의 주문건수가 존재했습니다 \
+최저 확진자수를 기록한 달은 04이고 총 0 건의 주문건수가 존재했습니다.\
+최고 확진자수를 기록한 달은 03이고 총 45 건의 주문건수가 존재했습니다.",
         "description2": "그래프 설명 2입니다.",
     },
     {
@@ -100,9 +124,12 @@ address_sample = [
         "location2": None,
         "latitude": 37.586432,
         "longitude": 127.046277,
-        "graph1": "/statics/graph/corona/gyeongi_corona.png",
+        "graph1": "/statics/graph/delivery_corona/gyeongi_delivery_corona.png",
         "graph2": "/statics/graph/sample_graph.png",
-        "description1": "경기도의 확진자수는 21년 7월 ~ 9월까지 가장 많이 증가했어요.",
+        "description1": "최저 주문건수를 기록한 달은 09이고 총 265354 건의 주문건수가 존재했습니다.\
+최고 주문건수를 기록한 달은 12이고 총 868207 건의 주문건수가 존재했습니다.\
+최저 확진자수를 기록한 달은 05이고 총 161 건의 주문건수가 존재했습니다.\
+최고 확진자수를 기록한 달은 07이고 총 10873 건의 주문건수가 존재했습니다.",
         "description2": "그래프 설명 2입니다.",
     },
     {
@@ -110,9 +137,12 @@ address_sample = [
         "location2": None,
         "latitude": 37.8304115,
         "longitude": 128.2260705,
-        "graph1": "/statics/graph/corona/gangwon_corona.png",
+        "graph1": "/statics/graph/delivery_corona/gangwon_delivery_corona.png",
         "graph2": "/statics/graph/sample_graph.png",
-        "description1": "강원도의 확진자수는 21년 7월 ~ 8월까지 가장 많이 증가했어요.",
+        "description1": "최저 주문건수를 기록한 달은 01이고 총 2003 건의 주문건수가 존재했습니다.\
+최고 주문건수를 기록한 달은 08이고 총 7794 건의 주문건수가 존재했습니다.\
+최저 확진자수를 기록한 달은 05이고 총 4 건의 주문건수가 존재했습니다.\
+최고 확진자수를 기록한 달은 07이고 총 838 건의 주문건수가 존재했습니다.",
         "description2": "그래프 설명 2입니다.",
     },
     {
@@ -120,9 +150,12 @@ address_sample = [
         "location2": None,
         "latitude": 36.635684,
         "longitude": 127.49139,
-        "graph1": "/statics/graph/corona/choongbuk_corona.png",
+        "graph1": "/statics/graph/delivery_corona/choongbuk_delivery_corona.png",
         "graph2": "/statics/graph/sample_graph.png",
-        "description1": "충청북도의 확진자수는 21년 7월 ~ 9월까지 가장 많이 증가했어요.",
+        "description1": "최저 주문건수를 기록한 달은 09이고 총 10646 건의 주문건수가 존재했습니다.\
+최고 주문건수를 기록한 달은 08이고 총 27619 건의 주문건수가 존재했습니다.\
+최저 확진자수를 기록한 달은 04이고 총 1 건의 주문건수가 존재했습니다.\
+최고 확진자수를 기록한 달은 12이고 총 836 건의 주문건수가 존재했습니다.",
         "description2": "그래프 설명 2입니다.",
     },
     {
@@ -130,9 +163,12 @@ address_sample = [
         "location2": None,
         "latitude": 36.658827,
         "longitude": 126.672835,
-        "graph1": "/statics/graph/corona/choongnam_corona.png",
+        "graph1": "/statics/graph/delivery_corona/choongnam_delivery_corona.png",
         "graph2": "/statics/graph/sample_graph.png",
-        "description1": "충청남도의 확진자수는 21년 7월 ~ 9월까지 가장 많이 증가했어요.",
+        "description1": "최저 주문건수를 기록한 달은 08이고 총 11376 건의 주문건수가 존재했습니다.\
+최고 주문건수를 기록한 달은 12이고 총 93606 건의 주문건수가 존재했습니다.\
+최저 확진자수를 기록한 달은 05이고 총 3 건의 주문건수가 존재했습니다.\
+최고 확진자수를 기록한 달은 07이고 총 1063 건의 주문건수가 존재했습니다.",
         "description2": "그래프 설명 2입니다.",
     },
     {
@@ -140,9 +176,12 @@ address_sample = [
         "location2": None,
         "latitude": 35.8242238,
         "longitude": 127.1479532,
-        "graph1": "/statics/graph/corona/jeonbuk_corona.png",
+        "graph1": "/statics/graph/delivery_corona/jeonbuk_delivery_corona.png",
         "graph2": "/statics/graph/sample_graph.png",
-        "description1": "전라북도의 확진자수는 21년 7월 ~ 9월까지 가장 많이 증가했어요.",
+        "description1": "최저 주문건수를 기록한 달은 04이고 총 2822 건의 주문건수가 존재했습니다.\
+최고 주문건수를 기록한 달은 08이고 총 50746 건의 주문건수가 존재했습니다.\
+최저 확진자수를 기록한 달은 05이고 총 3 건의 주문건수가 존재했습니다.\
+최고 확진자수를 기록한 달은 12이고 총 503 건의 주문건수가 존재했습니다.",
         "description2": "그래프 설명 2입니다.",
     },
     {
@@ -150,9 +189,12 @@ address_sample = [
         "location2": None,
         "latitude": 34.816862,
         "longitude": 126.464532,
-        "graph1": "/statics/graph/corona/jeonnam_corona.png",
+        "graph1": "/statics/graph/delivery_corona/jeonnam_delivery_corona.png",
         "graph2": "/statics/graph/sample_graph.png",
-        "description1": "전라남도의 확진자수는 21년 7월 ~ 9월까지 가장 많이 증가했어요.",
+        "description1": "최저 주문건수를 기록한 달은 02이고 총 4725 건의 주문건수가 존재했습니다.\
+최고 주문건수를 기록한 달은 12이고 총 38485 건의 주문건수가 존재했습니다.\
+최저 확진자수를 기록한 달은 05이고 총 4 건의 주문건수가 존재했습니다.\
+최고 확진자수를 기록한 달은 05이고 총 410 건의 주문건수가 존재했습니다.",
         "description2": "그래프 설명 2입니다.",
     },
     {
@@ -160,9 +202,12 @@ address_sample = [
         "location2": None,
         "latitude": 36.25,
         "longitude": 128.75,
-        "graph1": "/statics/graph/corona/gyeonbuk_corona.png",
+        "graph1": "/statics/graph/delivery_corona/gyeonbuk_delivery_corona.png",
         "graph2": "/statics/graph/sample_graph.png",
-        "description1": "경상북도의 확진자수는 21년 7월 ~ 9월까지 가장 많이 증가했어요.",
+        "description1": "최저 주문건수를 기록한 달은 11이고 총 29647 건의 주문건수가 존재했습니다.\
+최고 주문건수를 기록한 달은 12이고 총 90072 건의 주문건수가 존재했습니다.\
+최저 확진자수를 기록한 달은 06이고 총 10 건의 주문건수가 존재했습니다.\
+최고 확진자수를 기록한 달은 03이고 총 812 건의 주문건수가 존재했습니다.",
         "description2": "그래프 설명 2입니다.",
     },
     {
@@ -170,9 +215,12 @@ address_sample = [
         "location2": None,
         "latitude": 35.25,
         "longitude": 128.25,
-        "graph1": "/statics/graph/corona/gyeongnam_corona.png",
+        "graph1": "/statics/graph/delivery_corona/gyeongnam_delivery_corona.png",
         "graph2": "/statics/graph/sample_graph.png",
-        "description1": "경상남도의 확진자수는 21년 7월 ~ 8월까지 가장 많이 증가했어요.",
+        "description1": "최저 주문건수를 기록한 달은 04이고 총 11199 건의 주문건수가 존재했습니다.\
+최고 주문건수를 기록한 달은 12이고 총 104039 건의 주문건수가 존재했습니다.\
+최저 확진자수를 기록한 달은 05이고 총 6 건의 주문건수가 존재했습니다.\
+최고 확진자수를 기록한 달은 07이고 총 1810 건의 주문건수가 존재했습니다.",
         "description2": "그래프 설명 2입니다.",
     },
     {
@@ -180,9 +228,12 @@ address_sample = [
         "location2": None,
         "latitude": 33.376163,
         "longitude": 126.547420,
-        "graph1": "/statics/graph/corona/jaeju_corona.png",
+        "graph1": "/statics/graph/delivery_corona/jaeju_delivery_corona.png",
         "graph2": "/statics/graph/sample_graph.png",
-        "description1": "제주도의 확진자수는 21년 7월 ~ 8월까지 가장 많이 증가했어요.",
+        "description1": "최저 주문건수를 기록한 달은 04이고 총 8579 건의 주문건수가 존재했습니다.\
+최고 주문건수를 기록한 달은 12이고 총 28703 건의 주문건수가 존재했습니다.\
+최저 확진자수를 기록한 달은 10이고 총 0 건의 주문건수가 존재했습니다.\
+최고 확진자수를 기록한 달은 07이고 총 426 건의 주문건수가 존재했습니다.",
         "description2": "그래프 설명 2입니다.",
     },
 ]
