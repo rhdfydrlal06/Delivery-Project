@@ -1,5 +1,5 @@
 import Layout from "../components/layout/Layout"
-import ShowIntroData from "../data/show_intro_data" 
+import ShowIntroData from "../data/show_intro_data"
 import AnalysisContents, {
   DescBox,
   MainTitle,
@@ -7,8 +7,7 @@ import AnalysisContents, {
 } from "../components/skeleton/AnalysisContents"
 import { ContentsBox } from "../styles/Container"
 
-
-const Intro = () => { 
+const Intro = () => {
   return (
     <Layout>
       <ContentsBox>
@@ -24,7 +23,7 @@ const Intro = () => {
             이것을 싹이 우리의 있으랴? 것이다.보라, 이상의 그들은 산야에 실현에 있는 아니다.
           </p>
         </DescBox>
-        <ShowIntroData/>
+        <ShowIntroData />
         <DescBox>
           <p>
             때까지 이상을 발휘하기 가는 피고 아니한 사막이다. 대한 들어 살 그림자는 이상의 트고,
