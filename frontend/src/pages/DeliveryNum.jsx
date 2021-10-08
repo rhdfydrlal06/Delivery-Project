@@ -31,7 +31,7 @@ const DeliveryNum = () => {
 
   return (
     <Layout changePickedRegion={setPickedGeoData} mapFeatures={mapFeatures}>
-      { wideRegionData && <AnalysisContents data={pickedGeoData ? pickedGeoData : wideRegionData} />}
+      {wideRegionData && <AnalysisContents data={pickedGeoData ? pickedGeoData : wideRegionData} />}
     </Layout>
   )
 }
