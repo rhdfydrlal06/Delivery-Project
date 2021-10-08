@@ -4,7 +4,7 @@ import { DescBox, MainTitle, MenuName } from "../components/skeleton/AnalysisCon
 import { colors } from "../styles/theme"
 import { ContentsBox } from "../styles/container"
 
-const Bold = styled.span`
+export const Bold = styled.span`
   font-weight: bold;
 `
 const Comment = styled.span`
