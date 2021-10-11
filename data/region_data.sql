@@ -1,3 +1,4 @@
+LOAD DATA INFILE '/app/data/korea_store_df.csv' INTO TABLE analisys CHARACTER SET utf8mb4 FIELDS TERMINATED BY ',' IGNORE 1 LINES (date, region, order_count, covid_count);
 INSERT INTO
   address
 VALUES(

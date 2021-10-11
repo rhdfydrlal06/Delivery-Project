@@ -7,7 +7,6 @@ from flask_migrate import Migrate
 
 from delivery_app import config
 from delivery_app.db_connect import db
-from delivery_app.services.address import set_default as set_address_default
 from delivery_app.apis import geodata_api
 
 
