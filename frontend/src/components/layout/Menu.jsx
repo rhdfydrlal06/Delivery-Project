@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, memo } from "react"
 import Tabs from "@mui/material/Tabs"
 import Box from "@mui/material/Box"
 import { useHistory } from "react-router"
@@ -19,6 +19,10 @@ const Menu = () => {
     history.push(adress[value])
     console.log(adress[value])
   }, [value])
+
+  useEffect(() => {
+    console.log("menuchange")
+  })
 
   return (
     <Box
@@ -46,4 +50,4 @@ const Menu = () => {
   )
 }
 
-export default Menu
+export default memo(Menu)

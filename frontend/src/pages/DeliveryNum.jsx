@@ -25,7 +25,6 @@ const DeliveryNum = () => {
       setMapFeatures(enrichedMapFeatures)
       setWideRegionData(wideData.data)
     }
-
     fetchData()
   }, [])
 
