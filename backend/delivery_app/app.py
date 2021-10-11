@@ -25,10 +25,6 @@ def create_app():
     db.init_app(app)
     Migrate().init_app(app, db)
 
-    with app.app_context():
-        db.create_all()
-        set_address_default()
-
     app.register_blueprint(geodata_api.bp, url_prefix="/api/geodata")
 
     @app.route("/")

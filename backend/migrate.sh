@@ -9,4 +9,3 @@ export SECRET_KEY=[]
 flask db init
 flask db migrate
 flask db upgrade
-nohup gunicorn delivery_app.app:application -b 0.0.0.0:5000 --workers=4 --threads=4 &
