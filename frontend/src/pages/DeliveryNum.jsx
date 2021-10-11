@@ -30,7 +30,7 @@ const DeliveryNum = () => {
   }, [])
 
   return (
-    <Layout changePickedRegion={setPickedGeoData} mapFeatures={mapFeatures}>
+    <Layout isMap={true} changePickedRegion={setPickedGeoData} mapFeatures={mapFeatures}>
       {wideRegionData && <AnalysisContents data={pickedGeoData ? pickedGeoData : wideRegionData} />}
     </Layout>
   )

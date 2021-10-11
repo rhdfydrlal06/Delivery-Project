@@ -1,10 +1,13 @@
 import Layout from "../components/layout/Layout"
 import { ContentsBox } from "../styles/container"
+import DropBox from "../components/DropBox"
 
 const Board = () => {
   return (
     <Layout>
-      <ContentsBox>여기에 내용을 작성해주세요</ContentsBox>
+      <ContentsBox>
+        <DropBox />
+      </ContentsBox>
     </Layout>
   )
 }

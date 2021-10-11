@@ -21,12 +21,11 @@ export const MapBox = styled.div`
   grid-row: 1/3;
 `
 
-/*맵을 사용하지 않을 경우 사용하는 우측 본문 박스*/
-export const TestBox = styled.div`
-  grid-column: 3/4;
+/*맵을 사용하지 않을 경우 사용하는 본문 박스*/
+export const NotMapBox = styled.div`
+  grid-column: 2/4;
   grid-row: 2/3;
   background-color: gray;
-  margin: 0px 32px 32px 0px;
 `
 
 export const MenuBox = styled.div`
@@ -40,22 +39,4 @@ export const ContentsBox = styled.div`
   overflow: auto;
   height: 85vh;
   padding-right: 20px;
-`
-
-export const MainBodyContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-`
-
-export const ContentsBoxRight = styled.div`
-  width: 33%;
-`
-
-export const ContentsBoxLeft = styled.div`
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  margin-right: 4%;
 `

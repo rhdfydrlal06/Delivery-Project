@@ -2,7 +2,7 @@ import styled from "styled-components"
 import Layout from "../components/layout/Layout"
 import { DescBox, MainTitle, MenuName } from "../components/skeleton/AnalysisContents"
 import { colors } from "../styles/theme"
-import { ContentsBox } from "../styles/container"
+import { ContentsBox, NotMapBox } from "../styles/container"
 
 export const Bold = styled.span`
   font-weight: bold;
@@ -26,7 +26,7 @@ const Home = () => {
           배달의 모든 것을 알아보아요
         </MainTitle>
         <DescBox>
-          <p >
+          <p>
             <Comment> &#127828; 허한 마음은 음식으로 달래야지!</Comment>
             코로나 이후 꼼짝없이 집에 갇혀버린 우리들, 집에서 모든 것을 해결하는 것이 일상이
             되었습니다.
