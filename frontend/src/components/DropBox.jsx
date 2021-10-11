@@ -11,16 +11,16 @@ const top100Films = [
   { label: "12 Angry Men", year: 1957 },
 ]
 
-const RegionSelectBox = () => {
+const DropBox = ({ options, id, label }) => {
   return (
     <Autocomplete
       disablePortal
-      id="combo-box-demo"
-      options={top100Films}
+      id={id}
+      options={options}
       sx={{ width: 300 }}
-      renderInput={params => <TextField {...params} label="시/군/구" />}
+      renderInput={params => <TextField {...params} label={label} />}
     />
   )
 }
 
-export default RegionSelectBox
+export default DropBox

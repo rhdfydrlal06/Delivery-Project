@@ -1,22 +1,5 @@
-import { useEffect, useState, useRef, useMemo } from "react"
-import {
-  MapContainer,
-  GeoJSON,
-  LayersControl,
-  TileLayer,
-  useMapEvent,
-  Marker,
-  Popup,
-  useMap,
-  setBounds,
-} from "react-leaflet"
+import { MapContainer, LayersControl, TileLayer } from "react-leaflet"
 import mapData from "../../data/korea_region.json"
-import "leaflet/dist/leaflet.css"
-import {
-  geodataListRequest,
-  storesGraphByIdRequest,
-  orderGraphByIdRequest,
-} from "../../apis/geodataApi"
 import { colors } from "../../styles/theme"
 import { styleId, userId, token } from "../../data/map_key"
 import GeoMap from "./GeoMap"

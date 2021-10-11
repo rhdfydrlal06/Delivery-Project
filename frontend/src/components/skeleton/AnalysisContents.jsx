@@ -3,7 +3,6 @@
 
 import { ContentsBox } from "../../styles/container"
 import styled from "styled-components"
-import RegionSelectBox from "../RegionSelectBox"
 import { colors } from "../../styles/theme"
 
 export const MenuName = styled.p`
@@ -55,11 +54,7 @@ const AnalysisContents = ({ data, useButton = true }) => {
           />
         </p>
       </GraphBox>
-      {useButton && (
-        <ButtonBox>
-          <RegionSelectBox />
-        </ButtonBox>
-      )}
+      {useButton && <ButtonBox></ButtonBox>}
       <DescBox>
         <p>{data.description}</p>
       </DescBox>

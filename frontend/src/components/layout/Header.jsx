@@ -1,7 +1,7 @@
 import { LogoBox } from "../../styles/container"
 import menuID from "../../recoil/atom"
 import { useRecoilState } from "recoil"
-import { useEffect } from "react"
+import { useCallback, useEffect } from "react"
 import styled from "styled-components"
 
 const Img = styled.img`
@@ -12,10 +12,9 @@ const Img = styled.img`
 const Header = () => {
   const [value, setValue] = useRecoilState(menuID)
 
-  const handleClick = () => {
+  const handleClick = useCallback(() => {
     setValue("home")
-    console.log("click")
-  }
+  })
 
   useEffect(() => {
     console.log("logo change", value)
