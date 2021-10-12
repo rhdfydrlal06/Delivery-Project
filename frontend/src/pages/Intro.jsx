@@ -2,12 +2,12 @@ import { Bold } from "./Home"
 import Layout from "../components/layout/Layout"
 import ShowIntroData from "../data/show_intro_data"
 import { DescBox, MainTitle, MenuName } from "../components/skeleton/AnalysisContents"
-import { ContentsBox } from "../styles/container"
+import { NotMapBox } from "../styles/container"
 
 const Intro = () => {
   return (
-    <Layout>
-      <ContentsBox>
+    <Layout isMap={false}>
+      <NotMapBox>
         <MenuName>서비스 소개!</MenuName>
         <MainTitle>딜리버리 푸드 파이터? 왜 필요해?</MainTitle>
         <DescBox>
@@ -63,7 +63,7 @@ const Intro = () => {
             2. 일 평균 방문 고객 및 배달 테이크아웃 수 [출처 : 국가 통계 포털]             */}
           </p>
         </DescBox>
-      </ContentsBox>
+      </NotMapBox>
     </Layout>
   )
 }

@@ -17,8 +17,8 @@ const Comment = styled.span`
 
 const Home = () => {
   return (
-    <Layout>
-      <ContentsBox>
+    <Layout isMap={false}>
+      <NotMapBox>
         <MenuName>배달 정보 타파 서비스!</MenuName>
         <MainTitle>
           <span>딜리버리 푸드 파이터</span>에서
@@ -51,7 +51,7 @@ const Home = () => {
             거에요!
           </p>
         </DescBox>
-      </ContentsBox>
+      </NotMapBox>
     </Layout>
   )
 }

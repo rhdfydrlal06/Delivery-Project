@@ -16,21 +16,21 @@ export const LogoBox = styled.div`
   cursor: pointer;
 `
 
-export const MapBox = styled.div`
-  grid-column: 3/4;
-  grid-row: 1/3;
-`
-
-/*맵을 사용하지 않을 경우 사용하는 본문 박스*/
-export const NotMapBox = styled.div`
-  grid-column: 2/4;
-  grid-row: 2/3;
-  background-color: gray;
-`
-
 export const MenuBox = styled.div`
   grid-column: 1/2;
   grid-row: 2/3;
+`
+
+//layout에서 본문이 들어가는 메인 박스
+export const Main = styled.main`
+  grid-column: ${({ isMap }) => (isMap ? "2/3" : "2/4")};
+  grid-row: 2/3;
+  padding-right: 32px;
+`
+
+export const MapBox = styled.div`
+  grid-column: 3/4;
+  grid-row: 1/3;
 `
 
 export const ContentsBox = styled.div`
@@ -39,4 +39,18 @@ export const ContentsBox = styled.div`
   overflow: auto;
   height: 85vh;
   padding-right: 20px;
+`
+
+/*맵을 사용하지 않을 경우 사용하는 본문 박스*/
+export const NotMapBox = styled.div`
+  width: 80%;
+`
+
+export const PostContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, minmax(100px, auto));
+`
+export const PostBox = styled.div`
+  border: 1px solid gray;
+  width: 100%;
 `

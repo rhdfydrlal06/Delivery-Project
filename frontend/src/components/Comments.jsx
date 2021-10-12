@@ -6,8 +6,9 @@ import FavoriteRoundedIcon from "@mui/icons-material/FavoriteRounded"
 import styled from "styled-components"
 import { commentsData } from "../data/dummy"
 import { useState } from "react"
+import { PostBox } from "../styles/container"
 
-const MyPaper = styledMUI(Paper)`
+export const MyPaper = styledMUI(Paper)`
   padding: 1rem;
   margin: 1rem 0;
 `
@@ -28,20 +29,17 @@ const Comments = ({ data }) => {
     const isLiked = () => likedPeople.includes(currUser)
 
     return (
-      <>
-        <MyPaper elevation={0}>
-          <FaceRoundedIcon />
-          {nick}
-          <MyChip variant="outlined" color="primary" size="small" label={`${city}/${town}`} />
-          <MyChip variant="outlined" color="primary" size="small" label={category} />
-          {text}
-          <LikeBox>{isLiked() ? <FavoriteRoundedIcon /> : <FavoriteBorderRoundedIcon />}</LikeBox>
-          {likedNum}
-        </MyPaper>
-        <Divider />
-      </>
+      <MyPaper elevation={0}>
+        <FaceRoundedIcon />
+        {nick}
+        <MyChip variant="outlined" color="primary" size="small" label={`${city}/${town}`} />
+        <MyChip variant="outlined" color="primary" size="small" label={category} />
+        {text}
+        <LikeBox>{isLiked() ? <FavoriteRoundedIcon /> : <FavoriteBorderRoundedIcon />}</LikeBox>
+        {likedNum}
+      </MyPaper>
     )
   })
-  return <Box>{commentsList && commentsList}</Box>
+  return <>{commentsList && commentsList}</>
 }
 export default Comments
