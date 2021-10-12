@@ -11,7 +11,7 @@ const Layout = props => {
       <MenuBox>
         <Menu />
       </MenuBox>
-      <Main>{props.children}</Main>
+      <Main isMap={props.isMap}>{props.children}</Main>
       {props.isMap && (
         <MapBox>
           <Map changePickedRegion={props.changePickedRegion} mapFeatures={props.mapFeatures} />
