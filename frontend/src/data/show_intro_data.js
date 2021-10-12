@@ -72,7 +72,7 @@ const ShowIntroData = () => {
             itemsSpacing: 2,
             itemWidth: 100,
             itemHeight: 20,
-            itemDirection: 'left-to-right',
+            itemDireccdstion: 'left-to-right',
             itemOpacity: 0.85,
             symbolSize: 20,
             effects: [
