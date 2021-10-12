@@ -9,4 +9,4 @@ export SECRET_KEY=[]
 flask db init
 flask db migrate
 flask db upgrade
-nohup uwsgi --socket 0.0.0.0:5000 --protocol=http -w delivery_app.app --master --processes=4 --threads=4 &
+nohup gunicorn delivery_app.app:application -b 0.0.0.0:5000 --workers=4 --threads=4 &
