@@ -27,11 +27,11 @@ class Posts(db.Model):
     category = db.Column(db.String(32), nullable=False)
     food = db.Column(db.String(64), nullable=False)
     post = db.Column(db.Text, nullable=True)
-    image = db.Column(db.String(1024), nullalbe=False)
-    user = db.Column(db.String(8), nullable=False)
+    image = db.Column(db.String(1024), nullable=True)
+    user = db.Column(db.String(8), nullable=True)
     hit = db.Column(db.Integer, nullable=False)
-    like = db.Column(db.Integer, nullalbe=False)
-    timestamp = db.Column(db.Datetime(), nullable=False)
+    like = db.Column(db.Integer, nullable=False)
+    timestamp = db.Column(db.DateTime(), nullable=False)
 
     def __init__(self, id, location1, location2, category, post, food, image, user):
         self.id = id
