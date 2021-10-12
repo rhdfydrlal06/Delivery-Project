@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime
 
 from delivery_app.db_connect import db
 
@@ -24,7 +24,6 @@ class Posts(db.Model):
     id = db.Column(db.Integer, primary_key=True, nullable=False, autoincrement=True)
     location1 = db.Column(db.String(32), nullable=False)
     location2 = db.Column(db.String(32), nullable=False)
-    category = db.Column(db.String(32), nullable=False)
     food = db.Column(db.String(64), nullable=False)
     post = db.Column(db.Text, nullable=True)
     image = db.Column(db.String(1024), nullable=True)
@@ -33,11 +32,9 @@ class Posts(db.Model):
     like = db.Column(db.Integer, nullable=False)
     timestamp = db.Column(db.DateTime(), nullable=False)
 
-    def __init__(self, id, location1, location2, category, post, food, image, user):
-        self.id = id
+    def __init__(self, location1, location2, post, food, image, user):
         self.location1 = location1
         self.location2 = location2
-        self.category = category
         self.food = food
         self.post = post
         self.image = image
@@ -51,7 +48,6 @@ class Posts(db.Model):
             "id": self.id,
             "location1": self.location1,
             "location2": self.location2,
-            "category": self.category,
             "food": self.food,
             "post": self.post,
             "image": self.image,
