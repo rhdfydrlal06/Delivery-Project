@@ -1,19 +1,22 @@
 import Menu from "./Menu"
 import Header from "./Header"
 import Map from "../map/Map"
-import { WholeContainer, MenuBox, MapBox } from "../../styles/container"
+import { WholeContainer, MenuBox, MapBox, Main } from "../../styles/container"
 
 const Layout = props => {
+  console.log("isMap?", props.isMap)
   return (
     <WholeContainer>
       <Header />
       <MenuBox>
         <Menu />
       </MenuBox>
-      <main>{props.children}</main>
-      <MapBox>
-        <Map changePickedRegion={props.changePickedRegion} mapFeatures={props.mapFeatures} />
-      </MapBox>
+      <Main>{props.children}</Main>
+      {props.isMap && (
+        <MapBox>
+          <Map changePickedRegion={props.changePickedRegion} mapFeatures={props.mapFeatures} />
+        </MapBox>
+      )}
     </WholeContainer>
   )
 }
