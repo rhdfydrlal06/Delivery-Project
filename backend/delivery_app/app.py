@@ -8,7 +8,7 @@ from flask_migrate import Migrate
 from delivery_app import config
 from delivery_app.db_connect import db
 from delivery_app.services.address import set_default as set_address_default
-from delivery_app.apis import geodata_api
+from delivery_app.apis import geodata_api, board_api
 
 
 def create_app():
@@ -30,6 +30,7 @@ def create_app():
         set_address_default()
 
     app.register_blueprint(geodata_api.bp, url_prefix="/api/geodata")
+    app.register_blueprint(board_api.bp, url_prefix="/api/board")
 
     @app.route("/")
     def landing():
