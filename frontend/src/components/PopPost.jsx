@@ -2,15 +2,23 @@ import { useState, useRef, useEffect, useCallback } from "react"
 import dummy from "../data/dummy"
 import DropBox from "./DropBox"
 import { TextField, Button } from "@mui/material"
+import styled from "styled-components"
 
-const PopPost = ({ commentData, handleComment }) => {
+// location1: 시도 이름
+// location2: 시군구 이름
+// food: 음식 종류
+// post: 글 내용
+// image: 이미지 url
+// user: 작성자
+
+const PopPost = ({ commentData, handleComment, onClose }) => {
   const [inputValue, setInputValue] = useState({
     city: null,
     town: null,
     category: null,
-    img: null,
   })
   const [inputText, setInputText] = useState(null)
+  const [inputImg, setInputImg] = useState(null)
 
   const handleSelectChange = useCallback(
     value => {
@@ -29,56 +37,113 @@ const PopPost = ({ commentData, handleComment }) => {
     [inputText],
   )
 
-  const handleImgChange = useCallback(e => {
-    const img = e.target.files[0]
-    const fileType = img.name.split(".")
-    console.log("type", fileType)
-    // setInputValue({ ...inputValue }, fileType)
-  })
+  const checkFileType = fileType => {
+    const correctType = ["png", "jpg", "jpeg"]
+    return correctType.includes(fileType)
+  }
+
+  const isFile = files => {
+    return files.length === 0 ? true : false
+  }
+
+  const handleImgChange = useCallback(
+    e => {
+      const files = e.target.files
+      if (isFile(files)) {
+        console.log("no file")
+        return
+      }
+      const img = files[0]
+      const fileType = img.name.split(".").pop().toLowerCase()
+      if (!checkFileType(fileType)) {
+        console.log("incorrect type of file")
+        return
+      }
+      console.log(img)
+      setInputImg(img)
+    },
+    [inputImg],
+  )
 
   const handleSubmit = useCallback(() => {
     const comment = {
-      nick: "익명",
-      city: inputValue.city.label,
-      town: inputValue.town.label,
-      category: inputValue.category,
-      text: inputText,
-      img: inputValue.img,
-      likedNum: 3,
-      likedPeople: ["a", "c", "d"],
+      user: "익명",
+      location1: inputValue.city.label,
+      location2: inputValue.town.label,
+      food: inputValue.category,
+      image: "/img/delivery_logo.png",
+      post: inputText,
+      like: ["elice", "queen", "rabbit"],
     }
     handleComment(comment, commentData)
     setInputText(null)
+    onClose()
   }, [inputValue, inputText])
+
+  const handleClose = useCallback(() => {
+    onClose()
+  }, [])
+
+  const preventClose = useCallback(e => {
+    e.stopPropagation()
+  }, [])
 
   useEffect(() => {
     console.log("check", inputValue, inputText)
   }, [inputValue, inputText])
 
   return (
-    <div>
-      <DropBox options={dummy} onChange={handleSelectChange} />
-      <input
-        name="img"
-        type="file"
-        accept="image/jpg,image/jpeg,image/png"
-        onChange={handleImgChange}
-      />
-      <TextField
-        name="text"
-        id="text"
-        multiline
-        rows={3}
-        placeholder="내용을 입력해주세요"
-        value={inputText}
-        onChange={handleTextChange}
-        required
-      />
-      <Button onClick={handleSubmit} variant="outlined">
-        글쓰기
-      </Button>
-    </div>
+    <>
+      <PopPostBox onClick={preventClose}>
+        <Button onClick={handleClose} variant="outlined">
+          x
+        </Button>
+        <DropBox options={dummy} onChange={handleSelectChange} />
+        <FileBox>
+          <input
+            name="img"
+            type="file"
+            accept="image/jpg,image/jpeg,image/png"
+            onChange={handleImgChange}
+          />
+        </FileBox>
+        <TextField
+          name="text"
+          id="text"
+          multiline
+          rows={3}
+          placeholder="내용을 입력해주세요"
+          value={inputText}
+          onChange={handleTextChange}
+          required
+        />
+        <Button onClick={handleSubmit} variant="outlined">
+          글쓰기
+        </Button>
+      </PopPostBox>
+    </>
   )
 }
 
 export default PopPost
+
+const PopPostBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  border: 1px solid gray;
+  width: 50vw;
+  height: 40vw;
+  padding: 1rem;
+  z-index: 10;
+  position: absolute;
+  background-color: white;
+  opacity: 1;
+`
+
+const FileBox = styled.div`
+  width: 100%;
+  min-height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`

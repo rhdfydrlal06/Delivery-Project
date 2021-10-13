@@ -23,20 +23,26 @@ const LikeBox = styled.div`
 `
 
 const Comments = ({ data }) => {
-  const currUser = "d"
   const commentsList = data.map(comment => {
-    const { nick, city, town, category, text, likedNum, likedPeople } = comment
-    const isLiked = () => likedPeople.includes(currUser)
+    const { user, location1, location2, food, image, post, like } = comment
+    const isLiked = () => {
+      return false
+    }
 
     return (
       <MyPaper elevation={0}>
         <FaceRoundedIcon />
-        {nick}
-        <MyChip variant="outlined" color="primary" size="small" label={`${city}/${town}`} />
-        <MyChip variant="outlined" color="primary" size="small" label={category} />
-        {text}
+        {user}
+        <MyChip
+          variant="outlined"
+          color="primary"
+          size="small"
+          label={`${location1}/${location2}`}
+        />
+        <MyChip variant="outlined" color="primary" size="small" label={food} />
+        {post}
         <LikeBox>{isLiked() ? <FavoriteRoundedIcon /> : <FavoriteBorderRoundedIcon />}</LikeBox>
-        {likedNum}
+        {like.length}
       </MyPaper>
     )
   })

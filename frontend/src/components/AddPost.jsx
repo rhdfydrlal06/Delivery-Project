@@ -1,11 +1,18 @@
-import PopPost from "./PopPost"
+import { useCallback } from "react"
+import { Button } from "@mui/material"
 
-const AddPost = () => {
-  const isPost = true
+const AddPost = ({ onClick }) => {
+  const handleClick = useCallback(() => {
+    onClick()
+  }, [])
 
   return (
     <>
-      <div>+</div>
+      <div>
+        <Button onClick={handleClick} variant="outlined">
+          +
+        </Button>
+      </div>
     </>
   )
 }
