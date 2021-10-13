@@ -6,18 +6,27 @@ import { commentsData } from "../data/dummy"
 import AddPost from "../components/AddPost"
 import PopPost from "../components/PopPost"
 import styled from "styled-components"
+import { wholeBoardRequest } from "../apis/boardApi"
 
 const Board = () => {
-  const [commentData, setCommentData] = useState(commentsData)
+  useEffect(() => {
+    wholeBoardRequest().then(data => {
+      console.log(data.posts)
+      const comments = data.posts.sort((a, b) => {
+        return a.id > b.id ? -1 : 1
+      })
+      console.log("comments", comments)
+      setCommentData(comments)
+    })
+    console.log(commentData)
+  }, [isPop, commentData])
+
+  const [commentData, setCommentData] = useState(null)
   const [isPop, setIsPop] = useState(false)
 
   const onChange = (comment, commentData) => {
-    setCommentData([comment, ...commentData])
+    // setCommentData([comment, ...commentData])
   }
-
-  useEffect(() => {
-    console.log("isPop?:", isPop)
-  }, [isPop])
 
   const handlePop = useCallback(() => {
     setIsPop(!isPop)
@@ -27,13 +36,13 @@ const Board = () => {
     <Layout isMap={false}>
       {isPop && (
         <PopBack onClick={handlePop}>
-          <PopPost handleComment={onChange} commentData={commentData} onClose={handlePop} />
+          <PopPost handleComment={onChange} commentData={commentData} popClose={handlePop} />
         </PopBack>
       )}
       <NotMapBox>
         <PostContainer>
           <AddPost onClick={handlePop} />
-          <Comments data={commentData} />
+          {commentData && <Comments data={commentData} />}
         </PostContainer>
       </NotMapBox>
     </Layout>
