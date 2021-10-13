@@ -67,8 +67,7 @@ def post_board():
             image=image_url,
         )
     except Exception:
-        file_name = "/" + image_url.split("//")[-1]
-        boto3_client.boto3_image_delete(file_name)
+        boto3_client.boto3_image_delete(image_url)
         raise
 
     return jsonify(result="success", postId=new_post_id)

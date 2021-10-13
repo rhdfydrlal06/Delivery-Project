@@ -28,5 +28,6 @@ def boto3_image_upload(file):
     return result
 
 
-def boto3_image_delete(file_name):
+def boto3_image_delete(image_url):
+    file_name = "/" + image_url.split("//")[-1]
     s3_client.delete_object(Bucket="delivery_app", Key=file_name)
