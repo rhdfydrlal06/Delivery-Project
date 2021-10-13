@@ -10,22 +10,22 @@ export const WholeContainer = styled.div`
 `
 
 export const LogoBox = styled.div`
-  grid-column: 1/3;
+  grid-column: 1/2;
   grid-row: 1/2;
   padding: 32px 24px 24px 32px;
-  cursor: pointer;
+  z-index: 2;
 `
 
 export const MenuBox = styled.div`
   grid-column: 1/2;
   grid-row: 2/3;
+  z-index: 2;
 `
 
 //layout에서 본문이 들어가는 메인 박스
 export const Main = styled.main`
   grid-column: ${({ isMap }) => (isMap ? "2/3" : "2/4")};
   grid-row: 2/3;
-  padding-right: 32px;
 `
 
 export const MapBox = styled.div`
@@ -49,6 +49,7 @@ export const NotMapBox = styled.div`
 export const PostContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(3, minmax(100px, auto));
+  overflow: auto;
 `
 export const PostBox = styled.div`
   border: 1px solid gray;
