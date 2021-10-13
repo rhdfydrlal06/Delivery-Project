@@ -14,7 +14,7 @@ def get_post(post_id):
     return _post
 
 
-def get_posts(location1, location2, category):
+def get_posts(location1, location2, food):
     """
     입력받은 location1, location2, category에 해당하는 게시글 반환
     """
@@ -24,8 +24,8 @@ def get_posts(location1, location2, category):
         if location2:
             result = result.filter_by(location2=location2)
 
-    if category:
-        result = result.filter_by(category=category)
+    if food:
+        result = result.filter_by(food=food)
 
     return result.all()
 
@@ -49,6 +49,7 @@ def add_post(location1, location2, food, post, image, user):
     except Exception:
         db.session.rollback()
         raise
+
 
 def edit_post(post_id, location1, location2, food, post, image):
     """
@@ -83,6 +84,21 @@ def delete_post(post_id):
         db.session.delete(_post)
         db.session.commit()
         return _post.id
+    except Exception:
+        db.session.rollback()
+        raise
+
+
+def update_image(post_id, image_url):
+    try:
+        post = Posts.query.filter_by(id=post_id).one_or_none()
+        if post is None:
+            return None
+
+        post.image = image_url
+        db.session.add(post)
+        db.session.commit()
+        return post
     except Exception:
         db.session.rollback()
         raise
