@@ -10,7 +10,7 @@ const Img = styled.img`
   cursor: pointer;
 `
 
-const Header = () => {
+const Header = ({ isMap }) => {
   const [value, setValue] = useRecoilState(menuID)
 
   const handleClick = useCallback(() => {
@@ -22,7 +22,7 @@ const Header = () => {
   }, [value])
 
   return (
-    <LogoBox>
+    <LogoBox isMap={isMap}>
       <Img src="/img/delivery_logo.png" alt="logo" height="100%" onClick={handleClick} />
     </LogoBox>
   )
