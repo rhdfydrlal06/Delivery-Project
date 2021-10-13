@@ -3,8 +3,8 @@ geodata api
 지역에 관련된 정보를 제공
 """
 from flask import Blueprint, jsonify
-
 from delivery_app.services.address import get_addresses, get_address
+import pandas as pd
 
 bp = Blueprint("geodata", __name__)
 
@@ -18,7 +18,7 @@ def geo_list():
     output: list({id, location1, location2, latitude, longitude}, ...)
         id : key
         location1 : 시도 이름
-        locaton2 : 시군구 이름
+        location2 : 시군구 이름
         latitude: 위도
         logitude: 경도
     """
@@ -50,9 +50,21 @@ def get_order_graph(geo_id):
         latitude,
         longitude,
         graph,
-        description
+        description,
+        raw_data (각 지역별 데이터를 json으로 반환)
     }
     """
+    geoid_region_dict = {1 : "전국", 2 : "서울", 3 : "부산", 4 : "대구",
+                        5 : "인천", 6 : "광주", 7 : "대전", 8 : "울산",
+                        9 : "세종", 10 : "경기", 11 : "강원", 12 : " 충북",
+                        13 : "충남", 14 : "전북", 15 : "전남", 16 : "경북",
+                        17 : "경남", 18 : "제주"}
+
+    # geo id에 따른 지역을 해당 csv파일에서 쿼리후 json으로 넘겨줌
+    region_corona_df = pd.read_csv("static/data/korea_store_df.csv")
+    pre_region_corona_df = region_corona_df[(region_corona_df['지역'] == geoid_region_dict[geo_id])]
+    region_corona_json = pre_region_corona_df.to_json(force_ascii=False)
+    
     address = get_address(geo_id)
     result = {
         "id": address.id,
@@ -60,8 +72,8 @@ def get_order_graph(geo_id):
         "location2": address.location2,
         "latitude": address.latitude,
         "longitude": address.longitude,
-        "graph": address.graph1,
         "description": address.description1,
+        "raw_data" : region_corona_json
     }
 
     return jsonify(data=result)

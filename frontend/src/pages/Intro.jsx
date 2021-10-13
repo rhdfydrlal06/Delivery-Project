@@ -1,6 +1,7 @@
 import { Bold } from "./Home"
 import Layout from "../components/layout/Layout"
-import ShowIntroData from "../data/show_intro_data"
+import { Wrapper } from "../data/show_data_nivo/show_intro_data"
+import ShowIntroData from "../data/show_data_nivo/show_intro_data"
 import { DescBox, MainTitle, MenuName } from "../components/skeleton/AnalysisContents"
 import { NotMapBox } from "../styles/container"
 
@@ -20,7 +21,14 @@ const Intro = () => {
             따라서 2019년과 2020년의 외식, 배달 건수를 비교해보았습니다.
           </p>
         </DescBox>
-        <ShowIntroData />
+      </NotMapBox>
+
+      {/* 그래프 추가 위해서 NotMapBox를 2개로 나눔 - 한빈 */}
+      <Wrapper>
+        <ShowIntroData/>
+      </Wrapper>
+      
+      <NotMapBox>
         <DescBox>
           <p>
             2019년 일평균 음식점 방문 건수는 53.3건이었고, 2020년 일평균 음식점 방문 건수는

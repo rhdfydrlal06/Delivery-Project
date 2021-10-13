@@ -4,6 +4,14 @@
 
 import { fontSize } from '@mui/system';
 import { ResponsiveBar } from '@nivo/bar'
+import styled from "styled-components"; 
+
+
+export const Wrapper = styled.div`
+  height: 600px;
+  width: 800px;
+  position: relative;
+`
 
 const ShowIntroData = () => {
     const data = [

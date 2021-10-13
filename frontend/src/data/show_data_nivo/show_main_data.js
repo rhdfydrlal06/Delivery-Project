@@ -1,8 +1,8 @@
 // 데이터 분석 페이지에서 데이터 시각화를 위한 코드 - 한빈
 
 import React from 'react';
-import '../App.css';
-import { data, data2 } from './data.js';
+import '../../App.css';
+import { data, data2 } from '../data.js';
 import { ResponsiveLine } from "@nivo/line";
 import styled from "styled-components";  
 
