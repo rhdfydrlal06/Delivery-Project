@@ -4,14 +4,14 @@ board api
 """
 from flask import Blueprint, request, jsonify
 
+from delivery_app.utils import boto3_client
 from delivery_app.services.board import (
     get_post,
     get_posts,
     add_post,
     delete_post,
-    update_image,
+    edit_post,
 )
-from delivery_app.utils import boto3_client
 
 bp = Blueprint("board", __name__)
 
@@ -33,9 +33,9 @@ def get_boards():
     result = []
     location1 = request.args.get("location1")
     location2 = request.args.get("location2")
-    category = request.args.get("category")
+    food = request.args.get("food")
 
-    posts = get_posts(location1, location2, category)
+    posts = get_posts(location1, location2, food)
     for post in posts:
         result.append(post.to_dict())
 
@@ -69,13 +69,28 @@ def post_board():
     except Exception:
         boto3_client.boto3_image_delete(image_url)
         raise
-
     return jsonify(result="success", postId=new_post_id)
 
 
 @bp.route("/<int:id>", methods=["DELETE"])
 def delete_board(id):
     result = delete_post(id)
+    if result is None:
+        return jsonify(result="fail", message="존재하지 않는 게시글입니다."), 404
+
+    return jsonify(result="success")
+
+
+@bp.route("/<int:id>", methods=["PATCH"])
+def edit_board(id):
+    location1 = request.json.get("location1")
+    location2 = request.json.get("location2")
+    food = request.json.get("food")
+    post = request.json.get("post")
+    image = None
+
+    result = edit_post(id, location1, location2, food, post, image)
+    print(result)
     if result is None:
         return jsonify(result="fail", message="존재하지 않는 게시글입니다."), 404
 

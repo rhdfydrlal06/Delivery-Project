@@ -7,7 +7,11 @@ def get_post(post_id):
     input: post_id(int)
     output: Posts 객체 하나
     """
-    return Posts.query.filter_by(id=post_id).one_or_none()
+    _post = Posts.query.filter_by(id=post_id).one_or_none()
+    _post.hit += 1
+    db.session.add(_post)
+    db.session.commit()
+    return _post
 
 
 def get_posts(location1, location2, food):
@@ -47,15 +51,39 @@ def add_post(location1, location2, food, post, image, user):
         raise
 
 
-def delete_post(post_id):
+def edit_post(post_id, location1, location2, food, post, image):
+    """
+    user를 제외한 수정된 데이터를 가져와 DB 값 수정(수정 범위 논의)
+    """
     try:
-        post = Posts.query.filter_by(id=post_id).one_or_none()
-        if post is None:
+        _post = Posts.query.filter_by(id=post_id).one_or_none()
+        if _post is None:
             return None
 
-        db.session.delete(post)
+        _post = Posts.query.filter_by(id=post_id).one_or_none()
+        _post.location1 = location1
+        _post.location2 = location2
+        _post.food = food
+        _post.post = post
+        _post.image = image
+        db.session.add(_post)
         db.session.commit()
-        return post.id
+        return _post.id
+
+    except Exception:
+        db.session.rollback()
+        raise
+
+
+def delete_post(post_id):
+    try:
+        _post = Posts.query.filter_by(id=post_id).one_or_none()
+        if _post is None:
+            return None
+
+        db.session.delete(_post)
+        db.session.commit()
+        return _post.id
     except Exception:
         db.session.rollback()
         raise

@@ -43,15 +43,15 @@ const AnalysisContents = ({ data, useButton = true }) => {
       <MenuName>배달 데이터 분석</MenuName>
       <MainTitle>{data.location1} 월별 확진자 수와 배달 주문건수 비교</MainTitle>
       <GraphBox>
-        <p
+        <div
           style={{
             width: "80%",
             margin: "0 auto",
           }}
         >
-        {/* nivo 라이브러리 시각화 그래프 컴포넌트 - 한빈 */}
-        <ShowMainData/>
-        </p>
+          {/* nivo 라이브러리 시각화 그래프 컴포넌트 - 한빈 */}
+          <ShowMainData />
+        </div>
       </GraphBox>
       {useButton && <ButtonBox></ButtonBox>}
       <DescBox>
