@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -10,7 +11,7 @@ import { colors } from "../../styles/theme"
 import LoginModal from "../Login"
 
 const Img = styled.img`
-  max-width: 8vw;
+  max-width: 10vw;
   object-fit: contain;
   cursor: pointer;
 `
@@ -46,19 +47,12 @@ const Header = ({ isMap }) => {
     console.log("logo change", value)
   }, [value])
 
-
-  const styles = {
-    customizeToolbar: {
-      minWidth: 36
-    }
-  }
-
-  return(
-    <AppBar position="fixed" style={{ background: '#FFFFFF', boxShadow: "none"}} sx={{ zIndex: (theme) => theme.zIndex.drawer + 1}}>
-      <LogoBox>
-        <Img src="/img/delivery_logo.png" alt="logo" height="75%" onClick={handleClick} />
-      </LogoBox>
-    </AppBar>
+  return (
+    <LogoBox isMap={isMap}>
+      <Img src="/img/delivery_logo.png" alt="logo" height="75%" onClick={handleClick} />
+      <Button onClick={handleLoginClick}>Log-in</Button>
+      <LoginModal open={loginOpen} setOpen={setLoginOpen} />
+    </LogoBox>
   )
 }
 
