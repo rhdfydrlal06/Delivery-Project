@@ -25,6 +25,7 @@ export const LogoBox = styled.div`
 export const MenuBox = styled.div`
   grid-column: 1/2;
   grid-row: 2/3;
+  margin-top: 10%;
   z-index: 2;
   position: fixed;
   top: 15vh;

@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect, useCallback } from "react"
 import dummy from "../data/dummy"
 import DropBox from "./DropBox"
+import styled from "styled-components"
 import { TextField, Button } from "@mui/material"
 import { updatePostRequest, wholeBoardRequest } from "../apis/boardApi"
 import postValueCheck from "../utils/postValueCheck"
@@ -11,6 +12,14 @@ import {
   MyTextField,
   MyButton,
 } from "../styles/addPostContainer"
+
+
+// 컬러 속성을 지정하여 파일 선택창에서 원하지 않는 텍스트는 안보이도록 함 
+const Input = styled.div`
+  color: transparent;
+  max-width: 8vw;
+  position: sticky;
+`
 
 // location1: 시도 이름
 // location2: 시군구 이름
@@ -97,12 +106,19 @@ const EditPost = ({ postData, popClose, updatePost }) => {
         defaultValue={{ location1: location1, location2: location2, food: food }}
       />
       <FileBox>
+        <div>
+        <Input>
         <input
           name="img"
           type="file"
+          id="aa"
+          title="Choose a video please" 
           accept="image/jpg,image/jpeg,image/png"
           onChange={handleImgChange}
         />
+        </Input>
+        <img src={postData.image} alt="new"/>
+        </div>
       </FileBox>
       <MyTextField
         name="text"

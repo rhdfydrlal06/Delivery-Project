@@ -48,7 +48,6 @@ const ShowIntroData = () => {
     return(
       <ResponsiveBar
       data={data}
-      theme={theme}
       keys={["일평균_방문고객수", "일평균_배달건수"]}  
       indexBy="day"
       margin={{ top: 100, right: 150, bottom: 100, left: 100 }}
