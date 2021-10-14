@@ -17,3 +17,13 @@ export const wholeBoardRequest = async () => {
   const response = await axios.get(`${apiPath}/list`)
   return response.data
 }
+
+export const deletePostRequest = async id => {
+  const response = await axios.delete(`${apiPath}/${id}`)
+  return response.data
+}
+
+export const updatePostRequest = async id => {
+  const response = await axios.patch(`${apiPath}/${id}`)
+  return response.data
+}

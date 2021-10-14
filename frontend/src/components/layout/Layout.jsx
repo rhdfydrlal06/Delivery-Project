@@ -4,7 +4,6 @@ import Map from "../map/Map"
 import { WholeContainer, MenuBox, MapBox, Main } from "../../styles/container"
 
 const Layout = props => {
-  console.log("isMap?", props.isMap)
   return (
     <WholeContainer>
       <Header isMap={props.isMap} />
