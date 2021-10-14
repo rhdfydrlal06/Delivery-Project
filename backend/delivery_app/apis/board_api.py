@@ -42,8 +42,6 @@ def get_boards():
     for post in posts:
         result.append(post.to_dict())
 
-    boto3_client.boto3_test()
-
     return jsonify(result="success", posts=result)
 
 

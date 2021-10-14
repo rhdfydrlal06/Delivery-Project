@@ -7,7 +7,7 @@ const Layout = props => {
   console.log("isMap?", props.isMap)
   return (
     <WholeContainer>
-      <Header />
+      <Header isMap={props.isMap} />
       <MenuBox>
         <Menu />
       </MenuBox>

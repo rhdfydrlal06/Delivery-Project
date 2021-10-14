@@ -35,9 +35,6 @@ export const DescBox = styled.div`
 
 const AnalysisContents = ({ data, useButton = true }) => {
   const imageRootUrl = process.env.REACT_APP_BACKEND_URL
-
-  console.log(data.raw_data)
-
   return (
     <ContentsBox>
       <MenuName>배달 데이터 분석</MenuName>
@@ -50,7 +47,7 @@ const AnalysisContents = ({ data, useButton = true }) => {
           }}
         >
           {/* nivo 라이브러리 시각화 그래프 컴포넌트 - 한빈 */}
-          <ShowMainData />
+          <ShowMainData coronaData={data.corona_data} ordCountData={data.ord_count_data}/>
         </div>
       </GraphBox>
       {useButton && <ButtonBox></ButtonBox>}

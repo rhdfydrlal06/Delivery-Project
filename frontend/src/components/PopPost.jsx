@@ -3,6 +3,7 @@ import dummy from "../data/dummy"
 import DropBox from "./DropBox"
 import { TextField, Button } from "@mui/material"
 import styled from "styled-components"
+import { addBoardRequest } from "../apis/boardApi"
 
 // location1: 시도 이름
 // location2: 시군구 이름
@@ -11,20 +12,18 @@ import styled from "styled-components"
 // image: 이미지 url
 // user: 작성자
 
-const PopPost = ({ commentData, handleComment, onClose }) => {
+const PopPost = ({ commentData, handleComment, popClose }) => {
   const [inputValue, setInputValue] = useState({
     city: null,
     town: null,
     category: null,
   })
   const [inputText, setInputText] = useState(null)
-  const [inputImg, setInputImg] = useState(null)
+  const [inputImg, setInputImg] = useState("")
 
   const handleSelectChange = useCallback(
     value => {
       const { city, town, category } = value
-      console.log("fromDrop", value, city)
-      console.log("now value", { ...inputValue })
       setInputValue({ ...inputValue, city, town, category })
     },
     [commentData],
@@ -66,31 +65,32 @@ const PopPost = ({ commentData, handleComment, onClose }) => {
   )
 
   const handleSubmit = useCallback(() => {
-    const comment = {
-      user: "익명",
-      location1: inputValue.city.label,
-      location2: inputValue.town.label,
-      food: inputValue.category,
-      image: "/img/delivery_logo.png",
-      post: inputText,
-      like: ["elice", "queen", "rabbit"],
-    }
-    handleComment(comment, commentData)
-    setInputText(null)
-    onClose()
+    const formData = new FormData()
+    formData.append("image", inputImg)
+    formData.append("location1", inputValue.city.label)
+    formData.append("location2", inputValue.town.label)
+    formData.append("food", inputValue.category)
+    formData.append("post", inputText)
+
+    addBoardRequest(formData)
+      .then(data => {
+        console.log(data)
+      })
+      .catch(error => {
+        console.error(error)
+      })
+
+    setInputText("")
+    popClose()
   }, [inputValue, inputText])
 
   const handleClose = useCallback(() => {
-    onClose()
+    popClose()
   }, [])
 
   const preventClose = useCallback(e => {
     e.stopPropagation()
   }, [])
-
-  useEffect(() => {
-    console.log("check", inputValue, inputText)
-  }, [inputValue, inputText])
 
   return (
     <>
