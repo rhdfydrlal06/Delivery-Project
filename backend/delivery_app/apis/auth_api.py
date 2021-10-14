@@ -79,10 +79,10 @@ def auth_signin():
         200,
     )
 
-@bp.route("/signout", methods=["GET"])
-@jwt_required
+
+@bp.route("/signout", methods=["POST"])
 def auth_signout():
-    user_id = get_jwt_identity()
+    user_id = request.json.get("id")
     user = get_user_by_id(user_id=user_id)
 
     if not user:

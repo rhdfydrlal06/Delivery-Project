@@ -8,12 +8,10 @@ import Box from '@mui/material/Box';
 const Layout = props => {
   return (
     <WholeContainer>
-      <Box sx={{ display: 'flex' }}>
-       <Header isMap={props.isMap} />
-        <MenuBox>
-          <Menu />
-        </MenuBox>
-      </Box>
+      <Header isMap={props.isMap} />
+      <MenuBox>
+        <Menu />
+      </MenuBox>
       <Main isMap={props.isMap}>{props.children}</Main>
       {props.isMap && (
         <MapBox>
