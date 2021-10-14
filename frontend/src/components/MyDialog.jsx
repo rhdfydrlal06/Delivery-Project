@@ -4,10 +4,18 @@ import DialogContentText from "@mui/material/DialogContentText"
 import StyledDialog from "../styles/dialog"
 import Button from "@mui/material/Button"
 
-const MyDialog = ({ onChange, open, ref, children }) => {
-  const handleClose = () => {
-    onChange()
+const MyDialog = ({ onClose, open, ref, children }) => {
+  const handleCancel = () => {
+    // clickCancel()
   }
+  const handleSubmit = () => {
+    // clickSubmit()
+  }
+
+  const handleClose = () => {
+    onClose()
+  }
+
   return (
     <StyledDialog
       open={open}
@@ -22,8 +30,8 @@ const MyDialog = ({ onChange, open, ref, children }) => {
         </DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleClose}>취소</Button>
-        <Button onClick={handleClose}>완료</Button>
+        <Button onClick={handleCancel}>취소</Button>
+        <Button onClick={handleSubmit}>완료</Button>
       </DialogActions>
     </StyledDialog>
   )

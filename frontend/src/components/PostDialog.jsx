@@ -30,7 +30,7 @@ const PostDialog = ({ clickCancel, clickSubmit, children }) => {
       <AddButton variant="outlined" onClick={handleClickOpen}>
         +
       </AddButton>
-      <MyDialog open={open} onChange={handleClose} ref={descriptionElementRef}>
+      <MyDialog open={open} onClose={handleClose} ref={descriptionElementRef}>
         {children}
       </MyDialog>
     </div>
