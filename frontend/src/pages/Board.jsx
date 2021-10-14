@@ -2,12 +2,15 @@ import Layout from "../components/layout/Layout"
 import { NotMapBox, PostContainer } from "../styles/container"
 import { useCallback, useEffect, useState } from "react"
 import Posts from "../components/Posts"
-import AddPost from "../components/AddPost"
+import AddPost from "../components/AddPost2"
 import styled from "styled-components"
 import { styled as styledMUI } from "@mui/system"
 import { Button } from "@mui/material"
-import { wholeBoardRequest } from "../apis/boardApi"
+import { updatePostRequest, wholeBoardRequest } from "../apis/boardApi"
 import { isValue } from "../utils/postValueCheck"
+import ImageCard from "../components/ImageCard"
+import { ImageList } from "@mui/material"
+import PostDialog from "../components/PostDialog"
 
 const Board = () => {
   const [postList, setPostList] = useState(null)
@@ -47,23 +50,25 @@ const Board = () => {
 
   return (
     <Layout isMap={false}>
-      {isPop && (
+      {/* {isPop && (
         <PopBack onClick={handlePop}>
           <AddPost postList={postList} popClose={handlePop} updatePost={updatePost} />
         </PopBack>
-      )}
+      )} */}
       {/* {isDetail && (
         <PopBack onClick={handleDetail}>
-          <DetailPost handleComment={onChange} postList={postList} popClose={handleDetail} />
+          <PostDialog handleComment={onChange} postList={postList} popClose={handleDetail} />
         </PopBack>
       )} */}
       <NotMapBox>
-        <PostContainer>
-          <AddButton onClick={handlePop} variant="outlined">
-            +
-          </AddButton>
-          {postList && <Posts data={postList} handlePostClick={handlePostClick} />}
-        </PostContainer>
+        <ImageList sx={{ width: "100%" }} cols={3}>
+          <PostDialog>
+            <AddPost postList={postList} popClose={handlePop} updatePost={updatePost} />
+          </PostDialog>
+          {postList && (
+            <ImageCard itemData={postList} onClick={handlePostClick} updatePost={updatePost} />
+          )}
+        </ImageList>
       </NotMapBox>
     </Layout>
   )
@@ -85,7 +90,7 @@ const PopBack = styled.div`
   overflow: hidden;
 `
 
-const AddButton = styledMUI(Button)`
+export const AddButton = styledMUI(Button)`
   width: 100%;
   height: 100%;
 `

@@ -20,7 +20,7 @@ const Posts = ({ data, handlePostClick }) => {
   }
 
   const postsList = data.map(item => {
-    const { id, user, location1, location2, food, image, post, like } = item
+    const { id, user, location1, location2, food, image, post } = item
     const isLiked = () => {
       return false
     }

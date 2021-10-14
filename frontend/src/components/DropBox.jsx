@@ -27,27 +27,30 @@ const DropBox = ({ options, onChange }) => {
       <Autocomplete
         disablePortal
         id="location1"
+        size="small"
         options={options.location1}
         sx={style}
-        renderInput={params => <TextField {...params} label="시/도" />}
+        renderInput={params => <TextField {...params} variant="standard" label="시/도" />}
         value={location1}
         onChange={handleChange}
       />
       <Autocomplete
         disablePortal
         id="location2"
+        size="small"
         options={options.location2}
         sx={style}
-        renderInput={params => <TextField {...params} label="시/군/구" />}
+        renderInput={params => <TextField {...params} variant="standard" label="시/군/구" />}
         value={location2}
         onChange={handleChange}
       />
       <Autocomplete
         disablePortal
         id="food"
+        size="small"
         options={options.food}
         sx={style}
-        renderInput={params => <TextField {...params} label="카테고리" />}
+        renderInput={params => <TextField {...params} variant="standard" label="카테고리" />}
         value={food}
         onChange={handleChange}
       />
