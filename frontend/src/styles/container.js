@@ -17,6 +17,9 @@ export const LogoBox = styled.div`
   background-color: white;
   position: sticky;
   top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
 `
 
 export const MenuBox = styled.div`

@@ -16,14 +16,14 @@ def get_post(post_id):
 
 def get_posts(location1, location2, food):
     """
-    입력받은 location1, location2, category에 해당하는 게시글 반환
+    입력받은 location1, location2, food에 해당하는 게시글 반환
     """
     result = Posts.query
+    print(location1, location2, food)
     if location1:
         result = result.filter_by(location1=location1)
         if location2:
             result = result.filter_by(location2=location2)
-
     if food:
         result = result.filter_by(food=food)
 

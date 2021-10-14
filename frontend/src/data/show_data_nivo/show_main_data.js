@@ -2,7 +2,6 @@
 
 import React from 'react';
 import '../../App.css';
-import { data, data2 } from '../data.js';
 import { ResponsiveLine } from "@nivo/line";
 import styled from "styled-components";  
 
@@ -13,10 +12,30 @@ export const Wrapper = styled.div`
 `
 
 
-const line1Color = "blue";
+const line1Color = "black";
 
 
-export default function ShowMainData() {
+export default function ShowMainData({ coronaData, ordCountData }) {
+  
+  const objCoronaData = JSON.parse(coronaData)
+  const objCountData = JSON.parse(ordCountData)
+
+  const data = [
+    {
+        "id": "확진자수",
+        "color":"hsl(43, 70%, 50%)", // 빨강
+        "data": objCoronaData
+      },
+  ];
+
+  const data2 = [
+      {
+          "id": "주문건수", 
+          "color":"hsl(43, 70%, 50%)", // 파랑
+          "data": objCountData 
+      },
+  ];
+
   return (
       <div className="ShowTestData">
         <Wrapper>
@@ -27,16 +46,19 @@ export default function ShowMainData() {
                 colors={[line1Color]}
                 layers={["grid", "axes", "lines", "markers", "legends"]}
                 axisLeft={{
-                  legend: "Points Scored",
+                  legend: "",
                   legendPosition: "middle",
                   legendOffset: -40
                 }}
+                axisBottom={{
+                  tickRotation: -40
+                }}
                 theme={getColoredAxis(line1Color)}
-                margin={{ top: 30, right: 30, bottom: 30, left: 30 }}
+                margin={{ top: 55, right: 55, bottom: 55, left: 55 }}
             />
           </div>
           <div className="secondGraph">
-            <SecondGraph />
+            <SecondGraph data={data} data2={data2}/>
           </div>
         </div>
         </Wrapper>
@@ -45,24 +67,27 @@ export default function ShowMainData() {
 }
 
 // I want this to be on top of the other graph
-const SecondGraph = () => {
+const SecondGraph = ({data, data2}) => {
   const data1And2 = data.concat(data2);
 
   return (
       <ResponsiveLine
         data={data1And2}
-        colors={["rgba(255, 255, 255, 0)", "red"]} /* Make the first line transparent with 0 opacity */
-        margin={{ top: 30, right: 30, bottom: 30, left: 30 }}
+        colors={["rgba(255, 255, 255, 0)", "orange"]} /* Make the first line transparent with 0 opacity */
+        margin={{ top: 55, right: 55, bottom: 55, left: 55 }}
         axisRight={{
-          legend: "Wins / Loss",
+          legend: "",
           legendPosition: "middle",
           legendOffset: 40
         }}
         axisLeft={null}
+        axisBottom={{
+          tickRotation: -40
+        }}
         axisTop={null}
         enableGridY={false}
         axisBottom={null}
-        theme={getColoredAxis("red")}
+        theme={getColoredAxis("orange")}
 
         /* Add this for tooltip */
         useMesh={true}
@@ -82,7 +107,7 @@ const SecondGraph = () => {
                         key={point.id}
                         style={{
                           color: point.serieColor === "rgba(255, 255, 255, 0)" ? line1Color : point.serieColor,
-                          padding: '3px 0',
+                          padding: '3gx 0',
                         }}
                     >
                       <strong>{point.serieId}</strong> [{point.data.yFormatted}]
