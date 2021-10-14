@@ -5,6 +5,7 @@ board api
 from flask import Blueprint, request, jsonify
 
 from delivery_app.utils import boto3_client
+from delivery_app.services.logdata import add_logdata
 from delivery_app.services.board import (
     get_post,
     get_posts,
@@ -18,6 +19,8 @@ bp = Blueprint("board", __name__)
 
 @bp.route("/<int:id>", methods=["GET"])
 def get_board(id):
+    l = add_logdata(id)
+    # print(l.to_dict())
     result = get_post(id)
     if result is not None:
         return jsonify(result="success", post=result.to_dict())
@@ -34,7 +37,7 @@ def get_boards():
     location1 = request.args.get("location1")
     location2 = request.args.get("location2")
     food = request.args.get("food")
-
+    print(location1, location2, food)
     posts = get_posts(location1, location2, food)
     for post in posts:
         result.append(post.to_dict())
@@ -55,7 +58,7 @@ def post_board():
     post = request.form.get("post")
     user = None
     image = request.files["image"]
-
+    
     image_url = boto3_client.boto3_image_upload(image)
     try:
         new_post_id = add_post(
