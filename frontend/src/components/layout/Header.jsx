@@ -1,14 +1,11 @@
-import { useState } from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import { LogoBox } from "../../styles/container";
-import menuID from "../../recoil/atom";
-import { useRecoilState } from "recoil";
-import { useCallback, useEffect } from "react";
-import styled from "styled-components";
+import { LogoBox } from "../../styles/container"
+import menuID from "../../recoil/atom"
+import { useRecoilState } from "recoil"
+import { useCallback, useEffect } from "react"
+import styled from "styled-components"
 import { colors } from "../../styles/theme"
 import LoginModal from "../Login"
+import { useState } from "react"
 
 import { getCurrentUserInfo, signoutRequest } from '../../apis/authApi';
 
@@ -40,7 +37,6 @@ const MyButton = styled.div`
 `
 
 const Header = ({ isMap }) => {
-
   const [value, setValue] = useRecoilState(menuID)
   const [dialogOpen, setDialogOpen] = useState(false)
   const [loginOpen, setLoginOpen] = useState(false)

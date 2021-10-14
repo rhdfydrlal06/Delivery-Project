@@ -6,8 +6,8 @@ import { useEffect, memo } from "react"
 import { useHistory } from "react-router"
 import { useRecoilState } from "recoil"
 import Drawer from '@mui/material/Drawer';
-import CssBaseline from '@mui/material/CssBaseline';
-import Toolbar from '@mui/material/Toolbar';
+import CssBaseline from '@mui/material/CssBaseline'
+import Toolbar from '@mui/material/Toolbar'
 import Tabs from "@mui/material/Tabs"
 import Box from "@mui/material/Box"
 

@@ -23,7 +23,7 @@ export const deletePostRequest = async id => {
   return response.data
 }
 
-export const updatePostRequest = async id => {
-  const response = await axios.patch(`${apiPath}${id}`)
+export const updatePostRequest = async ({ newData, id }) => {
+  const response = await axios.patch(`${apiPath}${id}`, newData)
   return response.data
 }

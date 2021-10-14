@@ -7,14 +7,16 @@ import { PaperWrapper, Thumnail } from "../styles/postContainer"
 import { styled } from "@mui/system"
 import { deletePostRequest, updatePostRequest } from "../apis/boardApi"
 import updatePostList from "../utils/updatePostList"
+import EditDialog from "./EditDialog"
 
-const ImageCard = ({ itemData, onClick, updatePost }) => {
+const ImageCard = ({ postList, onClick, updatePost }) => {
   const handleEditClick = ({ e, id }) => {
     e.stopPropagation()
     console.log("edit:", id)
-    updatePostRequest(id).then(data => {
-      console.log(data)
-    })
+
+    // updatePostRequest(id).then(data => {
+    //   console.log(data)
+    // })
   }
 
   const handleDeleteClick = ({ e, id }) => {
@@ -29,7 +31,7 @@ const ImageCard = ({ itemData, onClick, updatePost }) => {
       })
   }
 
-  const itemList = itemData.map(item => {
+  const itemList = postList.map(item => {
     const { id, user, location1, location2, food, image, post } = item
     const getId = e => {
       return { e, id }
@@ -45,13 +47,7 @@ const ImageCard = ({ itemData, onClick, updatePost }) => {
           subtitle={`${location1}/${location2} ${food}`}
           actionIcon={
             <>
-              <IconButton
-                sx={{ color: "rgba(255, 255, 255, 0.54)" }}
-                aria-label={`edit ${id}`}
-                onClick={e => handleEditClick(getId(e))}
-              >
-                <EditIcon />
-              </IconButton>
+              <EditDialog postData={item} updatePost={updatePost} />
               <IconButton
                 sx={{ color: "rgba(255, 255, 255, 0.54)" }}
                 aria-label={`delete ${id}`}
