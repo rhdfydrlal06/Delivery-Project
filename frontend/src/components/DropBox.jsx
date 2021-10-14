@@ -1,10 +1,10 @@
 import TextField from "@mui/material/TextField"
 import Autocomplete from "@mui/material/Autocomplete"
-import { memo, useCallback, useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import styled from "styled-components"
+import dummy from "../data/dummy"
 
-const DropBox = ({ options, onChange, defaultValue }) => {
-  console.log(defaultValue)
+const DropBox = ({ onChange, defaultValue }) => {
   const setDefaultValue = defaultValue => {
     if (defaultValue) {
       const { location1, location2, food } = defaultValue
@@ -13,6 +13,7 @@ const DropBox = ({ options, onChange, defaultValue }) => {
       return { location1: null, location2: null, food: null }
     }
   }
+
   const [value, setValue] = useState(setDefaultValue(defaultValue))
   const { location1, location2, food } = value
   const style = {
@@ -37,34 +38,32 @@ const DropBox = ({ options, onChange, defaultValue }) => {
         disablePortal
         id="location1"
         size="small"
-        options={options.location1}
+        options={dummy.location1}
         sx={style}
         renderInput={params => <TextField {...params} variant="standard" label="시/도" />}
         value={location1}
         onChange={handleChange}
-        // defaultValue={defaultValue ? defaultValue.location1 : null}
       />
       <Autocomplete
         disablePortal
         id="location2"
         size="small"
-        options={options.location2}
+        options={dummy.location2}
         sx={style}
         renderInput={params => <TextField {...params} variant="standard" label="시/군/구" />}
         value={location2}
         onChange={handleChange}
-        // defaultValue={defaultValue ? defaultValue.location2 : null}
+        disabled={!location1 ? true : false}
       />
       <Autocomplete
         disablePortal
         id="food"
         size="small"
-        options={options.food}
+        options={dummy.food}
         sx={style}
         renderInput={params => <TextField {...params} variant="standard" label="카테고리" />}
         value={food}
         onChange={handleChange}
-        // defaultValue={defaultValue ? defaultValue.food : null}
       />
     </DropBoxWrapper>
   )

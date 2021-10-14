@@ -1,5 +1,4 @@
 import { useState, useRef, useEffect, useCallback } from "react"
-import dummy from "../data/dummy"
 import DropBox from "./DropBox"
 import { TextField, Button } from "@mui/material"
 import { updatePostRequest, wholeBoardRequest } from "../apis/boardApi"
@@ -58,15 +57,14 @@ const EditPost = ({ postData, popClose, updatePost }) => {
 
     if (!check) return
 
-    const newData = {
-      image: inputImg,
-      location1: location1,
-      location2: location2,
-      food: food,
-      post: post,
-    }
+    const formData = new FormData()
+    formData.append("image", image)
+    formData.append("location1", location1)
+    formData.append("location2", location2)
+    formData.append("food", food)
+    formData.append("post", post)
 
-    updatePostRequest({ newData, id })
+    updatePostRequest({ formData, id })
       .then(data => {
         console.log(data)
       })
@@ -92,7 +90,6 @@ const EditPost = ({ postData, popClose, updatePost }) => {
   return (
     <AddPostContainer>
       <DropBox
-        options={dummy}
         onChange={handleSelectChange}
         defaultValue={{ location1: location1, location2: location2, food: food }}
       />
