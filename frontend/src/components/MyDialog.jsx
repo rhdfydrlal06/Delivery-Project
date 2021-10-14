@@ -3,15 +3,9 @@ import DialogContent from "@mui/material/DialogContent"
 import DialogContentText from "@mui/material/DialogContentText"
 import StyledDialog from "../styles/dialog"
 import Button from "@mui/material/Button"
+import { useState } from "react"
 
 const MyDialog = ({ onClose, open, ref, children }) => {
-  const handleCancel = () => {
-    // clickCancel()
-  }
-  const handleSubmit = () => {
-    // clickSubmit()
-  }
-
   const handleClose = () => {
     onClose()
   }
@@ -29,10 +23,6 @@ const MyDialog = ({ onClose, open, ref, children }) => {
           {children}
         </DialogContentText>
       </DialogContent>
-      <DialogActions>
-        <Button onClick={handleCancel}>취소</Button>
-        <Button onClick={handleSubmit}>완료</Button>
-      </DialogActions>
     </StyledDialog>
   )
 }

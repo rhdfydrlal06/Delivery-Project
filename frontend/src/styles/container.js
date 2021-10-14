@@ -22,7 +22,6 @@ export const LogoBox = styled.div`
   align-items: flex-end;
 `
 
-
 export const MenuBox = styled.div`
   grid-column: 1/2;
   grid-row: 2/3;
@@ -54,11 +53,4 @@ export const ContentsBox = styled.div`
 /*맵을 사용하지 않을 경우 사용하는 본문 박스*/
 export const NotMapBox = styled.div`
   width: 80%;
-`
-
-export const PostContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, minmax(100px, auto));
-  column-gap: 1rem;
-  row-gap: 1rem;
 `
