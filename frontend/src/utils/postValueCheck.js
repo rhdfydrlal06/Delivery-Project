@@ -29,8 +29,6 @@ const postValueCheck = (inputValue, inputText, inputImg) => {
   if (!isText(inputText)) result.push("내용을 5자 이상 작성해주세요")
   if (!isFile(inputImg)) {
     result.push("이미지를 첨부해주세요")
-  } else if (!checkFileType(inputImg)) {
-    result.push("파일 형식은 png, jpg만 가능합니다")
   }
   if (result.length === 0) {
     return true
@@ -39,5 +37,23 @@ const postValueCheck = (inputValue, inputText, inputImg) => {
     return false
   }
 }
+
+//origin
+// const postValueCheck = (inputValue, inputText, inputImg) => {
+//   const result = []
+//   if (!isValue(inputValue)) result.push("지역과 카테고리를 모두 선택해주세요")
+//   if (!isText(inputText)) result.push("내용을 5자 이상 작성해주세요")
+//   if (!isFile(inputImg)) {
+//     result.push("이미지를 첨부해주세요")
+//   } else if (!checkFileType(inputImg)) {
+//     result.push("파일 형식은 png, jpg만 가능합니다")
+//   }
+//   if (result.length === 0) {
+//     return true
+//   } else {
+//     alert(result)
+//     return false
+//   }
+// }
 
 export default postValueCheck

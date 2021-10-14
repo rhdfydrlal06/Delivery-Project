@@ -21,7 +21,7 @@ import {
 
 const EditPost = ({ postData, popClose, updatePost }) => {
   console.log(postData)
-  const { location1, location2, food, post, image } = postData
+  const { location1, location2, food, post, image, id } = postData
   const [inputValue, setInputValue] = useState({
     location1: location1,
     location2: location2,
@@ -58,14 +58,15 @@ const EditPost = ({ postData, popClose, updatePost }) => {
 
     if (!check) return
 
-    const formData = new FormData()
-    formData.append("image", inputImg)
-    formData.append("location1", inputValue.location1)
-    formData.append("location2", inputValue.location2)
-    formData.append("food", inputValue.food)
-    formData.append("post", inputText)
+    const newData = {
+      image: inputImg,
+      location1: location1,
+      location2: location2,
+      food: food,
+      post: post,
+    }
 
-    updatePostRequest(formData)
+    updatePostRequest({ newData, id })
       .then(data => {
         console.log(data)
       })
