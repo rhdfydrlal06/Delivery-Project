@@ -37,7 +37,7 @@ export default function ShowMainData({ coronaData, ordCountData }) {
   ];
 
   const data1And2 = data.concat(data2)
-  console.log(data1And2)
+  
 
   return (
       <div className="ShowTestData">
@@ -56,7 +56,7 @@ export default function ShowMainData({ coronaData, ordCountData }) {
                   tickRotation: -40
                 }}
                 theme={getColoredAxis(line1Color)}
-                margin={{ top: 55, right: 75, bottom: 55, left: 55 }}
+                margin={{ top: 15, right: 75, bottom: 55, left: 55 }}
             />
           </div>
           <div className="secondGraph">
@@ -73,8 +73,8 @@ const SecondGraph = ({data}) => {
   return (
     <ResponsiveLine
       data = {data}
-      colors={["rgba(255, 255, 255, 0)", "grey"]}
-      margin={{ top: 55, right: 75, bottom: 55, left: 55 }}
+      colors={["rgba(255, 255, 255, 0)", "green"]}
+      margin={{ top: 15, right: 75, bottom: 55, left: 55 }}
       axisRight={{
         legend: "월별 주문건수",
         legendPosition: "middle",
@@ -84,7 +84,7 @@ const SecondGraph = ({data}) => {
       axisBottom={null}
       axisTop={null}
       enableGridY={false}
-      theme={getColoredAxis("grey")}
+      theme={getColoredAxis("green")}
 
     ></ResponsiveLine>
   )
