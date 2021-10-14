@@ -1,49 +1,74 @@
 import Layout from "../components/layout/Layout"
 import { NotMapBox, PostContainer } from "../styles/container"
 import { useCallback, useEffect, useState } from "react"
-import Comments from "../components/Comments"
-import { commentsData } from "../data/dummy"
-import AddPost from "../components/AddPost"
-import PopPost from "../components/PopPost"
+import Posts from "../components/Posts"
+import AddPost from "../components/AddPost2"
 import styled from "styled-components"
-import { wholeBoardRequest } from "../apis/boardApi"
+import { styled as styledMUI } from "@mui/system"
+import { Button } from "@mui/material"
+import { updatePostRequest, wholeBoardRequest } from "../apis/boardApi"
+import { isValue } from "../utils/postValueCheck"
+import ImageCard from "../components/ImageCard"
+import { ImageList } from "@mui/material"
+import PostDialog from "../components/PostDialog"
 
 const Board = () => {
+  const [postList, setPostList] = useState(null)
+  const [isPop, setIsPop] = useState(false)
+  const [isDetail, setIsDetail] = useState(-1)
+
   useEffect(() => {
     wholeBoardRequest().then(data => {
-      console.log(data.posts)
-      const comments = data.posts.sort((a, b) => {
+      const posts = data.posts.sort((a, b) => {
+        // 최근 아이디 순으로 배열 정렬 후 게시
         return a.id > b.id ? -1 : 1
       })
-      console.log("comments", comments)
-      setCommentData(comments)
+      setPostList(posts)
     })
-    console.log(commentData)
-  }, [isPop, commentData])
-
-  const [commentData, setCommentData] = useState(null)
-  const [isPop, setIsPop] = useState(false)
-
-  const onChange = (comment, commentData) => {
-    // setCommentData([comment, ...commentData])
-  }
+  }, [])
 
   const handlePop = useCallback(() => {
     setIsPop(!isPop)
   }, [isPop])
 
+  const handleDetail = useCallback(() => {
+    setIsDetail(!isDetail)
+  }, [isDetail])
+
+  const handlePostClick = useCallback(
+    id => {
+      const postData = postList.find(item => item.id === id)
+      console.log(postData)
+      return postData
+    },
+    [postList],
+  )
+
+  const updatePost = useCallback(data => {
+    setPostList(data)
+  }, [])
+
   return (
     <Layout isMap={false}>
-      {isPop && (
+      {/* {isPop && (
         <PopBack onClick={handlePop}>
-          <PopPost handleComment={onChange} commentData={commentData} popClose={handlePop} />
+          <AddPost postList={postList} popClose={handlePop} updatePost={updatePost} />
         </PopBack>
-      )}
+      )} */}
+      {/* {isDetail && (
+        <PopBack onClick={handleDetail}>
+          <PostDialog handleComment={onChange} postList={postList} popClose={handleDetail} />
+        </PopBack>
+      )} */}
       <NotMapBox>
-        <PostContainer>
-          <AddPost onClick={handlePop} />
-          {commentData && <Comments data={commentData} />}
-        </PostContainer>
+        <ImageList sx={{ width: "100%" }} cols={3}>
+          <PostDialog>
+            <AddPost postList={postList} popClose={handlePop} updatePost={updatePost} />
+          </PostDialog>
+          {postList && (
+            <ImageCard itemData={postList} onClick={handlePostClick} updatePost={updatePost} />
+          )}
+        </ImageList>
       </NotMapBox>
     </Layout>
   )
@@ -52,14 +77,20 @@ const Board = () => {
 export default Board
 
 const PopBack = styled.div`
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   top: 0;
   left: 0;
   background-color: rgba(255, 255, 255, 0.8);
   z-index: 1;
-  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: fixed;
+  overflow: hidden;
+`
+
+export const AddButton = styledMUI(Button)`
+  width: 100%;
+  height: 100%;
 `

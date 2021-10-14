@@ -1,6 +1,8 @@
 """
 delivery_app 생성 및 실행
 """
+from datetime import timedelta
+
 from flask import Flask
 from flask_cors import CORS
 from flask_migrate import Migrate
@@ -23,6 +25,9 @@ def create_app():
     app.config["JSON_AS_ASCII"] = False
 
     app.config["JWT_SECRET_KEY"] = "temporal-secret-key"
+    app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(hours=1)
+    app.config["JWT_REFRESH_TOKEN_EXPIRES"] = timedelta(days=14)
+
     jwt = JWTManager(app)
 
     app.config.from_object(config)

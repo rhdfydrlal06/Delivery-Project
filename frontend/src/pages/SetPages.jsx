@@ -3,6 +3,7 @@ import Home from "./Home"
 import DeliveryNum from "./DeliveryNum"
 import Intro from "./Intro"
 import Board from "./Board"
+import Signup from "./Signup"
 
 const SetPages = () => {
   return (
@@ -16,6 +17,9 @@ const SetPages = () => {
         </Route>
         <Route path="/board">
           <Board />
+        </Route>
+        <Route path="/signup">
+          <Signup />
         </Route>
         <Route path="/">
           <Home />

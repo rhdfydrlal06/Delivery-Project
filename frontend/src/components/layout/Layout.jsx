@@ -6,7 +6,6 @@ import { WholeContainer, MenuBox, MapBox, Main } from "../../styles/container"
 import Box from '@mui/material/Box';
 
 const Layout = props => {
-  console.log("isMap?", props.isMap)
   return (
     <WholeContainer>
       <Box sx={{ display: 'flex' }}>
