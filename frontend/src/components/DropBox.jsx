@@ -3,15 +3,9 @@ import Autocomplete from "@mui/material/Autocomplete"
 import { memo, useCallback, useEffect, useState } from "react"
 import styled from "styled-components"
 
-const DropBoxWrapper = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  column-gap: 0.5rem;
-`
-
 const DropBox = ({ options, onChange }) => {
-  const [value, setValue] = useState({ city: null, town: null, category: null })
-  const { city, town, category } = value
+  const [value, setValue] = useState({ location1: null, location2: null, food: null })
+  const { location1, location2, food } = value
   const style = {
     width: "100%",
   }
@@ -32,29 +26,32 @@ const DropBox = ({ options, onChange }) => {
     <DropBoxWrapper>
       <Autocomplete
         disablePortal
-        id="city"
-        options={options.city}
+        id="location1"
+        size="small"
+        options={options.location1}
         sx={style}
-        renderInput={params => <TextField {...params} label="시/도" />}
-        value={city}
+        renderInput={params => <TextField {...params} variant="standard" label="시/도" />}
+        value={location1}
         onChange={handleChange}
       />
       <Autocomplete
         disablePortal
-        id="town"
-        options={options.town}
+        id="location2"
+        size="small"
+        options={options.location2}
         sx={style}
-        renderInput={params => <TextField {...params} label="시/군/구" />}
-        value={town}
+        renderInput={params => <TextField {...params} variant="standard" label="시/군/구" />}
+        value={location2}
         onChange={handleChange}
       />
       <Autocomplete
         disablePortal
-        id="category"
-        options={options.category}
+        id="food"
+        size="small"
+        options={options.food}
         sx={style}
-        renderInput={params => <TextField {...params} label="카테고리" />}
-        value={category}
+        renderInput={params => <TextField {...params} variant="standard" label="카테고리" />}
+        value={food}
         onChange={handleChange}
       />
     </DropBoxWrapper>
@@ -62,3 +59,9 @@ const DropBox = ({ options, onChange }) => {
 }
 
 export default memo(DropBox)
+
+const DropBoxWrapper = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 0.5rem;
+`
