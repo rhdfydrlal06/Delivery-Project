@@ -1,4 +1,5 @@
-import { useCallback } from 'react'
+import { useState, useCallback } from 'react'
+import jwt from 'jwt-decode'
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
@@ -12,10 +13,47 @@ import TextField from '@mui/material/TextField';
 import { useRecoilState } from "recoil"
 import menuID from "../recoil/atom"
 
+import { emailValidation } from '../utils/validation';
+import { signinRequest, getCurrentUserInfo } from '../apis/authApi';
+import ErrorToast from './ErrorToast';
+
 
 
 const LoginModal = ({ open, setOpen }) => {
   const [value, setValue] = useRecoilState(menuID)
+  const [emailValid, setEmailValid] = useState(false)
+  const [snackOpen, setSnackOpen] = useState(false)
+  const [snackMessage, setSnackMessage] = useState(false)
+
+  const handleSnackClose = useCallback(() => {
+    setSnackOpen(false)
+  }, [])
+
+  const handleEmailChange = useCallback(event => {
+    const value = event.target.value
+    const isValid = emailValidation(value)
+    setEmailValid(isValid)
+  }, [])
+
+  const handleSigninSubmit = useCallback(event => {
+    event.preventDefault()
+    if (emailValid) {
+      const email = event.target.email.value
+      const password = event.target.password.value
+      signinRequest(email, password)
+        .then(response => {
+          const token = response.data.access_token
+          window.sessionStorage.setItem("token", token)
+          const userInfo = getCurrentUserInfo()
+          console.log(userInfo)
+        })
+        .catch(error => {
+          setSnackMessage(error.response.data.message)
+          setSnackOpen(true)
+        })
+    }
+  }, [emailValid])
+
   const handleClose = useCallback(() => {
     setOpen(false);
   }, [])
@@ -38,7 +76,6 @@ const LoginModal = ({ open, setOpen }) => {
           이메일과 비밀번호를 입력해주세요.
         </DialogContentText>
         <Box
-          noValidate
           component="form"
           sx={{
             display: 'flex',
@@ -46,6 +83,7 @@ const LoginModal = ({ open, setOpen }) => {
             m: 'auto',
             width: '80%',
           }}
+          onSubmit={handleSigninSubmit}
         >
           <FormControl sx={{ mt: 2, minWidth: 120 }}>
             <TextField
@@ -56,6 +94,9 @@ const LoginModal = ({ open, setOpen }) => {
               type="email"
               fullWidth
               variant="standard"
+              error={!emailValid}
+              onChange={handleEmailChange}
+              helperText={!emailValid && "올바른 이메일 형식이 아닙니다"}
             />
             <TextField
               autoFocus
@@ -66,14 +107,16 @@ const LoginModal = ({ open, setOpen }) => {
               fullWidth
               variant="standard"
             />
+            <br />
+            <Button type="submit">로그인</Button>
           </FormControl>
         </Box>
       </DialogContent>
       <DialogActions>
-        <Button>로그인</Button>
         <Button onClick={handleSignup}>회원가입</Button>
         <Button onClick={handleClose}>Cancle</Button>
       </DialogActions>
+      <ErrorToast open={snackOpen} handleClose={handleSnackClose} message={snackMessage} />
     </Dialog>
   );
 }
