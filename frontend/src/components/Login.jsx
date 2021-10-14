@@ -19,7 +19,7 @@ import ErrorToast from './ErrorToast';
 
 
 
-const LoginModal = ({ open, setOpen }) => {
+const LoginModal = ({ open, setOpen, setCurrentUser }) => {
   const [value, setValue] = useRecoilState(menuID)
   const [emailValid, setEmailValid] = useState(false)
   const [snackOpen, setSnackOpen] = useState(false)
@@ -44,8 +44,9 @@ const LoginModal = ({ open, setOpen }) => {
         .then(response => {
           const token = response.data.access_token
           window.sessionStorage.setItem("token", token)
-          const userInfo = getCurrentUserInfo()
-          console.log(userInfo)
+          setCurrentUser(getCurrentUserInfo())
+          setOpen(false)
+          setValue("home")
         })
         .catch(error => {
           setSnackMessage(error.response.data.message)
