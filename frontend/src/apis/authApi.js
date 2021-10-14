@@ -18,6 +18,19 @@ export const signupRequest = async (email, password, name) => {
     return response
 }
 
+export const signoutRequest = async () => {
+    const token = window.sessionStorage.getItem("token")
+    if (!token) return
+    const id = jwt(token).sub
+    try {
+        const response = await axios.post(`${apiPath}/signout`, { id })
+        window.sessionStorage.removeItem("token")
+        return response
+    } catch (error) {
+        return error
+    }
+}
+
 export const getCurrentUserInfo = () => {
     const token = window.sessionStorage.getItem("token")
     if (!token) return

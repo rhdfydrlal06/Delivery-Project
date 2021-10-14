@@ -10,7 +10,7 @@ import styled from "styled-components";
 import { colors } from "../../styles/theme"
 import LoginModal from "../Login"
 
-import { getCurrentUserInfo } from '../../apis/authApi';
+import { getCurrentUserInfo, signoutRequest } from '../../apis/authApi';
 
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -62,9 +62,16 @@ const Header = ({ isMap }) => {
   const handleLogoutDialogConfirm = useCallback(() => {
     // 2. 로그아웃 요청
     // 3. 세션에서 토큰 지우기
-    // 4. setcurrentuser
+    if (currentUser) {
+      signoutRequest()
+      // 4. setcurrentuser
+      setCurrentUser(null)
+      // 5. 다이얼로그 지우기
+    }
+    setDialogOpen(false)
     // 5. 홈으로 이동
-  })
+    setValue("home")
+  }, [currentUser])
 
   const handleDialogClose = useCallback(() => {
     setDialogOpen(false)
