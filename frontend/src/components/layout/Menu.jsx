@@ -12,7 +12,9 @@ const Menu = () => {
   const [value, setValue] = useRecoilState(menuID)
 
   const handleChange = (event, newValue) => {
-    setValue(newValue)
+    if (value) {
+      setValue(newValue)
+    }
   }
 
   useEffect(() => {
@@ -36,7 +38,7 @@ const Menu = () => {
       <Tabs
         orientation="vertical"
         variant="scrollable"
-        value={value}
+        value={value === "signup" ? false : value}
         onChange={handleChange}
         sx={{ borderRight: 1, borderColor: "divider", width: "100%" }}
         scrollButtons={false}

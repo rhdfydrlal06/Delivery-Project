@@ -17,6 +17,9 @@ export const LogoBox = styled.div`
   background-color: white;
   position: sticky;
   top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
 `
 
 export const MenuBox = styled.div`
@@ -54,8 +57,6 @@ export const NotMapBox = styled.div`
 export const PostContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(3, minmax(100px, auto));
-`
-export const PostBox = styled.div`
-  border: 1px solid gray;
-  width: 100%;
+  column-gap: 1rem;
+  row-gap: 1rem;
 `

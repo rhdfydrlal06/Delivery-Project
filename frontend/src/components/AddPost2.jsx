@@ -13,7 +13,7 @@ import postValueCheck from "../utils/postValueCheck"
 // image: 이미지 url
 // user: 작성자
 
-const PopPost = ({ commentData, handleComment, popClose, updatePost }) => {
+const PopPost = ({ postList, popClose, updatePost }) => {
   const [inputValue, setInputValue] = useState({
     location1: null,
     location2: null,
@@ -27,7 +27,7 @@ const PopPost = ({ commentData, handleComment, popClose, updatePost }) => {
       const { location1, location2, food } = value
       setInputValue({ ...inputValue, location1, location2, food })
     },
-    [commentData],
+    [postList],
   )
 
   const handleTextChange = useCallback(
@@ -45,7 +45,7 @@ const PopPost = ({ commentData, handleComment, popClose, updatePost }) => {
     [inputImg],
   )
 
-  const handleSubmit = useCallback(() => {
+  const clickSubmit = useCallback(() => {
     const check = postValueCheck(inputValue, inputText, inputImg)
 
     if (!check) return
@@ -76,7 +76,7 @@ const PopPost = ({ commentData, handleComment, popClose, updatePost }) => {
     popClose()
   }, [inputValue, inputText, inputImg])
 
-  const handleClose = useCallback(() => {
+  const clickCancel = useCallback(() => {
     popClose()
   }, [inputValue, inputText, inputImg])
 
@@ -89,33 +89,31 @@ const PopPost = ({ commentData, handleComment, popClose, updatePost }) => {
 
   return (
     <>
-      <PopPostBox onClick={preventClose}>
-        <DropBox options={dummy} onChange={handleSelectChange} />
-        <FileBox>
-          <input
-            name="img"
-            type="file"
-            accept="image/jpg,image/jpeg,image/png"
-            onChange={handleImgChange}
-          />
-        </FileBox>
-        <TextField
-          name="text"
-          id="text"
-          multiline
-          rows={3}
-          placeholder="내용을 입력해주세요"
-          value={inputText}
-          onChange={handleTextChange}
-          required
+      <DropBox options={dummy} onChange={handleSelectChange} />
+      <FileBox>
+        <input
+          name="img"
+          type="file"
+          accept="image/jpg,image/jpeg,image/png"
+          onChange={handleImgChange}
         />
-        <Button onClick={handleClose} variant="outlined">
-          취소
-        </Button>
-        <Button onClick={handleSubmit} variant="outlined">
-          글쓰기
-        </Button>
-      </PopPostBox>
+      </FileBox>
+      <TextField
+        name="text"
+        id="text"
+        multiline
+        rows={3}
+        placeholder="내용을 입력해주세요"
+        value={inputText}
+        onChange={handleTextChange}
+        required
+      />
+      <Button onClick={clickCancel} variant="outlined">
+        취소
+      </Button>
+      <Button onClick={clickSubmit} variant="outlined">
+        글쓰기
+      </Button>
     </>
   )
 }
