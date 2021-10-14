@@ -36,6 +36,8 @@ export default function ShowMainData({ coronaData, ordCountData }) {
       },
   ];
 
+  const data1And2 = data.concat(data2);
+
   return (
       <div className="ShowTestData">
         <Wrapper>
@@ -54,11 +56,33 @@ export default function ShowMainData({ coronaData, ordCountData }) {
                   tickRotation: -40
                 }}
                 theme={getColoredAxis(line1Color)}
-                margin={{ top: 55, right: 55, bottom: 55, left: 55 }}
+                margin={{ top: 55, right: 75, bottom: 55, left: 55 }}
+                legends={[
+                  {
+                      anchor: 'bottom-right',
+                      translateX: 120,
+                      translateY: 0,
+                      itemsSpacing: 2,
+                      itemWidth: 110,
+                      itemHeight: -60,
+                      itemDireccdstion: 'left-to-right',
+                      itemOpacity: 0.85,
+                      symbolSize: 10,
+                      effects: [
+                          {
+                              on: 'hover',
+                              style: {
+                                  itemOpacity: 1
+                              }
+                          }
+                      ]
+                  }
+                ]}
             />
           </div>
           <div className="secondGraph">
-            <SecondGraph data={data} data2={data2}/>
+            
+            <SecondGraph data={data1And2}/>
           </div>
         </div>
         </Wrapper>
@@ -67,16 +91,14 @@ export default function ShowMainData({ coronaData, ordCountData }) {
 }
 
 // I want this to be on top of the other graph
-const SecondGraph = ({data, data2}) => {
-  const data1And2 = data.concat(data2);
-
+const SecondGraph = ({data}) => {
   return (
       <ResponsiveLine
-        data={data1And2}
+        data={data}
         colors={["rgba(255, 255, 255, 0)", "orange"]} /* Make the first line transparent with 0 opacity */
-        margin={{ top: 55, right: 55, bottom: 55, left: 55 }}
+        keys={"주문건수"}  
+        margin={{ top: 55, right: 75, bottom: 55, left: 55 }}
         axisRight={{
-          legend: "",
           legendPosition: "middle",
           legendOffset: 40
         }}
@@ -88,6 +110,31 @@ const SecondGraph = ({data, data2}) => {
         enableGridY={false}
         axisBottom={null}
         theme={getColoredAxis("orange")}
+
+        legends={[
+          {
+              dataFrom: 'keys',
+              anchor: 'bottom-right',
+              direction: 'column',
+              justify: false,
+              translateX: 120,
+              translateY: 0,
+              itemsSpacing: 2,
+              itemWidth: 110,
+              itemHeight: -12,
+              itemDireccdstion: 'left-to-right',
+              itemOpacity: 0.85,
+              symbolSize: 10,
+              effects: [
+                  {
+                      on: 'hover',
+                      style: {
+                          itemOpacity: 1
+                      }
+                  }
+              ]
+          }
+        ]}
 
         /* Add this for tooltip */
         useMesh={true}

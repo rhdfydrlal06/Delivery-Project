@@ -3,14 +3,18 @@ import Header from "./Header"
 import Map from "../map/Map"
 import { WholeContainer, MenuBox, MapBox, Main } from "../../styles/container"
 
+import Box from '@mui/material/Box';
+
 const Layout = props => {
   console.log("isMap?", props.isMap)
   return (
     <WholeContainer>
-      <Header isMap={props.isMap} />
-      <MenuBox>
-        <Menu />
-      </MenuBox>
+      <Box sx={{ display: 'flex' }}>
+       <Header isMap={props.isMap} />
+        <MenuBox>
+          <Menu />
+        </MenuBox>
+      </Box>
       <Main isMap={props.isMap}>{props.children}</Main>
       {props.isMap && (
         <MapBox>
