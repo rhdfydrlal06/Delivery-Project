@@ -79,7 +79,6 @@ def auth_signin():
         200,
     )
 
-
 @bp.route("/signout", methods=["GET"])
 @jwt_required
 def auth_signout():

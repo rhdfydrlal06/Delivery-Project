@@ -11,22 +11,23 @@ export const WholeContainer = styled.div`
 
 export const LogoBox = styled.div`
   grid-column: ${({ isMap }) => (isMap ? "1/3" : "1/4")};
-  grid-row: 1/2;
-  padding: 32px 24px 24px 32px;
+  grid-row: 1/3;
+  padding: 20px 24px 20px 32px;
   z-index: 2;
   background-color: white;
-  position: sticky;
+  position: fixed;
   top: 0;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
 `
 
+
 export const MenuBox = styled.div`
   grid-column: 1/2;
   grid-row: 2/3;
   z-index: 2;
-  position: sticky;
+  position: fixed;
   top: 15vh;
 `
 
