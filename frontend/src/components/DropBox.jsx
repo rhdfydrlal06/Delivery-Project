@@ -3,7 +3,8 @@ import Autocomplete from "@mui/material/Autocomplete"
 import { memo, useCallback, useEffect, useState } from "react"
 import styled from "styled-components"
 
-const DropBox = ({ options, onChange }) => {
+const DropBox = ({ options, onChange, defaultValue }) => {
+  console.log(defaultValue)
   const [value, setValue] = useState({ location1: null, location2: null, food: null })
   const { location1, location2, food } = value
   const style = {
@@ -33,6 +34,7 @@ const DropBox = ({ options, onChange }) => {
         renderInput={params => <TextField {...params} variant="standard" label="시/도" />}
         value={location1}
         onChange={handleChange}
+        defaultValue={defaultValue ? defaultValue.location1 : null}
       />
       <Autocomplete
         disablePortal
@@ -43,6 +45,7 @@ const DropBox = ({ options, onChange }) => {
         renderInput={params => <TextField {...params} variant="standard" label="시/군/구" />}
         value={location2}
         onChange={handleChange}
+        defaultValue={defaultValue ? defaultValue.location2 : null}
       />
       <Autocomplete
         disablePortal
@@ -53,12 +56,13 @@ const DropBox = ({ options, onChange }) => {
         renderInput={params => <TextField {...params} variant="standard" label="카테고리" />}
         value={food}
         onChange={handleChange}
+        defaultValue={defaultValue ? defaultValue.food : null}
       />
     </DropBoxWrapper>
   )
 }
 
-export default memo(DropBox)
+export default DropBox
 
 const DropBoxWrapper = styled.div`
   display: grid;

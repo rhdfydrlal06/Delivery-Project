@@ -9,6 +9,8 @@ const StyledDialog = styled(Dialog)`
     > div {
       width: 50%;
       min-width: 400px;
+      height: 70%;
+      min-height: 400px;
     }
   }
 `

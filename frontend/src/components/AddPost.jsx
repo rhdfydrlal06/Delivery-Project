@@ -1,10 +1,16 @@
 import { useState, useRef, useEffect, useCallback } from "react"
 import dummy from "../data/dummy"
 import DropBox from "./DropBox"
-import { TextField, Button } from "@mui/material"
-import styled from "styled-components"
-import { addBoardRequest, wholeBoardRequest } from "../apis/boardApi"
+import { addBoardRequest } from "../apis/boardApi"
 import postValueCheck from "../utils/postValueCheck"
+import {
+  AddPostContainer,
+  ButtonBox,
+  FileBox,
+  MyTextField,
+  MyButton,
+} from "../styles/addPostContainer"
+import updatePostList from "../utils/updatePostList"
 
 // location1: 시도 이름
 // location2: 시군구 이름
@@ -13,7 +19,7 @@ import postValueCheck from "../utils/postValueCheck"
 // image: 이미지 url
 // user: 작성자
 
-const PopPost = ({ commentData, handleComment, popClose, updatePost }) => {
+const AddPost = ({ popClose, updatePost }) => {
   const [inputValue, setInputValue] = useState({
     location1: null,
     location2: null,
@@ -27,7 +33,7 @@ const PopPost = ({ commentData, handleComment, popClose, updatePost }) => {
       const { location1, location2, food } = value
       setInputValue({ ...inputValue, location1, location2, food })
     },
-    [commentData],
+    [inputValue],
   )
 
   const handleTextChange = useCallback(
@@ -45,7 +51,7 @@ const PopPost = ({ commentData, handleComment, popClose, updatePost }) => {
     [inputImg],
   )
 
-  const handleSubmit = useCallback(() => {
+  const clickSubmit = useCallback(() => {
     const check = postValueCheck(inputValue, inputText, inputImg)
 
     if (!check) return
@@ -62,12 +68,7 @@ const PopPost = ({ commentData, handleComment, popClose, updatePost }) => {
         console.log(data)
       })
       .then(() => {
-        wholeBoardRequest().then(data => {
-          const posts = data.posts.sort((a, b) => {
-            return a.id > b.id ? -1 : 1
-          })
-          updatePost(posts)
-        })
+        updatePostList(updatePost)
       })
       .catch(error => {
         console.error(error)
@@ -76,68 +77,43 @@ const PopPost = ({ commentData, handleComment, popClose, updatePost }) => {
     popClose()
   }, [inputValue, inputText, inputImg])
 
-  const handleClose = useCallback(() => {
+  const clickCancel = useCallback(() => {
     popClose()
   }, [inputValue, inputText, inputImg])
 
-  const preventClose = useCallback(
-    e => {
-      e.stopPropagation()
-    },
-    [inputValue, inputText, inputImg],
-  )
-
   return (
-    <>
-      <PopPostBox onClick={preventClose}>
-        <DropBox options={dummy} onChange={handleSelectChange} />
-        <FileBox>
-          <input
-            name="img"
-            type="file"
-            accept="image/jpg,image/jpeg,image/png"
-            onChange={handleImgChange}
-          />
-        </FileBox>
-        <TextField
-          name="text"
-          id="text"
-          multiline
-          rows={3}
-          placeholder="내용을 입력해주세요"
-          value={inputText}
-          onChange={handleTextChange}
-          required
+    <AddPostContainer>
+      <DropBox options={dummy} onChange={handleSelectChange} />
+      <FileBox>
+        <input
+          name="img"
+          type="file"
+          accept="image/jpg,image/jpeg,image/png"
+          onChange={handleImgChange}
         />
-        <Button onClick={handleClose} variant="outlined">
+      </FileBox>
+      <MyTextField
+        name="text"
+        id="text"
+        multiline
+        rows={3}
+        placeholder="내용을 입력해주세요"
+        value={inputText}
+        onChange={handleTextChange}
+        required
+        variant="standard"
+        sx={{ height: "100%" }}
+      />
+      <ButtonBox>
+        <MyButton onClick={clickCancel} variant="outlined">
           취소
-        </Button>
-        <Button onClick={handleSubmit} variant="outlined">
+        </MyButton>
+        <MyButton onClick={clickSubmit} variant="outlined">
           글쓰기
-        </Button>
-      </PopPostBox>
-    </>
+        </MyButton>
+      </ButtonBox>
+    </AddPostContainer>
   )
 }
 
-export default PopPost
-
-export const PopPostBox = styled.div`
-  display: flex;
-  flex-direction: column;
-  border: 1px solid gray;
-  width: 50vw;
-  height: 60%;
-  padding: 1rem;
-  z-index: 10;
-  background-color: white;
-  opacity: 1;
-`
-
-const FileBox = styled.div`
-  width: 100%;
-  min-height: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`
+export default AddPost
