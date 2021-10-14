@@ -9,8 +9,15 @@ const isExpired = (token) => {
 }
 
 export const signinRequest = async (email, password) => {
-    const response = await axios.post(`${apiPath}/signin`, { email, password })
-    return response
+    try {
+        const response = await axios.post(`${apiPath}/signin`, { email, password })
+        const token = response.data.access_token
+        window.sessionStorage.setItem("token", token)
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
+        return response
+    } catch (error) {
+        return error
+    }
 }
 
 export const signupRequest = async (email, password, name) => {
@@ -25,6 +32,7 @@ export const signoutRequest = async () => {
     try {
         const response = await axios.post(`${apiPath}/signout`, { id })
         window.sessionStorage.removeItem("token")
+        delete axios.defaults.headers.common['Authorization']
         return response
     } catch (error) {
         return error

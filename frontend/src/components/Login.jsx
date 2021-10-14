@@ -42,8 +42,6 @@ const LoginModal = ({ open, setOpen, setCurrentUser }) => {
       const password = event.target.password.value
       signinRequest(email, password)
         .then(response => {
-          const token = response.data.access_token
-          window.sessionStorage.setItem("token", token)
           setCurrentUser(getCurrentUserInfo())
           setOpen(false)
           setValue("home")
