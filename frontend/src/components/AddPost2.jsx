@@ -76,7 +76,7 @@ const PopPost = ({ postList, popClose, updatePost }) => {
     popClose()
   }, [inputValue, inputText, inputImg])
 
-  const q = useCallback(() => {
+  const handleClose = useCallback(() => {
     popClose()
   }, [inputValue, inputText, inputImg])
 
