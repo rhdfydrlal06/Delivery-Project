@@ -42,8 +42,7 @@ const Menu = () => {
         [`& .MuiDrawer-paper`]: { width: drawerWidth, boxSizing: 'border-box'},
       }}
     >
-      <Toolbar />
-        <MyTab value="home" label="홈" />
+      <Toolbar style={{ height: '100px' }}/>
         <Tabs
           orientation='vertical'
           variant='scrollable'
@@ -52,6 +51,7 @@ const Menu = () => {
           sx={{ borderRight: 0, borderColor: "divider", width: "100%"}}
           scrollButtons={false}
         >
+          <MyTab value="home" label="홈" />
           <MyTab value="intro" label="서비스 소개" />
           <MyTab value="analysis" label="배달 데이터 분석" />
           <MyTab value="board" label="게시판" />       

@@ -4,7 +4,7 @@ import Toolbar from '@mui/material/Toolbar';
 import { LogoBox } from "../../styles/container";
 import menuID from "../../recoil/atom";
 import { useRecoilState } from "recoil";
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
 import { colors } from "../../styles/theme"
 import LoginModal from "../Login"
