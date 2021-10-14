@@ -45,7 +45,7 @@ const PopPost = ({ postList, popClose, updatePost }) => {
     [inputImg],
   )
 
-  const handleSubmit = useCallback(() => {
+  const clickSubmit = useCallback(() => {
     const check = postValueCheck(inputValue, inputText, inputImg)
 
     if (!check) return
@@ -76,7 +76,7 @@ const PopPost = ({ postList, popClose, updatePost }) => {
     popClose()
   }, [inputValue, inputText, inputImg])
 
-  const handleClose = useCallback(() => {
+  const clickCancel = useCallback(() => {
     popClose()
   }, [inputValue, inputText, inputImg])
 
@@ -108,10 +108,10 @@ const PopPost = ({ postList, popClose, updatePost }) => {
         onChange={handleTextChange}
         required
       />
-      <Button onClick={handleClose} variant="outlined">
+      <Button onClick={clickCancel} variant="outlined">
         취소
       </Button>
-      <Button onClick={handleSubmit} variant="outlined">
+      <Button onClick={clickSubmit} variant="outlined">
         글쓰기
       </Button>
     </>
