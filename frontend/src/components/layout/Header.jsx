@@ -10,6 +10,8 @@ import styled from "styled-components";
 import { colors } from "../../styles/theme"
 import LoginModal from "../Login"
 
+import { getCurrentUserInfo } from '../../apis/authApi';
+
 const Img = styled.img`
   max-width: 10vw;
   object-fit: contain;
@@ -34,6 +36,7 @@ const Header = ({ isMap }) => {
 
   const [value, setValue] = useRecoilState(menuID)
   const [loginOpen, setLoginOpen] = useState(false)
+  const [currentUser, setCurrentUser] = useState(getCurrentUserInfo())
 
   const handleClick = useCallback(() => {
     setValue("home")
@@ -50,8 +53,12 @@ const Header = ({ isMap }) => {
   return (
     <LogoBox isMap={isMap}>
       <Img src="/img/delivery_logo.png" alt="logo" height="75%" onClick={handleClick} />
-      <Button onClick={handleLoginClick}>Log-in</Button>
-      <LoginModal open={loginOpen} setOpen={setLoginOpen} />
+      {
+        !currentUser ?
+          <Button onClick={handleLoginClick}>Log-in</Button> :
+          <Button onClick={handleLoginClick}>Log-out</Button>
+      }
+      <LoginModal open={loginOpen} setOpen={setLoginOpen} setCurrentUser={setCurrentUser} />
     </LogoBox>
   )
 }
