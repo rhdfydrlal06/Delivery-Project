@@ -4,7 +4,7 @@ from flask_jwt_extended import (
     create_access_token,
     get_jwt_identity,
     jwt_required,
-    jwt_refresh_token_required,
+    # jwt_refresh_token_required,
 )
 from flask_jwt_extended.utils import create_refresh_token
 
@@ -70,9 +70,9 @@ def auth_signin():
     )
 
 
-@bp.route("/refresh", methods=["POST"])
-@jwt_refresh_token_required
-def refresh_token():
-    current_user = get_jwt_identity()
-    access_token = create_access_token(identity=current_user)
-    pass
+# @bp.route("/refresh", methods=["POST"])
+# @jwt_refresh_token_required
+# def refresh_token():
+#     current_user = get_jwt_identity()
+#     access_token = create_access_token(identity=current_user)
+#     pass
