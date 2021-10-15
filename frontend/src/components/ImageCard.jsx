@@ -10,9 +10,9 @@ import EditDialog from "./EditDialog"
 import DetailDialog from "./DetailDialog"
 import { PaperWrapper } from "../styles/postContainer"
 
-const ImageCard = ({ postList, updatePost }) => {
+const ImageCard = ({ postList, updatePost, currentUser }) => {
+  console.log(currentUser)
   const [open, setOpen] = useState(false)
-
   const handlePostClick = useCallback(
     ({ e, id }) => {
       e.stopPropagation()
@@ -47,7 +47,7 @@ const ImageCard = ({ postList, updatePost }) => {
   }
 
   const itemList = postList.map(item => {
-    const { id, user, location1, location2, food, image, post } = item
+    const { id, user_id, location1, location2, food, image, post } = item
     const getId = e => {
       return { e, id }
     }
@@ -59,10 +59,11 @@ const ImageCard = ({ postList, updatePost }) => {
           </PaperWrapper>
           <MyImageListItemBar
             sx={{ alignItems: "flex-end" }}
-            title={user ? user : "익명"}
+            title={food}
             subtitle={`${location1}/${location2}`}
             actionIcon={
-              // user && <<여기에 유저 검증 로직 넣으면 됩니다
+
+              ((currentUser != undefined)&&(currentUser.id == user_id)) && (
               <div style={{ display: "flex" }}>
                 <EditDialog postData={item} updatePost={updatePost} />
                 <IconButton
@@ -73,7 +74,7 @@ const ImageCard = ({ postList, updatePost }) => {
                   <DeleteIcon />
                   <div style={{ width: "100%", height: "100%" }} />
                 </IconButton>
-              </div>
+              </div>)
             }
           />
         </ImageListItem>
