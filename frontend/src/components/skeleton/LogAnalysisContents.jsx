@@ -3,6 +3,8 @@ import pickLogDataRequest from "../../apis/logdataApi"
 import { ContentsBox } from "../../styles/container"
 import { MenuName, DescBox, MainTitle } from "./AnalysisContents"
 import { Button } from "@mui/material"
+import ToggleButton from '@mui/material/ToggleButton'
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup'
 import { ResponsiveBar } from '@nivo/bar'
 import { Wrapper } from "../../data/show_data_nivo/show_intro_data"
 
@@ -254,6 +256,17 @@ const LogAnalysisContents = () => {
   const [alignment, setAlignment] = useState(1)
   const [foodData, setFoodData] = useState()
   const [timeData, setTimeData] = useState()
+  const [toggleValue, setToggleValue] = useState("food")
+
+
+  useEffect(() => {
+    pickLogDataRequest(alignment).then(data => {
+      const fetchData = data
+      setFoodData(fetchData.data.food_data)
+      setTimeData(fetchData.data.time_data)
+    })
+  }, [])
+
 
   const buttonList = Object.keys(region).map(item => {
     return (
@@ -263,13 +276,6 @@ const LogAnalysisContents = () => {
     )
   })
 
-  useEffect(() => {
-    pickLogDataRequest(alignment).then(data => {
-      const fetchData = data
-      setFoodData(fetchData.data.food_data)
-      setTimeData(fetchData.data.time_data)
-    })
-  }, [])
 
   const handleClick = (item) => {
     setAlignment(item)
@@ -280,6 +286,10 @@ const LogAnalysisContents = () => {
       console.log(timeData)
     })
   }
+
+  const handleToggleChange = (event, newToggleValue) => {
+    setToggleValue(newToggleValue)
+  }
   
 
   return (
@@ -287,8 +297,20 @@ const LogAnalysisContents = () => {
       <MenuName>쩝쩝박사 성향 분석</MenuName>
       <MainTitle>{region[alignment]}의 쩝쩝박사 성향 분석</MainTitle>
       {buttonList}
+      <br/>
+      <ToggleButtonGroup
+        color="primary"
+        value={toggleValue}
+        exclusive
+        onChange={handleToggleChange}
+      >
+        <ToggleButton value="food">업종별 로그 보기</ToggleButton>
+        <ToggleButton value="time">시간별 로그 보기</ToggleButton>
+      </ToggleButtonGroup>
+      {toggleValue == "food" ? 
       <FoodLogData foodData={foodData} />
-      <TimeLogData timeData={timeData} />
+      :
+      <TimeLogData timeData={timeData} />}
     </ContentsBox>
   )
 }
