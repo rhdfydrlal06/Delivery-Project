@@ -55,7 +55,7 @@ const ImageCard = ({ postList, updatePost }) => {
       <>
         <ImageListItem key={id} onClick={e => handlePostClick(getId(e))}>
           <PaperWrapper>
-            <DetailDialog postData={item} image={image} />
+            <DetailDialog postData={item} />
           </PaperWrapper>
           <MyImageListItemBar
             sx={{ alignItems: "flex-end" }}
