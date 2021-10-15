@@ -1,5 +1,6 @@
 import { LogoBox } from "../../styles/container"
 import menuID from "../../recoil/atom"
+import userState from "../../recoil/user"
 import { useRecoilState } from "recoil"
 import { useCallback, useEffect } from "react"
 import styled from "styled-components"
@@ -40,7 +41,7 @@ const Header = ({ isMap }) => {
   const [value, setValue] = useRecoilState(menuID)
   const [dialogOpen, setDialogOpen] = useState(false)
   const [loginOpen, setLoginOpen] = useState(false)
-  const [currentUser, setCurrentUser] = useState(getCurrentUserInfo())
+  const [currentUser, setCurrentUser] = useRecoilState(userState)
 
   const handleClick = useCallback(() => {
     setValue("home")
