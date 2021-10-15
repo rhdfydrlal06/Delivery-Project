@@ -113,7 +113,7 @@ const LoginModal = ({ open, setOpen, setCurrentUser }) => {
       </DialogContent>
       <DialogActions>
         <Button onClick={handleSignup}>회원가입</Button>
-        <Button onClick={handleClose}>Cancle</Button>
+        <Button onClick={handleClose}>Cancel</Button>
       </DialogActions>
       <ErrorToast open={snackOpen} handleClose={handleSnackClose} message={snackMessage} />
     </Dialog>
