@@ -35,6 +35,11 @@ export const DescBox = styled.div`
 
 const AnalysisContents = ({ data, useButton = true }) => {
   const imageRootUrl = process.env.REACT_APP_BACKEND_URL
+  const description = data.description.split('.')
+  for (var t in description) {
+    const split = description[t].split('이고')
+    description[t] = split[0] + "월이고" + split[1]
+  }
   return (
     <ContentsBox>
       <MenuName>배달 데이터 분석</MenuName>
@@ -52,7 +57,10 @@ const AnalysisContents = ({ data, useButton = true }) => {
       </GraphBox>
       {useButton && <ButtonBox></ButtonBox>}
       <DescBox>
-        <p>{data.description}</p>
+        <p>{description[0]+"."}</p>
+        <p>{description[1]+"."}</p>
+        <p>{description[2]+"."}</p>
+        <p>{description[3]+"."}</p>
       </DescBox>
     </ContentsBox>
   )
