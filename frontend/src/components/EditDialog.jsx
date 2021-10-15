@@ -1,23 +1,23 @@
 import { useState, useEffect, useRef } from "react"
-import MyDialog from "./MyDialog"
 import EditPost from "./EditPost"
-import { styled } from "@mui/system"
-import { Button } from "@mui/material"
-import IconButton from "@mui/material/IconButton"
+import StyledDialog from "../styles/dialog"
+import { IconButton, DialogContent, DialogContentText } from "@mui/material"
 import EditIcon from "@mui/icons-material/Edit"
 
 const EditDialog = ({ postData, updatePost }) => {
   const [open, setOpen] = useState(false)
 
-  const handleClickOpen = () => {
+  const handleClickOpen = e => {
+    e.stopPropagation()
     setOpen(true)
+    console.log("editdialog open")
   }
 
-  const descriptionElementRef = useRef(null)
+  const editRef = useRef(null)
 
   useEffect(() => {
     if (open) {
-      const { current: descriptionElement } = descriptionElementRef
+      const { current: descriptionElement } = editRef
       if (descriptionElement !== null) {
         descriptionElement.focus()
       }
@@ -26,27 +26,33 @@ const EditDialog = ({ postData, updatePost }) => {
 
   const handleClose = () => {
     setOpen(false)
+    console.log("edit close")
   }
 
   return (
     <div>
       <IconButton
-        sx={{ color: "rgba(255, 255, 255, 0.54)" }}
-        aria-label={`edit ${postData.id}`}
+        sx={{ color: "rgba(255, 255, 255, 0.65)" }}
+        aria-label={`id`}
         onClick={handleClickOpen}
       >
         <EditIcon />
       </IconButton>
-      <MyDialog open={open} onClose={handleClose} ref={descriptionElementRef}>
-        <EditPost postData={postData} popClose={handleClose} updatePost={updatePost} />
-      </MyDialog>
+      <StyledDialog
+        open={open}
+        onClose={handleClose}
+        scroll="paper"
+        aria-labelledby="post-title"
+        aria-describedby="post-description"
+      >
+        <DialogContent dividers="paper">
+          <DialogContentText id="post-description" ref={editRef} tabIndex={-1} child>
+            <EditPost postData={postData} handleClose={handleClose} updatePost={updatePost} />
+          </DialogContentText>
+        </DialogContent>
+      </StyledDialog>
     </div>
   )
 }
 
 export default EditDialog
-
-const AddButton = styled(Button)`
-  width: 100%;
-  height: 100%;
-`

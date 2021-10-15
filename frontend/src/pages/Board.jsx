@@ -19,15 +19,6 @@ const Board = () => {
     })
   }, [])
 
-  const handlePostClick = useCallback(
-    id => {
-      const postData = postList.find(item => item.id === id)
-      console.log(postData)
-      return postData
-    },
-    [postList],
-  )
-
   const updatePost = useCallback(data => {
     setPostList(data)
   }, [])
@@ -37,9 +28,7 @@ const Board = () => {
       <NotMapBox>
         <ImageList sx={{ width: "100%" }} cols={3}>
           <PostDialog postList={postList} updatePost={updatePost} />
-          {postList && (
-            <ImageCard postList={postList} onClick={handlePostClick} updatePost={updatePost} />
-          )}
+          {postList && <ImageCard postList={postList} updatePost={updatePost} />}
         </ImageList>
       </NotMapBox>
     </Layout>

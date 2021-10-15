@@ -1,21 +1,21 @@
 import { useState, useEffect, useRef } from "react"
-import AddPost from "./AddPost"
 import StyledDialog from "../styles/dialog"
-import { styled } from "@mui/system"
-import { Button, DialogContent, DialogContentText } from "@mui/material"
+import { DialogContent, DialogContentText } from "@mui/material"
+import { Thumnail } from "../styles/postContainer"
+import DetailPost from "./DetailPost"
 
-const PostDialog = ({ postList, updatePost }) => {
+const DetailDialog = ({ postData, image }) => {
   const [open, setOpen] = useState(false)
 
   const handleClickOpen = () => {
     setOpen(true)
   }
 
-  const postRef = useRef(null)
+  const detailRef = useRef(null)
 
   useEffect(() => {
     if (open) {
-      const { current: descriptionElement } = postRef
+      const { current: descriptionElement } = detailRef
       if (descriptionElement !== null) {
         descriptionElement.focus()
       }
@@ -28,9 +28,7 @@ const PostDialog = ({ postList, updatePost }) => {
 
   return (
     <div>
-      <AddButton variant="outlined" onClick={handleClickOpen}>
-        +
-      </AddButton>
+      <Thumnail url={image} onClick={handleClickOpen} />
       <StyledDialog
         open={open}
         onClose={handleClose}
@@ -39,13 +37,8 @@ const PostDialog = ({ postList, updatePost }) => {
         aria-describedby="post-description"
       >
         <DialogContent dividers="paper">
-          <DialogContentText id="post-description" ref={postRef} tabIndex={-1} child>
-            <AddPost
-              ref={postRef}
-              postList={postList}
-              handleClose={handleClose}
-              updatePost={updatePost}
-            />
+          <DialogContentText id="post-description" ref={detailRef} tabIndex={-1} child>
+            <DetailPost postData={postData} handleClose={handleClose} />
           </DialogContentText>
         </DialogContent>
       </StyledDialog>
@@ -53,9 +46,4 @@ const PostDialog = ({ postList, updatePost }) => {
   )
 }
 
-export default PostDialog
-
-const AddButton = styled(Button)`
-  width: 100%;
-  height: 100%;
-`
+export default DetailDialog
