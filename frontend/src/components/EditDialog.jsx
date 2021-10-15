@@ -10,7 +10,6 @@ const EditDialog = ({ postData, updatePost, setCurrentUser }) => {
   const handleClickOpen = e => {
     e.stopPropagation()
     setOpen(true)
-    console.log("editdialog open")
   }
 
   const editRef = useRef(null)
@@ -26,7 +25,6 @@ const EditDialog = ({ postData, updatePost, setCurrentUser }) => {
 
   const handleClose = () => {
     setOpen(false)
-    console.log("edit close")
   }
 
   return (

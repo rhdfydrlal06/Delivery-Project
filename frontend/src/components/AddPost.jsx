@@ -28,8 +28,6 @@ const AddPost = ({ handleClose, updatePost, currentUser, setCurrentUser }) => {
 
   // recoil에 저장되어있는 현재 유저 정보 불러오기
   const currUser = useRecoilValue(userState)
-  console.log("user", currUser)
-  console.log("hello")
 
   const handleSelectChange = useCallback(
     value => {
@@ -75,20 +73,12 @@ const AddPost = ({ handleClose, updatePost, currentUser, setCurrentUser }) => {
 
     addBoardRequest(formData)
       .then(data => {
-        console.log(data)
       })
       .then(() => {
         updatePostList(updatePost)
       })
       .catch(error => {
-        if (error.response.data.msg === "Token has expired") {
-          alert("로그인 시간이 만료되었습니다. 다시 로그인 해주세요")
-          setCurrentUser(null)
-        }
-        if (error.response.data.message === "다시 로그인 해주세요") {
-          alert("로그인 시간이 만료되었습니다. 다시 로그인 해주세요")
-          setCurrentUser(null)
-        }
+        console.log(error)
       })
       .finally(() => {
         handleClose()

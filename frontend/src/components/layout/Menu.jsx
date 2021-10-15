@@ -25,11 +25,9 @@ const Menu = () => {
 
   useEffect(() => {
     history.push(adress[value])
-    console.log(adress[value])
   }, [value])
 
   useEffect(() => {
-    console.log("menuchange")
   })
 
   return (

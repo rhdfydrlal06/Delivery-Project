@@ -1,7 +1,6 @@
 const checkFileType = inputImg => {
   const fileType = inputImg.name.split(".").pop().toLowerCase()
   const correctType = ["png", "jpg", "jpeg"]
-  console.log("file type:", fileType)
   return correctType.includes(fileType)
 }
 

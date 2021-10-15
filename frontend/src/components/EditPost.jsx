@@ -66,7 +66,6 @@ const EditPost = ({ handleClose, postData, updatePost, setCurrentUser }) => {
 
     updatePostRequest({ formData, id })
       .then(data => {
-        console.log(data)
       })
       .then(() => {
         wholeBoardRequest().then(data => {

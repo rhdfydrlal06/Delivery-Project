@@ -72,7 +72,6 @@ const Header = ({ isMap, currentUser, setCurrentUser }) => {
   })
 
   useEffect(() => {
-    console.log("logo change", value)
   }, [value])
 
   return (

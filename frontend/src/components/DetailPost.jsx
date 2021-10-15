@@ -16,7 +16,6 @@ import { CardHeader, CardMedia, CardContent, Typography } from "@mui/material"
 const DetailPost = ({ postData }) => {
   const [item, setItem] = useState(postData)
   const { id, user, location1, location2, food, image, post } = postData
-  console.log("detail", item)
 
   return (
     <>
