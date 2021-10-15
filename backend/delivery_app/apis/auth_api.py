@@ -122,7 +122,6 @@ def refresh_token():
 
     try:
         decoded_access_token = decode_token(access_token, allow_expired=True)
-        print(get_jwt().get("exp"), decoded_access_token.get("exp"))
         if get_jwt().get("exp") != decoded_access_token.get("exp"):
             return jsonify(result="fail", message="다시 로그인 해주세요"), 403
 

@@ -297,7 +297,6 @@ const LogAnalysisContents = () => {
       const fetchData = data
       setFoodData(fetchData.data.food_data)
       setTimeData(fetchData.data.time_data)
-      console.log(timeData)
     })
   }
 
@@ -307,13 +306,11 @@ const LogAnalysisContents = () => {
 
   const handleDropChange = useCallback(
     (e, newValue) => {
-      console.log("newvalue", newValue)
       setAlignment(regionReverse[newValue])
       pickLogDataRequest(regionReverse[newValue]).then(data => {
         const fetchData = data
         setFoodData(fetchData.data.food_data)
         setTimeData(fetchData.data.time_data)
-        console.log(timeData)
       })
     },
     [alignment],

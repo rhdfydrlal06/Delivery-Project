@@ -21,7 +21,6 @@ bp = Blueprint("board", __name__)
 @bp.route("/<int:id>", methods=["GET"])
 def get_board(id):
     l = add_logdata(id)
-    # print(l.to_dict())
     result = get_post(id)
     if result is not None:
         return jsonify(result="success", post=result.to_dict())
@@ -43,7 +42,6 @@ def get_boards():
 
 
 @bp.route("/", methods=["POST"])
-@jwt_required()
 def post_board():
     """
     입력받은 게시글 DB에 저장하기
@@ -99,7 +97,6 @@ def edit_board(id):
 
     if image_url is None:
         image = request.files["image"]
-        print(image)
         boto3_client.boto3_image_delete(origin_post_url)
         image_url = boto3_client.boto3_image_upload(image)
         is_image_changed = True

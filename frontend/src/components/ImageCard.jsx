@@ -11,13 +11,11 @@ import DetailDialog from "./DetailDialog"
 import { PaperWrapper } from "../styles/postContainer"
 
 const ImageCard = ({ postList, updatePost, currentUser, setCurrentUser }) => {
-  console.log(currentUser)
   const [open, setOpen] = useState(false)
   const handlePostClick = useCallback(
     ({ e, id }) => {
       e.stopPropagation()
       const postData = postList.find(item => item.id === id)
-      console.log("detail post open", postData)
       setOpen(true)
     },
     [postList],
@@ -36,10 +34,8 @@ const ImageCard = ({ postList, updatePost, currentUser, setCurrentUser }) => {
 
   const handleDeleteClick = ({ e, id }) => {
     e.stopPropagation()
-    console.log("delete:", id)
     deletePostRequest(id)
       .then(data => {
-        console.log(data)
       })
       .then(() => {
         updatePostList(updatePost)

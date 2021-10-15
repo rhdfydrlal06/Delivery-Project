@@ -17,8 +17,6 @@ const Board = () => {
 
   // recoil에 저장되어있는 유저 불러오기
   const currUser = useRecoilValue(userState)
-  console.log(currUser)
-  console.log("hello")
 
   useEffect(() => {
     wholeBoardRequest().then(data => {

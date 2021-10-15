@@ -18,7 +18,6 @@ def get_posts():
     """
     DB에 저장되어 있는 게시글 반환
     """
-    print(Posts.query.all())
     return Posts.query.all()
 
 
