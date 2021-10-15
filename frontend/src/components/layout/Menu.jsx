@@ -53,7 +53,8 @@ const Menu = () => {
         <MyTab value="home" label="홈" />
         <MyTab value="intro" label="서비스 소개" />
         <MyTab value="analysis" label="배달 데이터 분석" />
-        <MyTab value="board" label="게시판" />
+        <MyTab value="board" label="쩝쩝박사들 다모여!" />
+        <MyTab value="logdata" label="쩝쩝박사들 성향분석" />
       </Tabs>
     </Box>
   )

@@ -4,6 +4,7 @@ import DeliveryNum from "./DeliveryNum"
 import Intro from "./Intro"
 import Board from "./Board"
 import Signup from "./Signup"
+import LogData from "./logData"
 
 const SetPages = () => {
   return (
@@ -20,6 +21,9 @@ const SetPages = () => {
         </Route>
         <Route path="/signup">
           <Signup />
+        </Route>
+        <Route path="/logdata">
+          <LogData />
         </Route>
         <Route path="/">
           <Home />

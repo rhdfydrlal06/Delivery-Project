@@ -12,6 +12,7 @@ export const storesGraphByIdRequest = async (id) => {
     return response.data
 }
 
+// 전국
 export const orderGraphByIdRequest = async (id) => {
     const response = await axios.get(`${apiPath}/graph/order-per-time/${id}`);
     return response.data
