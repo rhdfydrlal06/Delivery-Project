@@ -3,6 +3,7 @@ board api
 게시판 관리 api
 """
 from flask import Blueprint, request, jsonify
+from flask_jwt_extended import jwt_required, get_jwt_identity
 
 from delivery_app.utils import boto3_client
 from delivery_app.services.logdata import add_logdata
@@ -42,6 +43,7 @@ def get_boards():
 
 
 @bp.route("/", methods=["POST"])
+@jwt_required()
 def post_board():
     """
     입력받은 게시글 DB에 저장하기
@@ -70,6 +72,7 @@ def post_board():
 
 
 @bp.route("/<int:id>", methods=["DELETE"])
+@jwt_required()
 def delete_board(id):
     result = delete_post(id)
     if result is None:
@@ -79,6 +82,7 @@ def delete_board(id):
 
 
 @bp.route("/<int:id>", methods=["PATCH"])
+@jwt_required()
 def edit_board(id):
     location1 = request.form.get("location1")
     location2 = request.form.get("location2")

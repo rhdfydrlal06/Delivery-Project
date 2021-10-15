@@ -10,7 +10,8 @@ class User(db.Model):
     email = db.Column(db.String(256), nullable=False, unique=True)
     password = db.Column(db.String(64), nullable=False)
     name = db.Column(db.String(20), nullable=False)
-    token = db.Column(db.String(1024), nullable=True)
+    access_token = db.Column(db.String(1024), nullable=True)
+    refresh_token = db.Column(db.String(1024), nullable=True)
 
     def to_dict(self):
         return {"id": self.id, "email": self.email, "name": self.name}

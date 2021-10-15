@@ -8,7 +8,7 @@ import Box from '@mui/material/Box';
 const Layout = props => {
   return (
     <WholeContainer>
-      <Header isMap={props.isMap} />
+      <Header isMap={props.isMap} currentUser={props.currentUser} setCurrentUser={props.setCurrentUser} />
       <MenuBox>
         <Menu />
       </MenuBox>

@@ -33,11 +33,10 @@ import { styled as styledMUI, ThemeProvider } from "@mui/system"
 //   }
 // `
 
-const Header = ({ isMap }) => {
+const Header = ({ isMap, currentUser, setCurrentUser }) => {
   const [value, setValue] = useRecoilState(menuID)
   const [dialogOpen, setDialogOpen] = useState(false)
   const [loginOpen, setLoginOpen] = useState(false)
-  const [currentUser, setCurrentUser] = useRecoilState(userState)
 
   const handleClick = useCallback(() => {
     setValue("home")
@@ -57,13 +56,15 @@ const Header = ({ isMap }) => {
     // 3. 세션에서 토큰 지우기
     if (currentUser) {
       signoutRequest()
-      // 4. setcurrentuser
-      setCurrentUser(null)
-      // 5. 다이얼로그 지우기
+        .finally(() => {
+          // 4. setcurrentuser
+          setCurrentUser(null)
+          // 5. 다이얼로그 지우기
+          setDialogOpen(false)
+          // 5. 홈으로 이동
+          setValue("home")
+        })
     }
-    setDialogOpen(false)
-    // 5. 홈으로 이동
-    setValue("home")
   }, [currentUser])
 
   const handleDialogClose = useCallback(() => {

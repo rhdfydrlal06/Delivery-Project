@@ -35,11 +35,11 @@ const Board = () => {
   }, [])
 
   return (
-    <Layout isMap={false}>
+    <Layout isMap={false} currentUser={currentUser} setCurrentUser={setCurrentUser} >
       <NotMapBox>
         <ImageList sx={{ width: "100%" }} cols={3}>
-          <PostDialog postList={postList} updatePost={updatePost} currentUser={currentUser} />
-          {postList && <ImageCard postList={postList} updatePost={updatePost} currentUser={currentUser} />}
+          <PostDialog postList={postList} updatePost={updatePost} currentUser={currentUser} setCurrentUser={setCurrentUser} />
+          {postList && <ImageCard postList={postList} updatePost={updatePost} currentUser={currentUser} setCurrentUser={setCurrentUser} />}
         </ImageList>
       </NotMapBox>
     </Layout>

@@ -19,7 +19,7 @@ const Input = styled.div`
 // image: 이미지 url
 // user: 작성자
 
-const EditPost = ({ handleClose, postData, updatePost }) => {
+const EditPost = ({ handleClose, postData, updatePost, setCurrentUser }) => {
   const { location1, location2, food, post, image, id } = postData
   const [inputValue, setInputValue] = useState({
     location1: location1,
@@ -77,9 +77,18 @@ const EditPost = ({ handleClose, postData, updatePost }) => {
         })
       })
       .catch(error => {
-        console.error(error)
+        if (error.response.data.msg === "Token has expired") {
+          alert("로그인 시간이 만료되었습니다. 다시 로그인 해주세요")
+          setCurrentUser(null)
+        }
+        if (error.response.data.message === "다시 로그인 해주세요") {
+          alert("로그인 시간이 만료되었습니다. 다시 로그인 해주세요")
+          setCurrentUser(null)
+        }
       })
-    handleClose()
+      .finally(() => {
+        handleClose()
+      })
   }, [inputValue, inputText, inputImg])
 
   const clickCancel = useCallback(() => {

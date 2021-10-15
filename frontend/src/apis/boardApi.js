@@ -6,6 +6,7 @@ export const addBoardRequest = async formData => {
   const config = {
     headers: {
       "Content-Type": "multipart/form-data",
+      "Authorization": `Bearer ${window.localStorage.getItem("token")}`
     },
   }
   const response = await axios.post(`${apiPath}`, formData, config)
@@ -19,11 +20,22 @@ export const wholeBoardRequest = async () => {
 }
 
 export const deletePostRequest = async id => {
-  const response = await axios.delete(`${apiPath}${id}`)
+  const config = {
+    headers: {
+      "Authorization": `Bearer ${window.localStorage.getItem("token")}`
+    },
+  }
+  const response = await axios.delete(`${apiPath}${id}`, config)
   return response.data
 }
 
 export const updatePostRequest = async ({ formData, id }) => {
-  const response = await axios.patch(`${apiPath}${id}`, formData)
+  const config = {
+    headers: {
+      "Content-Type": "multipart/form-data",
+      "Authorization": `Bearer ${window.localStorage.getItem("token")}`
+    },
+  }
+  const response = await axios.patch(`${apiPath}${id}`, formData, config)
   return response.data
 }
