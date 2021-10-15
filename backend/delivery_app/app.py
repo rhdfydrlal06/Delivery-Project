@@ -23,7 +23,7 @@ def create_app():
     CORS(app, supports_credentials=True)
     app.config["JSON_AS_ASCII"] = False
 
-    app.config["JWT_SECRET_KEY"] = "temporal-secret-key"
+    app.config["JWT_SECRET_KEY"] = config.JWT_SECRET_KEY
     app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(hours=1)
     app.config["JWT_REFRESH_TOKEN_EXPIRES"] = timedelta(days=14)
 

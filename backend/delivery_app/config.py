@@ -11,6 +11,7 @@ SQLALCHEMY_TRACK_MODIFICATIONS = False
 DB_NAME = "delivery"
 SQLALCHEMY_DATABASE_URI = "sqlite:///{}".format(os.path.join(BASE_DIR, f"{DB_NAME}.db"))
 SECRET_KEY = "dev"
+JWT_SECRET_KEY = os.environ.get("JWT_SECRET_KEY")
 
 if os.environ.get("FLASK_ENV") == "production":
     USER = os.environ.get("DB_USER")
