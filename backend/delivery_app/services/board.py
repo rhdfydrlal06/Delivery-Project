@@ -1,4 +1,5 @@
 from delivery_app.models.posts import Posts, db
+from delivery_app.models.user import User
 
 
 def get_post(post_id):
@@ -18,8 +19,19 @@ def get_posts():
     """
     DB에 저장되어 있는 게시글 반환
     """
-    print(Posts.query.all())
-    return Posts.query.all()
+    
+    result = []
+    posts = Posts.query.all()
+    
+    for post in posts:
+        p_dict = post.to_dict()
+        if p_dict['user_id'] != -1:
+            user = User.query.filter_by(id=p_dict['user_id']).one_or_none()
+            p_dict['user_name'] = user.name
+        else:
+            p_dict['user_name'] = None
+        result.append(p_dict)
+    return result
 
 
 def add_post(location1, location2, food, post, image, user_id):

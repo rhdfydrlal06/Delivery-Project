@@ -11,7 +11,7 @@ import DetailDialog from "./DetailDialog"
 import { PaperWrapper } from "../styles/postContainer"
 
 const ImageCard = ({ postList, updatePost, currentUser, setCurrentUser }) => {
-  console.log(currentUser)
+
   const [open, setOpen] = useState(false)
   const handlePostClick = useCallback(
     ({ e, id }) => {
