@@ -5,7 +5,6 @@ import { MenuName, DescBox, MainTitle } from "./AnalysisContents"
 import { Button } from "@mui/material"
 import { ResponsiveBar } from '@nivo/bar'
 import { Wrapper } from "../../data/show_data_nivo/show_intro_data"
-import ShowIntroData from "../../data/show_data_nivo/show_intro_data"
 
 const region = {
   1: "전국",

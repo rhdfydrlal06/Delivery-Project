@@ -3,7 +3,6 @@ import LogAnalysisContents from "../components/skeleton/LogAnalysisContents"
 import React, { useState, useEffect } from "react"
 import { NotMapBox } from "../styles/container"
 
-
 const LogData = () => {
 
   return (

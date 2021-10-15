@@ -7,9 +7,18 @@ import { ImageList } from "@mui/material"
 import PostDialog from "../components/PostDialog"
 import { getCurrentUserInfo } from "../apis/authApi"
 
+//recoil 관련 임포트
+import { useRecoilValue } from "recoil"
+import userState from "../recoil/user"
+
 const Board = () => {
   const [postList, setPostList] = useState(null)
   const [currentUser, setCurrentUser] = useState(getCurrentUserInfo())
+
+  // recoil에 저장되어있는 유저 불러오기
+  const currUser = useRecoilValue(userState)
+  console.log(currUser)
+  console.log("hello")
 
   useEffect(() => {
     wholeBoardRequest().then(data => {
@@ -30,7 +39,7 @@ const Board = () => {
       <NotMapBox>
         <ImageList sx={{ width: "100%" }} cols={3}>
           <PostDialog postList={postList} updatePost={updatePost} currentUser={currentUser} />
-          {postList && <ImageCard postList={postList} updatePost={updatePost} />}
+          {postList && <ImageCard postList={postList} updatePost={updatePost} currentUser={currentUser} />}
         </ImageList>
       </NotMapBox>
     </Layout>
