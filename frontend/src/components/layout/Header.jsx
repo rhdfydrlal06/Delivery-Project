@@ -60,13 +60,15 @@ const Header = ({ isMap }) => {
     // 3. 세션에서 토큰 지우기
     if (currentUser) {
       signoutRequest()
-      // 4. setcurrentuser
-      setCurrentUser(null)
-      // 5. 다이얼로그 지우기
+        .then(response => {
+          // 4. setcurrentuser
+          setCurrentUser(null)
+          // 5. 다이얼로그 지우기
+          setDialogOpen(false)
+          // 5. 홈으로 이동
+          setValue("home")
+        })
     }
-    setDialogOpen(false)
-    // 5. 홈으로 이동
-    setValue("home")
   }, [currentUser])
 
   const handleDialogClose = useCallback(() => {
