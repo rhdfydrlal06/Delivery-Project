@@ -1,13 +1,16 @@
+import { useState } from "react"
 import { Bold } from "./Home"
 import Layout from "../components/layout/Layout"
 import { Wrapper } from "../data/show_data_nivo/show_intro_data"
 import ShowIntroData from "../data/show_data_nivo/show_intro_data"
 import { DescBox, MainTitle, MenuName } from "../components/skeleton/AnalysisContents"
 import { NotMapBox } from "../styles/container"
+import { getCurrentUserInfo } from "../apis/authApi"
 
 const Intro = () => {
+  const [currentUser, setCurrentUser] = useState(getCurrentUserInfo())
   return (
-    <Layout isMap={false}>
+    <Layout isMap={false} currentUser={currentUser} setCurrentUser={setCurrentUser}>
       <NotMapBox>
         <MenuName>서비스 소개!</MenuName>
         <MainTitle>딜리버리 푸드 파이터? 왜 필요해?</MainTitle>
@@ -25,9 +28,9 @@ const Intro = () => {
 
       {/* 그래프 추가 위해서 NotMapBox를 2개로 나눔 - 한빈 */}
       <Wrapper>
-        <ShowIntroData/>
+        <ShowIntroData />
       </Wrapper>
-      
+
       <NotMapBox>
         <DescBox>
           <p>
@@ -66,7 +69,7 @@ const Intro = () => {
             있을 나의 음식을 기다리는 시간이 즐거운 기다림이 되었으면 좋겠어요!
             <br />
             {/* <br />
-            1. 지역-시간별 주문건수 데이터 [출처 : KT 통신 빅데이터 플랫폼]    
+            1. 지역-시간별 주문건수 데이터 [출처 : KT 통신 빅데이터 플랫폼]
             <br />
             2. 일 평균 방문 고객 및 배달 테이크아웃 수 [출처 : 국가 통계 포털]             */}
           </p>

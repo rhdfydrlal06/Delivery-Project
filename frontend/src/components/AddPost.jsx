@@ -13,7 +13,7 @@ import { Alert } from "@mui/material"
 // image: 이미지 url
 // user_id: 작성자 id
 
-const AddPost = ({ handleClose, updatePost, currentUser }) => {
+const AddPost = ({ handleClose, updatePost, currentUser, setCurrentUser }) => {
   const [inputValue, setInputValue] = useState({
     location1: null,
     location2: null,
@@ -62,7 +62,7 @@ const AddPost = ({ handleClose, updatePost, currentUser }) => {
     else {
       formData.append("user_id", currentUser.id)
     }
-    
+
 
     addBoardRequest(formData)
       .then(data => {
@@ -74,9 +74,11 @@ const AddPost = ({ handleClose, updatePost, currentUser }) => {
       .catch(error => {
         if (error.response.data.msg === "Token has expired") {
           alert("로그인 시간이 만료되었습니다. 다시 로그인 해주세요")
+          setCurrentUser(null)
         }
         if (error.response.data.message === "다시 로그인 해주세요") {
           alert("로그인 시간이 만료되었습니다. 다시 로그인 해주세요")
+          setCurrentUser(null)
         }
       })
       .finally(() => {

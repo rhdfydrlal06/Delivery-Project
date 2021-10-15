@@ -36,11 +36,10 @@ const MyButton = styled.div`
   }
 `
 
-const Header = ({ isMap }) => {
+const Header = ({ isMap, currentUser, setCurrentUser }) => {
   const [value, setValue] = useRecoilState(menuID)
   const [dialogOpen, setDialogOpen] = useState(false)
   const [loginOpen, setLoginOpen] = useState(false)
-  const [currentUser, setCurrentUser] = useState(getCurrentUserInfo())
 
   const handleClick = useCallback(() => {
     setValue("home")

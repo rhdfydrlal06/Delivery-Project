@@ -4,7 +4,7 @@ import StyledDialog from "../styles/dialog"
 import { styled } from "@mui/system"
 import { Button, DialogContent, DialogContentText } from "@mui/material"
 
-const PostDialog = ({ postList, updatePost, currentUser }) => {
+const PostDialog = ({ postList, updatePost, currentUser, setCurrentUser }) => {
   const [open, setOpen] = useState(false)
 
   const handleClickOpen = () => {
@@ -46,6 +46,7 @@ const PostDialog = ({ postList, updatePost, currentUser }) => {
               handleClose={handleClose}
               updatePost={updatePost}
               currentUser={currentUser}
+              setCurrentUser={setCurrentUser}
             />
           </DialogContentText>
         </DialogContent>

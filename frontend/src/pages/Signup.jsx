@@ -22,6 +22,8 @@ import { signupRequest } from '../apis/authApi'
 import menuID from "../recoil/atom"
 import ErrorToast from "../components/ErrorToast"
 
+import { getCurrentUserInfo } from "../apis/authApi"
+
 export const Bold = styled.span`
   font-weight: bold;
 `
@@ -33,6 +35,7 @@ const Comment = styled.span`
   color: ${colors.black600};
 `
 const Signup = () => {
+  const [currentUser, setCurrentUser] = useState(getCurrentUserInfo())
   const [Menu, setMenu] = useRecoilState(menuID)
   const [emailValid, setEmailValid] = useState(false)
   const [passwordValid, setPasswordValid] = useState(false)
@@ -83,7 +86,7 @@ const Signup = () => {
   }, [])
 
   return (
-    <Layout isMap={false}>
+    <Layout isMap={false} currentUser={currentUser} setCurrentUser={setCurrentUser}>
       <NotMapBox>
         <MenuName>회원가입</MenuName>
         <MainTitle>
