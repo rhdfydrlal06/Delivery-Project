@@ -7,14 +7,14 @@ import { colors } from "../../styles/theme"
 import LoginModal from "../Login"
 import { useState } from "react"
 
-import { getCurrentUserInfo, signoutRequest } from '../../apis/authApi';
+import { getCurrentUserInfo, signoutRequest } from "../../apis/authApi"
 
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-import Button from '@mui/material/Button';
+import Dialog from "@mui/material/Dialog"
+import DialogActions from "@mui/material/DialogActions"
+import DialogContent from "@mui/material/DialogContent"
+import DialogContentText from "@mui/material/DialogContentText"
+import DialogTitle from "@mui/material/DialogTitle"
+import Button from "@mui/material/Button"
 
 const Img = styled.img`
   max-width: 10vw;
@@ -80,11 +80,11 @@ const Header = ({ isMap }) => {
   return (
     <LogoBox isMap={isMap}>
       <Img src="/img/delivery_logo.png" alt="logo" height="75%" onClick={handleClick} />
-      {
-        !currentUser ?
-          <MyButton onClick={handleLoginClick}>Log-in</MyButton> :
-          <MyButton onClick={handleLogoutClick}>Log-out</MyButton>
-      }
+      {!currentUser ? (
+        <MyButton onClick={handleLoginClick}>Log-in</MyButton>
+      ) : (
+        <MyButton onClick={handleLogoutClick}>Log-out</MyButton>
+      )}
       <LoginModal open={loginOpen} setOpen={setLoginOpen} setCurrentUser={setCurrentUser} />
       <Dialog
         open={dialogOpen}
@@ -92,9 +92,7 @@ const Header = ({ isMap }) => {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title">
-          {"로그아웃"}
-        </DialogTitle>
+        <DialogTitle id="alert-dialog-title">{"로그아웃"}</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
             정말로 로그아웃 하시겠습니까?
