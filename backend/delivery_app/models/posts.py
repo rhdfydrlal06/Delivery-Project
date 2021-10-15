@@ -14,7 +14,7 @@ class Posts(db.Model):
     image: 이미지 url
     hit: 조회수
     like: 좋아요 수
-    user: 작성자
+    user_id: 작성자 id(왜래키)
     nickname: 작성자 닉네임
     timestamp: 작성일
     """
@@ -27,18 +27,18 @@ class Posts(db.Model):
     food = db.Column(db.String(64), nullable=False)
     post = db.Column(db.Text, nullable=True)
     image = db.Column(db.String(1024), nullable=True)
-    user = db.Column(db.String(8), nullable=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id', ondelete="CASCADE", onupdate="CASCADE"), nullable=False)
     hit = db.Column(db.Integer, nullable=False)
     like = db.Column(db.Integer, nullable=False)
     timestamp = db.Column(db.DateTime(), nullable=False)
 
-    def __init__(self, location1, location2, post, food, image, user):
+    def __init__(self, location1, location2, post, food, image, user_id):
         self.location1 = location1
         self.location2 = location2
         self.food = food
         self.post = post
         self.image = image
-        self.user = user
+        self.user_id = user_id
         self.hit = 0
         self.like = 0
         self.timestamp = datetime.now()
@@ -51,7 +51,7 @@ class Posts(db.Model):
             "food": self.food,
             "post": self.post,
             "image": self.image,
-            "user": self.user,
+            "user_id": self.user_id,
             "hit": self.hit,
             "like": self.like,
             "timestamp": self.timestamp,
