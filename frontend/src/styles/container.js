@@ -10,28 +10,36 @@ export const WholeContainer = styled.div`
 `
 
 export const LogoBox = styled.div`
-  grid-column: 1/3;
+  grid-column: ${({ isMap }) => (isMap ? "1/3" : "1/4")};
   grid-row: 1/2;
   padding: 32px 24px 24px 32px;
-  cursor: pointer;
-`
-
-export const MapBox = styled.div`
-  grid-column: 3/4;
-  grid-row: 1/3;
-`
-
-/*맵을 사용하지 않을 경우 사용하는 우측 본문 박스*/
-export const TestBox = styled.div`
-  grid-column: 3/4;
-  grid-row: 2/3;
-  background-color: gray;
-  margin: 0px 32px 32px 0px;
+  z-index: 2;
+  background-color: white;
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
 `
 
 export const MenuBox = styled.div`
   grid-column: 1/2;
   grid-row: 2/3;
+  margin-top: 10%;
+  z-index: 2;
+  position: sticky;
+  top: 15vh;
+`
+
+//layout에서 본문이 들어가는 메인 박스
+export const Main = styled.main`
+  grid-column: ${({ isMap }) => (isMap ? "2/3" : "2/4")};
+  grid-row: 2/3;
+`
+
+export const MapBox = styled.div`
+  grid-column: 3/4;
+  grid-row: 1/3;
 `
 
 export const ContentsBox = styled.div`
@@ -42,20 +50,7 @@ export const ContentsBox = styled.div`
   padding-right: 20px;
 `
 
-export const MainBodyContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-`
-
-export const ContentsBoxRight = styled.div`
-  width: 33%;
-`
-
-export const ContentsBoxLeft = styled.div`
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  margin-right: 4%;
+/*맵을 사용하지 않을 경우 사용하는 본문 박스*/
+export const NotMapBox = styled.div`
+  width: 80%;
 `

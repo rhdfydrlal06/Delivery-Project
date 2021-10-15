@@ -4,6 +4,14 @@
 
 import { fontSize } from '@mui/system';
 import { ResponsiveBar } from '@nivo/bar'
+import styled from "styled-components"; 
+
+
+export const Wrapper = styled.div`
+  height: 600px;
+  width: 800px;
+  position: relative;
+`
 
 const ShowIntroData = () => {
     const data = [
@@ -40,7 +48,6 @@ const ShowIntroData = () => {
     return(
       <ResponsiveBar
       data={data}
-      theme={theme}
       keys={["일평균_방문고객수", "일평균_배달건수"]}  
       indexBy="day"
       margin={{ top: 100, right: 150, bottom: 100, left: 100 }}
@@ -72,7 +79,7 @@ const ShowIntroData = () => {
             itemsSpacing: 2,
             itemWidth: 100,
             itemHeight: 20,
-            itemDirection: 'left-to-right',
+            itemDireccdstion: 'left-to-right',
             itemOpacity: 0.85,
             symbolSize: 20,
             effects: [

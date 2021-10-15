@@ -1,0 +1,95 @@
+import { useState, useRef, useEffect, useCallback } from "react"
+import ImageListItem from "@mui/material/ImageListItem"
+import ImageListItemBar from "@mui/material/ImageListItemBar"
+import IconButton from "@mui/material/IconButton"
+import DeleteIcon from "@mui/icons-material/Delete"
+import { styled } from "@mui/system"
+import { deletePostRequest } from "../apis/boardApi"
+import updatePostList from "../utils/updatePostList"
+import EditDialog from "./EditDialog"
+import DetailDialog from "./DetailDialog"
+import { PaperWrapper } from "../styles/postContainer"
+
+const ImageCard = ({ postList, updatePost }) => {
+  const [open, setOpen] = useState(false)
+
+  const handlePostClick = useCallback(
+    ({ e, id }) => {
+      e.stopPropagation()
+      const postData = postList.find(item => item.id === id)
+      console.log("detail post open", postData)
+      setOpen(true)
+    },
+    [postList],
+  )
+
+  const imageRef = useRef(null)
+
+  useEffect(() => {
+    if (open) {
+      const { current: descriptionElement } = imageRef
+      if (descriptionElement !== null) {
+        descriptionElement.focus()
+      }
+    }
+  }, [open])
+
+  const handleDeleteClick = ({ e, id }) => {
+    e.stopPropagation()
+    console.log("delete:", id)
+    deletePostRequest(id)
+      .then(data => {
+        console.log(data)
+      })
+      .then(() => {
+        updatePostList(updatePost)
+      })
+  }
+
+  const itemList = postList.map(item => {
+    const { id, user, location1, location2, food, image, post } = item
+    const getId = e => {
+      return { e, id }
+    }
+    return (
+      <>
+        <ImageListItem key={id} onClick={e => handlePostClick(getId(e))}>
+          <PaperWrapper>
+            <DetailDialog postData={item} image={image} />
+          </PaperWrapper>
+          <MyImageListItemBar
+            sx={{ alignItems: "flex-end" }}
+            title={user ? user : "익명"}
+            subtitle={`${location1}/${location2}`}
+            actionIcon={
+              // user && <<여기에 유저 검증 로직 넣으면 됩니다
+              <div style={{ display: "flex" }}>
+                <EditDialog postData={item} updatePost={updatePost} />
+                <IconButton
+                  sx={{ color: "rgba(255, 255, 255, 0.65)" }}
+                  aria-label={`delete ${id}`}
+                  onClick={e => handleDeleteClick(getId(e))}
+                >
+                  <DeleteIcon />
+                  <div style={{ width: "100%", height: "100%" }} />
+                </IconButton>
+              </div>
+            }
+          />
+        </ImageListItem>
+      </>
+    )
+  })
+  return itemList
+}
+
+export default ImageCard
+
+const MyImageListItemBar = styled(ImageListItemBar)`
+  opacity: 1;
+  cursor: pointer;
+  /* 
+  :hover {
+    opacity: 1; 
+  }*/
+`
