@@ -13,7 +13,7 @@ import { Alert } from "@mui/material"
 // image: 이미지 url
 // user: 작성자
 
-const AddPost = ({ handleClose, updatePost }) => {
+const AddPost = ({ handleClose, updatePost, currentUser }) => {
   const [inputValue, setInputValue] = useState({
     location1: null,
     location2: null,
@@ -97,9 +97,10 @@ const AddPost = ({ handleClose, updatePost }) => {
         variant="standard"
         sx={{ height: "100%" }}
       />
-      <Alert severity="warning">
+      {
+      currentUser == undefined && (<Alert severity="warning">
         로그인이 되어있지 않으면 게시 후 글을 수정/삭제할 수 없습니다
-      </Alert>
+      </Alert>)}
       <ButtonBox>
         <MyButton onClick={clickCancel} variant="outlined">
           취소

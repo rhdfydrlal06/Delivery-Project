@@ -32,14 +32,10 @@ def get_board(id):
 @bp.route("/list", methods=["GET"])
 def get_boards():
     """
-    DB에 저장되어 있는 게시글 불러오기
+    DB에 저장되어 있는 모든 게시글 불러오기
     """
     result = []
-    location1 = request.args.get("location1")
-    location2 = request.args.get("location2")
-    food = request.args.get("food")
-    print(location1, location2, food)
-    posts = get_posts(location1, location2, food)
+    posts = get_posts()
     for post in posts:
         result.append(post.to_dict())
 
@@ -56,7 +52,7 @@ def post_board():
     location2 = request.form.get("location2")
     food = request.form.get("food")
     post = request.form.get("post")
-    user = None
+    user_id = request.form.get("user_id")
     image = request.files["image"]
 
     image_url = boto3_client.boto3_image_upload(image)
@@ -66,7 +62,7 @@ def post_board():
             location2=location2,
             food=food,
             post=post,
-            user=user,
+            user_id=user_id,
             image=image_url,
         )
     except Exception:

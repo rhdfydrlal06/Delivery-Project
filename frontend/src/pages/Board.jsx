@@ -5,9 +5,11 @@ import { wholeBoardRequest } from "../apis/boardApi"
 import ImageCard from "../components/ImageCard"
 import { ImageList } from "@mui/material"
 import PostDialog from "../components/PostDialog"
+import { getCurrentUserInfo } from "../apis/authApi"
 
 const Board = () => {
   const [postList, setPostList] = useState(null)
+  const [currentUser, setCurrentUser] = useState(getCurrentUserInfo())
 
   useEffect(() => {
     wholeBoardRequest().then(data => {
@@ -27,7 +29,7 @@ const Board = () => {
     <Layout isMap={false}>
       <NotMapBox>
         <ImageList sx={{ width: "100%" }} cols={3}>
-          <PostDialog postList={postList} updatePost={updatePost} />
+          <PostDialog postList={postList} updatePost={updatePost} currentUser={currentUser} />
           {postList && <ImageCard postList={postList} updatePost={updatePost} />}
         </ImageList>
       </NotMapBox>
