@@ -5,20 +5,20 @@ import { DescBox, MainTitle, MenuName } from "../components/skeleton/AnalysisCon
 import { colors } from "../styles/theme"
 import { NotMapBox } from "../styles/container"
 
-import FormControl from '@mui/material/FormControl';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import Box from '@mui/material/Box';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
+import FormControl from "@mui/material/FormControl"
+import TextField from "@mui/material/TextField"
+import Button from "@mui/material/Button"
+import Box from "@mui/material/Box"
+import Dialog from "@mui/material/Dialog"
+import DialogActions from "@mui/material/DialogActions"
+import DialogContent from "@mui/material/DialogContent"
+import DialogContentText from "@mui/material/DialogContentText"
+import DialogTitle from "@mui/material/DialogTitle"
 
 import { useRecoilState } from "recoil"
 
-import * as validation from '../utils/validation'
-import { signupRequest } from '../apis/authApi'
+import * as validation from "../utils/validation"
+import { signupRequest } from "../apis/authApi"
 import menuID from "../recoil/atom"
 import ErrorToast from "../components/ErrorToast"
 
@@ -55,25 +55,28 @@ const Signup = () => {
     setMenu("home")
   }, [])
 
-  const handleSignupSubmit = useCallback(event => {
-    event.preventDefault()
-    if (emailValid && passwordValid && pwCheckValid && nameValid) {
-      const email = event.target.email.value
-      const password = event.target.password.value
-      const name = event.target.name.value
-      signupRequest(email, password, name)
-        .then(response => {
-          setDialogOpen(true)
-        })
-        .catch(error => {
-          setSnackMessage(error.response.data.message)
-          setSnackOpen(true)
-        })
-    }
-  }, [emailValid, passwordValid, pwCheckValid, nameValid])
+  const handleSignupSubmit = useCallback(
+    event => {
+      event.preventDefault()
+      if (emailValid && passwordValid && pwCheckValid && nameValid) {
+        const email = event.target.email.value
+        const password = event.target.password.value
+        const name = event.target.name.value
+        signupRequest(email, password, name)
+          .then(response => {
+            setDialogOpen(true)
+          })
+          .catch(error => {
+            setSnackMessage(error.response.data.message)
+            setSnackOpen(true)
+          })
+      }
+    },
+    [emailValid, passwordValid, pwCheckValid, nameValid],
+  )
 
   const handleChange = useCallback((event, setValidate, validator, args) => {
-    if (typeof validator === 'function') {
+    if (typeof validator === "function") {
       const value = event.target.value
       let isValid = false
       if (args) {
@@ -98,10 +101,10 @@ const Signup = () => {
           <Box
             component="form"
             sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              maxWidth: '520px',
-              width: '100%',
+              display: "flex",
+              flexDirection: "column",
+              maxWidth: "520px",
+              width: "100%",
             }}
             onSubmit={handleSignupSubmit}
           >
@@ -132,7 +135,10 @@ const Signup = () => {
                 inputRef={passwordRef}
                 error={!passwordValid}
                 onChange={e => handleChange(e, setPasswordValid, validation.passwordValidation)}
-                helperText={!passwordValid && "영어, 숫자, 특수문자 조합의 8글자 or 영어, 숫자 조합의 10글자를 입력해주세요"}
+                helperText={
+                  !passwordValid &&
+                  "영어, 숫자, 특수문자 조합의 8글자 or 영어, 숫자 조합의 10글자를 입력해주세요"
+                }
               />
               <br />
               <Comment> &#10068; 비밀번호를 한번 더 입력해주세요</Comment>
@@ -145,7 +151,11 @@ const Signup = () => {
                 fullWidth
                 variant="standard"
                 error={!pwCheckValid}
-                onChange={e => handleChange(e, setPwCheckValid, validation.passwordCheckValidation, [passwordRef.current.value])}
+                onChange={e =>
+                  handleChange(e, setPwCheckValid, validation.passwordCheckValidation, [
+                    passwordRef.current.value,
+                  ])
+                }
                 helperText={!pwCheckValid && "비밀번호확인이 일치하지 않습니다."}
               />
               <br />
@@ -165,10 +175,10 @@ const Signup = () => {
               <br />
               <Box
                 sx={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'flex-end',
-                  '& > *': {
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "flex-end",
+                  "& > *": {
                     m: 1,
                   },
                 }}
@@ -184,9 +194,7 @@ const Signup = () => {
             aria-labelledby="alert-dialog-title"
             aria-describedby="alert-dialog-description"
           >
-            <DialogTitle id="alert-dialog-title">
-              {"회원가입 성공"}
-            </DialogTitle>
+            <DialogTitle id="alert-dialog-title">{"회원가입 성공"}</DialogTitle>
             <DialogContent>
               <DialogContentText id="alert-dialog-description">
                 홈으로 돌아갑니다. 가입하신 정보로 로그인 해주세요.
@@ -194,13 +202,13 @@ const Signup = () => {
             </DialogContent>
             <DialogActions>
               <Button onClick={handleDialogClose} autoFocus>
-                Agree
+                확인
               </Button>
             </DialogActions>
           </Dialog>
         </DescBox>
       </NotMapBox>
-    </Layout >
+    </Layout>
   )
 }
 
