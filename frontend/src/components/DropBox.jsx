@@ -2,7 +2,7 @@ import TextField from "@mui/material/TextField"
 import Autocomplete from "@mui/material/Autocomplete"
 import { useCallback, useEffect, useState } from "react"
 import styled from "styled-components"
-import dummy from "../data/dummy"
+import { locationList, foodList } from "../data/category_list"
 
 const DropBox = ({ onChange, defaultValue }) => {
   const setDefaultValue = defaultValue => {
@@ -38,7 +38,7 @@ const DropBox = ({ onChange, defaultValue }) => {
         disablePortal
         id="location1"
         size="small"
-        options={dummy.location1}
+        options={Object.keys(locationList)}
         sx={style}
         renderInput={params => <TextField {...params} variant="standard" label="시/도" />}
         value={location1}
@@ -48,7 +48,7 @@ const DropBox = ({ onChange, defaultValue }) => {
         disablePortal
         id="location2"
         size="small"
-        options={dummy.location2}
+        options={location1 ? locationList[location1] : null}
         sx={style}
         renderInput={params => <TextField {...params} variant="standard" label="시/군/구" />}
         value={location2}
@@ -59,7 +59,7 @@ const DropBox = ({ onChange, defaultValue }) => {
         disablePortal
         id="food"
         size="small"
-        options={dummy.food}
+        options={foodList}
         sx={style}
         renderInput={params => <TextField {...params} variant="standard" label="카테고리" />}
         value={food}
