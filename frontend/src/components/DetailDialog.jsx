@@ -1,10 +1,13 @@
 import { useState, useEffect, useRef } from "react"
 import StyledDialog from "../styles/dialog"
-import { DialogContent, DialogContentText } from "@mui/material"
+import { DialogContent, DialogContentText, DialogActions, DialogTitle, Button } from "@mui/material"
 import { Thumnail } from "../styles/postContainer"
 import DetailPost from "./DetailPost"
+import { MyButton } from "../styles/addPostContainer"
+import DetailPostHeader from "./DetailPostHeader"
 
-const DetailDialog = ({ postData, image }) => {
+const DetailDialog = ({ postData }) => {
+  const { id, user, location1, location2, food, image, post } = postData
   const [open, setOpen] = useState(false)
 
   const handleClickOpen = () => {
@@ -22,7 +25,8 @@ const DetailDialog = ({ postData, image }) => {
     }
   }, [open])
 
-  const handleClose = () => {
+  const handleClose = e => {
+    e.stopPropagation()
     setOpen(false)
   }
 
@@ -36,11 +40,19 @@ const DetailDialog = ({ postData, image }) => {
         aria-labelledby="post-title"
         aria-describedby="post-description"
       >
+        <DialogTitle id="scroll-dialog-title">
+          <DetailPostHeader user={user} location1={location1} location2={location2} food={food} />
+        </DialogTitle>
         <DialogContent dividers="paper">
           <DialogContentText id="post-description" ref={detailRef} tabIndex={-1} child>
             <DetailPost postData={postData} handleClose={handleClose} />
           </DialogContentText>
         </DialogContent>
+        <DialogActions sx={{ display: "flex", justifyContent: "center" }}>
+          <MyButton onClick={handleClose} variant="outlined">
+            닫기
+          </MyButton>
+        </DialogActions>
       </StyledDialog>
     </div>
   )

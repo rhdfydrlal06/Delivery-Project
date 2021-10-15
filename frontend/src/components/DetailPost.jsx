@@ -13,30 +13,19 @@ import { CardHeader, CardMedia, CardContent, Typography } from "@mui/material"
 // image: 이미지 url
 // user: 작성자
 
-const DetailPost = ({ handleClose, postData }) => {
+const DetailPost = ({ postData }) => {
   const [item, setItem] = useState(postData)
-  const { id, user, location1, location2, food, image, post } = item
+  const { id, user, location1, location2, food, image, post } = postData
   console.log("detail", item)
-
-  const clickCancel = useCallback(e => {
-    e.stopPropagation()
-    handleClose()
-  }, [])
 
   return (
     <>
-      <CardHeader title={user ? user : "익명"} subheader={`${location1}/${location2}, ${food}`} />
       <CardMedia component="img" width="100%" image={image} alt={id} />
       <CardContent>
-        <Typography variant="body2" color="text.secondary">
+        <Typography variant="body" color="text.secondary">
           {post}
         </Typography>
       </CardContent>
-      <ButtonBox>
-        <MyButton onClick={clickCancel} variant="outlined">
-          닫기
-        </MyButton>
-      </ButtonBox>
     </>
   )
 }
