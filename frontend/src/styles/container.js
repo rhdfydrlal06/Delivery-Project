@@ -12,10 +12,7 @@ export const WholeContainer = styled.div`
 export const LogoBox = styled.div`
   grid-column: ${({ isMap }) => (isMap ? "1/3" : "1/4")};
   grid-row: 1/2;
-  padding: 32px 24px 24px 32px;
-  z-index: 2;
   background-color: white;
-  position: sticky;
   top: 0;
   display: flex;
   justify-content: space-between;
@@ -25,10 +22,10 @@ export const LogoBox = styled.div`
 export const MenuBox = styled.div`
   grid-column: 1/2;
   grid-row: 2/3;
-  margin-top: 10%;
   z-index: 2;
-  position: sticky;
-  top: 15vh;
+  position: fixed;
+  top: 106px;
+  height: 100%;
 `
 
 //layout에서 본문이 들어가는 메인 박스
@@ -40,12 +37,13 @@ export const Main = styled.main`
 export const MapBox = styled.div`
   grid-column: 3/4;
   grid-row: 1/3;
+  z-index: 5000;
 `
 
 export const ContentsBox = styled.div`
   grid-column: 2/3;
   grid-row: 2/3;
-  overflow: auto;
+  /* overflow: auto; */
   height: 85vh;
   padding-right: 20px;
 `
