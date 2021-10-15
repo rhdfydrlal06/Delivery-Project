@@ -37,7 +37,6 @@ const Header = ({ isMap, currentUser, setCurrentUser }) => {
   const [value, setValue] = useRecoilState(menuID)
   const [dialogOpen, setDialogOpen] = useState(false)
   const [loginOpen, setLoginOpen] = useState(false)
-  const [currentUser, setCurrentUser] = useRecoilState(userState)
 
   const handleClick = useCallback(() => {
     setValue("home")
