@@ -56,7 +56,7 @@ def post_board():
     post = request.form.get("post")
     user = None
     image = request.files["image"]
-    
+
     image_url = boto3_client.boto3_image_upload(image)
     try:
         new_post_id = add_post(
@@ -84,15 +84,31 @@ def delete_board(id):
 
 @bp.route("/<int:id>", methods=["PATCH"])
 def edit_board(id):
-    location1 = request.json.get("location1")
-    location2 = request.json.get("location2")
-    food = request.json.get("food")
-    post = request.json.get("post")
-    image = None
+    location1 = request.form.get("location1")
+    location2 = request.form.get("location2")
+    food = request.form.get("food")
+    post = request.form.get("post")
+    image_url = request.form.get("image")
+    is_image_changed = False
 
-    result = edit_post(id, location1, location2, food, post, image)
-    print(result)
-    if result is None:
+    origin_post = get_post(post_id=id)
+    if origin_post is None:
         return jsonify(result="fail", message="존재하지 않는 게시글입니다."), 404
 
-    return jsonify(result="success")
+    origin_post_url = origin_post.image
+
+    if image_url is None:
+        image = request.files["image"]
+        print(image)
+        boto3_client.boto3_image_delete(origin_post_url)
+        image_url = boto3_client.boto3_image_upload(image)
+        is_image_changed = True
+
+    try:
+        result = edit_post(id, location1, location2, food, post, image_url)
+        return jsonify(result="success", message="게시글이 수정되었습니다.", post_id=result), 200
+    except Exception:
+        if is_image_changed:
+            boto3_client.boto3_image_delete(image_url)
+            boto3_client.boto3_image_upload(origin_post_url)
+        raise
