@@ -60,7 +60,7 @@ const Header = ({ isMap }) => {
     // 3. 세션에서 토큰 지우기
     if (currentUser) {
       signoutRequest()
-        .then(response => {
+        .finally(() => {
           // 4. setcurrentuser
           setCurrentUser(null)
           // 5. 다이얼로그 지우기

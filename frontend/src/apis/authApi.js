@@ -12,7 +12,7 @@ axios.interceptors.request.use(
         const token = window.localStorage.getItem("token")
         const splitedUrl = config.url.split('/')
         const endpoint = splitedUrl[splitedUrl.length - 1]
-        if (endpoint !== 'refresh' && token && isTokenExpired(token)) {
+        if (endpoint !== 'refresh' && token) {
             const response = await refreshTokenRequest(token)
             const new_token = response.data.access_token
             config.headers.Authorization = `Bearer ${new_token}`
