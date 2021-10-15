@@ -15,7 +15,7 @@ import userState from "../recoil/user"
 // food: 음식 종류
 // post: 글 내용
 // image: 이미지 url
-// user: 작성자
+// user_id: 작성자 id
 
 const AddPost = ({ handleClose, updatePost, currentUser }) => {
   const [inputValue, setInputValue] = useState({
@@ -65,6 +65,13 @@ const AddPost = ({ handleClose, updatePost, currentUser }) => {
     formData.append("location2", inputValue.location2)
     formData.append("food", inputValue.food)
     formData.append("post", inputText)
+    if (currentUser == undefined) {
+      formData.append("user_id", -1)
+    }
+    else {
+      formData.append("user_id", currentUser.id)
+    }
+    
 
     addBoardRequest(formData)
       .then(data => {

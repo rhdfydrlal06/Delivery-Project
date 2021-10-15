@@ -39,7 +39,7 @@ const Board = () => {
       <NotMapBox>
         <ImageList sx={{ width: "100%" }} cols={3}>
           <PostDialog postList={postList} updatePost={updatePost} currentUser={currentUser} />
-          {postList && <ImageCard postList={postList} updatePost={updatePost} />}
+          {postList && <ImageCard postList={postList} updatePost={updatePost} currentUser={currentUser} />}
         </ImageList>
       </NotMapBox>
     </Layout>
