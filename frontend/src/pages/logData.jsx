@@ -1,12 +1,12 @@
 import Layout from "../components/layout/Layout"
 import LogAnalysisContents from "../components/skeleton/LogAnalysisContents"
-import React, { useState, useRef, useCallback } from "react"
-import { DescBox, MainTitle, MenuName } from "../components/skeleton/AnalysisContents"
-import { ContentsBox, NotMapBox } from "../styles/container"
+import React, { useState, useEffect } from "react"
+import { NotMapBox } from "../styles/container"
 
 const LogData = () => {
+
   return (
-    <Layout>
+    <Layout isMap={false}>
       <NotMapBox>
         <LogAnalysisContents />
       </NotMapBox>
