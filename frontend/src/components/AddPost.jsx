@@ -65,9 +65,16 @@ const AddPost = ({ handleClose, updatePost, currentUser }) => {
         updatePostList(updatePost)
       })
       .catch(error => {
-        console.error(error)
+        if (error.response.data.msg === "Token has expired") {
+          alert("로그인 시간이 만료되었습니다. 다시 로그인 해주세요")
+        }
+        if (error.response.data.message === "다시 로그인 해주세요") {
+          alert("로그인 시간이 만료되었습니다. 다시 로그인 해주세요")
+        }
       })
-    handleClose()
+      .finally(() => {
+        handleClose()
+      })
   }, [inputValue, inputText, inputImg])
 
   const clickCancel = useCallback(() => {
@@ -98,9 +105,9 @@ const AddPost = ({ handleClose, updatePost, currentUser }) => {
         sx={{ height: "100%" }}
       />
       {
-      currentUser == undefined && (<Alert severity="warning">
-        로그인이 되어있지 않으면 게시 후 글을 수정/삭제할 수 없습니다
-      </Alert>)}
+        currentUser == undefined && (<Alert severity="warning">
+          로그인이 되어있지 않으면 게시 후 글을 수정/삭제할 수 없습니다
+        </Alert>)}
       <ButtonBox>
         <MyButton onClick={clickCancel} variant="outlined">
           취소

@@ -5,7 +5,7 @@ const apiPath = process.env.REACT_APP_BACKEND_URL + "/api/auth"
 
 axios.interceptors.request.use(
     async (config) => {
-        const token = window.localStorage.getItem("token")
+        const token = config.headers.Authorization
         const splitedUrl = config.url.split('/')
         const endpoint = splitedUrl[splitedUrl.length - 1]
         if (endpoint !== 'refresh' && token) {
