@@ -33,10 +33,7 @@ def get_boards():
     """
     DB에 저장되어 있는 모든 게시글 불러오기
     """
-    result = []
-    posts = get_posts()
-    for post in posts:
-        result.append(post.to_dict())
+    result = get_posts()
 
     return jsonify(result="success", posts=result)
 
