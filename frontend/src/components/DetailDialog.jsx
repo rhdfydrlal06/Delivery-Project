@@ -7,7 +7,7 @@ import { MyButton } from "../styles/addPostContainer"
 import DetailPostHeader from "./DetailPostHeader"
 
 const DetailDialog = ({ postData }) => {
-  const { id, user, location1, location2, food, image, post } = postData
+  const { id, user_name, location1, location2, food, image, post } = postData
   const [open, setOpen] = useState(false)
 
   const handleClickOpen = () => {
@@ -41,7 +41,7 @@ const DetailDialog = ({ postData }) => {
         aria-describedby="post-description"
       >
         <DialogTitle id="scroll-dialog-title">
-          <DetailPostHeader user={user} location1={location1} location2={location2} food={food} />
+          <DetailPostHeader user_name={user_name} location1={location1} location2={location2} food={food} />
         </DialogTitle>
         <DialogContent dividers="paper">
           <DialogContentText id="post-description" ref={detailRef} tabIndex={-1} child>
