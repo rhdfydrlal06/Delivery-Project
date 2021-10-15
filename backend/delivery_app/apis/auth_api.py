@@ -118,12 +118,13 @@ def refresh_token():
     access_token = user.access_token
     refresh_token = user.refresh_token
     if not user.refresh_token:
-        return jsonify(result="fail", message="권한이 없습니다."), 403
+        return jsonify(result="fail", message="다시 로그인 해주세요"), 403
 
     try:
         decoded_access_token = decode_token(access_token, allow_expired=True)
+        print(get_jwt().get("exp"), decoded_access_token.get("exp"))
         if get_jwt().get("exp") != decoded_access_token.get("exp"):
-            return jsonify(result="fail", message="권한이 없습니다."), 403
+            return jsonify(result="fail", message="다시 로그인 해주세요"), 403
 
         decoded_refresh_token = decode_token(refresh_token)
         new_access_token = create_access_token(
@@ -131,7 +132,7 @@ def refresh_token():
             additional_claims={"email": user.email, "name": user.name},
         )
         user.access_token = new_access_token
+        db.session.commit()
         return jsonify(result="success", access_token=new_access_token), 200
     except Exception:
-        db.session.commit()
         raise
