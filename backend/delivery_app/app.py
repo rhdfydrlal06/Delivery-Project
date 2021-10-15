@@ -11,7 +11,7 @@ from flask_jwt_extended import JWTManager
 from delivery_app import config
 from delivery_app.db_connect import db
 from delivery_app.services.address import set_default as set_address_default
-from delivery_app.apis import geodata_api, board_api, auth_api
+from delivery_app.apis import geodata_api, board_api, auth_api, logdata_api
 
 
 def create_app():
@@ -41,6 +41,7 @@ def create_app():
     app.register_blueprint(geodata_api.bp, url_prefix="/api/geodata")
     app.register_blueprint(board_api.bp, url_prefix="/api/board")
     app.register_blueprint(auth_api.bp, url_prefix="/api/auth")
+    app.register_blueprint(logdata_api.bp, url_prefix="/api/logdata")
 
     @app.route("/")
     def landing():
