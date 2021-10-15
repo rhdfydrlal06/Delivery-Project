@@ -14,23 +14,15 @@ def get_post(post_id):
     return _post
 
 
-def get_posts(location1, location2, food):
+def get_posts():
     """
-    입력받은 location1, location2, food에 해당하는 게시글 반환
+    DB에 저장되어 있는 게시글 반환
     """
-    result = Posts.query
-    print(location1, location2, food)
-    if location1:
-        result = result.filter_by(location1=location1)
-        if location2:
-            result = result.filter_by(location2=location2)
-    if food:
-        result = result.filter_by(food=food)
-
-    return result.all()
+    print(Posts.query.all())
+    return Posts.query.all()
 
 
-def add_post(location1, location2, food, post, image, user):
+def add_post(location1, location2, food, post, image, user_id):
     """
     입력받은 게시글 저장 후 location1, location2, category에 해당하는 게시글 반환
     """
@@ -41,7 +33,7 @@ def add_post(location1, location2, food, post, image, user):
             food=food,
             post=post,
             image=image,
-            user=user,
+            user_id=user_id,
         )
         db.session.add(new_post)
         db.session.commit()

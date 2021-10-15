@@ -3,12 +3,14 @@ import Layout from "../components/layout/Layout"
 import AnalysisContents from "../components/skeleton/AnalysisContents"
 
 import { geodataListRequest, orderGraphByIdRequest } from "../apis/geodataApi"
+import { getCurrentUserInfo } from "../apis/authApi"
 import mapJSON from "../data/korea_region.json"
 
 const DeliveryNum = () => {
   const [pickedGeoData, setPickedGeoData] = useState()
   const [wideRegionData, setWideRegionData] = useState()
   const [mapFeatures, setMapFeatures] = useState()
+  const [currentUser, setCurrentUser] = useState(getCurrentUserInfo())
 
   useEffect(() => {
     const fetchData = async () => {
@@ -29,7 +31,7 @@ const DeliveryNum = () => {
   }, [])
 
   return (
-    <Layout isMap={true} changePickedRegion={setPickedGeoData} mapFeatures={mapFeatures}>
+    <Layout isMap={true} changePickedRegion={setPickedGeoData} mapFeatures={mapFeatures} currentUser={currentUser} setCurrentUser={setCurrentUser}>
       {wideRegionData && <AnalysisContents data={pickedGeoData ? pickedGeoData : wideRegionData} />}
     </Layout>
   )

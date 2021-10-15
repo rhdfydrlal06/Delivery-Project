@@ -50,7 +50,7 @@ const ShowIntroData = () => {
       data={data}
       keys={["일평균_방문고객수", "일평균_배달건수"]}  
       indexBy="day"
-      margin={{ top: 100, right: 150, bottom: 100, left: 100 }}
+      margin={{ top: 60, right: 150, bottom: 100, left: 100 }}
       padding={0.6}
       valueScale={{ type: "linear" }}
       colors={["#FFA500", "#c0ed70"]}

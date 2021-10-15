@@ -1,8 +1,11 @@
+import { useState } from "react"
 import styled from "styled-components"
 import Layout from "../components/layout/Layout"
 import { DescBox, MainTitle, MenuName } from "../components/skeleton/AnalysisContents"
 import { colors } from "../styles/theme"
 import { ContentsBox, NotMapBox } from "../styles/container"
+
+import { getCurrentUserInfo } from "../apis/authApi"
 
 export const Bold = styled.span`
   font-weight: bold;
@@ -16,8 +19,9 @@ const Comment = styled.span`
 `
 
 const Home = () => {
+  const [currentUser, setCurrentUser] = useState(getCurrentUserInfo())
   return (
-    <Layout isMap={false}>
+    <Layout isMap={false} currentUser={currentUser} setCurrentUser={setCurrentUser}>
       <NotMapBox>
         <MenuName>배달 정보 타파 서비스!</MenuName>
         <MainTitle>

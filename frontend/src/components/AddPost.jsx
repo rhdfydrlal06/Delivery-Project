@@ -4,15 +4,20 @@ import { addBoardRequest } from "../apis/boardApi"
 import postValueCheck from "../utils/postValueCheck"
 import { ButtonBox, FileBox, MyTextField, MyButton } from "../styles/addPostContainer"
 import updatePostList from "../utils/updatePostList"
+import { Alert } from "@mui/material"
+
+//recoil 관련 임포트
+import { useRecoilValue } from "recoil"
+import userState from "../recoil/user"
 
 // location1: 시도 이름
 // location2: 시군구 이름
 // food: 음식 종류
 // post: 글 내용
 // image: 이미지 url
-// user: 작성자
+// user_id: 작성자 id
 
-const AddPost = ({ handleClose, updatePost }) => {
+const AddPost = ({ handleClose, updatePost, currentUser, setCurrentUser }) => {
   const [inputValue, setInputValue] = useState({
     location1: null,
     location2: null,
@@ -20,6 +25,11 @@ const AddPost = ({ handleClose, updatePost }) => {
   })
   const [inputText, setInputText] = useState(null)
   const [inputImg, setInputImg] = useState(null)
+
+  // recoil에 저장되어있는 현재 유저 정보 불러오기
+  const currUser = useRecoilValue(userState)
+  console.log("user", currUser)
+  console.log("hello")
 
   const handleSelectChange = useCallback(
     value => {
@@ -55,6 +65,13 @@ const AddPost = ({ handleClose, updatePost }) => {
     formData.append("location2", inputValue.location2)
     formData.append("food", inputValue.food)
     formData.append("post", inputText)
+    if (currentUser == undefined) {
+      formData.append("user_id", -1)
+    }
+    else {
+      formData.append("user_id", currentUser.id)
+    }
+
 
     addBoardRequest(formData)
       .then(data => {
@@ -64,9 +81,18 @@ const AddPost = ({ handleClose, updatePost }) => {
         updatePostList(updatePost)
       })
       .catch(error => {
-        console.error(error)
+        if (error.response.data.msg === "Token has expired") {
+          alert("로그인 시간이 만료되었습니다. 다시 로그인 해주세요")
+          setCurrentUser(null)
+        }
+        if (error.response.data.message === "다시 로그인 해주세요") {
+          alert("로그인 시간이 만료되었습니다. 다시 로그인 해주세요")
+          setCurrentUser(null)
+        }
       })
-    handleClose()
+      .finally(() => {
+        handleClose()
+      })
   }, [inputValue, inputText, inputImg])
 
   const clickCancel = useCallback(() => {
@@ -89,13 +115,18 @@ const AddPost = ({ handleClose, updatePost }) => {
         id="text"
         multiline
         rows={10}
-        placeholder="내용을 입력해주세요"
+        placeholder={`내용을 입력해주세요.`}
         value={inputText}
         onChange={handleTextChange}
         required
         variant="standard"
         sx={{ height: "100%" }}
       />
+      {currentUser == undefined && (
+        <Alert severity="warning">
+          로그인이 되어있지 않으면 게시 후 글을 수정/삭제할 수 없습니다
+        </Alert>
+      )}
       <ButtonBox>
         <MyButton onClick={clickCancel} variant="outlined">
           취소

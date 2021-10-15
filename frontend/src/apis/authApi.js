@@ -3,16 +3,12 @@ import jwt from "jwt-decode"
 
 const apiPath = process.env.REACT_APP_BACKEND_URL + "/api/auth"
 
-if (window.localStorage.getItem("token")) {
-    axios.defaults.headers.common['Authorization'] = `Bearer ${window.localStorage.getItem("token")}`
-}
-
 axios.interceptors.request.use(
     async (config) => {
-        const token = window.localStorage.getItem("token")
+        const token = config.headers.Authorization
         const splitedUrl = config.url.split('/')
         const endpoint = splitedUrl[splitedUrl.length - 1]
-        if (endpoint !== 'refresh' && token && isTokenExpired(token)) {
+        if (endpoint !== 'refresh' && token) {
             const response = await refreshTokenRequest(token)
             const new_token = response.data.access_token
             config.headers.Authorization = `Bearer ${new_token}`
@@ -32,7 +28,6 @@ export const signinRequest = async (email, password) => {
         const response = await axios.post(`${apiPath}/signin`, { email, password })
         const token = response.data.access_token
         window.localStorage.setItem("token", token)
-        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
         return response
     } catch (error) {
         throw error
@@ -45,13 +40,17 @@ export const signupRequest = async (email, password, name) => {
 }
 
 export const signoutRequest = async () => {
+    const config = {
+        headers: {
+            "Authorization": `Bearer ${window.localStorage.getItem("token")}`
+        },
+    }
     const token = window.localStorage.getItem("token")
     if (!token) return
     const id = jwt(token).sub
     try {
-        const response = await axios.post(`${apiPath}/signout`, { id })
+        const response = await axios.post(`${apiPath}/signout`, { id }, config)
         window.localStorage.removeItem("token")
-        delete axios.defaults.headers.common['Authorization']
         return response
     } catch (error) {
         throw error
@@ -59,17 +58,20 @@ export const signoutRequest = async () => {
 }
 
 export const refreshTokenRequest = async (token) => {
+    const config = {
+        headers: {
+            "Authorization": `Bearer ${window.localStorage.getItem("token")}`
+        },
+    }
     try {
         const decoded = jwt(token)
         const id = decoded.sub
-        const response = await axios.post(`${apiPath}/refresh`, { id })
+        const response = await axios.post(`${apiPath}/refresh`, { id }, config)
         const new_token = response.data.access_token
         window.localStorage.setItem("token", new_token)
-        axios.defaults.headers.common['Authorization'] = `Bearer ${new_token}`
         return response
     } catch (error) {
         window.localStorage.removeItem("token")
-        delete axios.defaults.headers.common['Authorization']
         throw error
     }
 }

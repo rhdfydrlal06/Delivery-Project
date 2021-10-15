@@ -4,7 +4,7 @@ import StyledDialog from "../styles/dialog"
 import { IconButton, DialogContent, DialogContentText } from "@mui/material"
 import EditIcon from "@mui/icons-material/Edit"
 
-const EditDialog = ({ postData, updatePost }) => {
+const EditDialog = ({ postData, updatePost, setCurrentUser }) => {
   const [open, setOpen] = useState(false)
 
   const handleClickOpen = e => {
@@ -47,7 +47,7 @@ const EditDialog = ({ postData, updatePost }) => {
       >
         <DialogContent dividers="paper">
           <DialogContentText id="post-description" ref={editRef} tabIndex={-1} child>
-            <EditPost postData={postData} handleClose={handleClose} updatePost={updatePost} />
+            <EditPost postData={postData} handleClose={handleClose} updatePost={updatePost} setCurrentUser={setCurrentUser} />
           </DialogContentText>
         </DialogContent>
       </StyledDialog>
