@@ -15,7 +15,6 @@ class Posts(db.Model):
     hit: 조회수
     like: 좋아요 수
     user_id: 작성자 id(왜래키)
-    nickname: 작성자 닉네임
     timestamp: 작성일
     """
 
