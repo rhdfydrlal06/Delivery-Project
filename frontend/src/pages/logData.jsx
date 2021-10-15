@@ -4,12 +4,11 @@ import React, { useState, useRef, useCallback } from "react"
 import { DescBox, MainTitle, MenuName } from "../components/skeleton/AnalysisContents"
 import { ContentsBox, NotMapBox } from "../styles/container"
 
-
 const LogData = () => {
   return (
     <Layout>
       <NotMapBox>
-        <LogAnalysisContents></LogAnalysisContents>
+        <LogAnalysisContents />
       </NotMapBox>
     </Layout>
   )

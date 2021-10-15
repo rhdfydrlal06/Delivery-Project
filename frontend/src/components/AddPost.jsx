@@ -6,6 +6,10 @@ import { ButtonBox, FileBox, MyTextField, MyButton } from "../styles/addPostCont
 import updatePostList from "../utils/updatePostList"
 import { Alert } from "@mui/material"
 
+//recoil 관련 임포트
+import { useRecoilValue } from "recoil"
+import userState from "../recoil/user"
+
 // location1: 시도 이름
 // location2: 시군구 이름
 // food: 음식 종류
@@ -21,6 +25,11 @@ const AddPost = ({ handleClose, updatePost, currentUser }) => {
   })
   const [inputText, setInputText] = useState(null)
   const [inputImg, setInputImg] = useState(null)
+
+  // recoil에 저장되어있는 현재 유저 정보 불러오기
+  const currUser = useRecoilValue(userState)
+  console.log("user", currUser)
+  console.log("hello")
 
   const handleSelectChange = useCallback(
     value => {
@@ -104,10 +113,11 @@ const AddPost = ({ handleClose, updatePost, currentUser }) => {
         variant="standard"
         sx={{ height: "100%" }}
       />
-      {
-      currentUser == undefined && (<Alert severity="warning">
-        로그인이 되어있지 않으면 게시 후 글을 수정/삭제할 수 없습니다
-      </Alert>)}
+      {currentUser == undefined && (
+        <Alert severity="warning">
+          로그인이 되어있지 않으면 게시 후 글을 수정/삭제할 수 없습니다
+        </Alert>
+      )}
       <ButtonBox>
         <MyButton onClick={clickCancel} variant="outlined">
           취소
