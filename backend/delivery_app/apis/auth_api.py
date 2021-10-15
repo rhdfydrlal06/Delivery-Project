@@ -1,9 +1,12 @@
+from sys import dont_write_bytecode
 from flask import Blueprint, request, jsonify
 from flask_bcrypt import Bcrypt
 from flask_jwt_extended import (
     create_access_token,
     get_jwt_identity,
     jwt_required,
+    get_jwt,
+    decode_token,
     create_refresh_token,
 )
 from flask_jwt_extended.utils import decode_token
@@ -64,7 +67,8 @@ def auth_signin():
     )
     refresh_token = create_refresh_token(identity=user.id)
     try:
-        user.token = refresh_token
+        user.access_token = access_token
+        user.refresh_token = refresh_token
         db.session.commit()
     except Exception:
         db.session.rollback()
@@ -81,15 +85,17 @@ def auth_signin():
 
 
 @bp.route("/signout", methods=["POST"])
+@jwt_required()
 def auth_signout():
     user_id = request.json.get("id")
     user = get_user_by_id(user_id=user_id)
 
     if not user:
-        return jsonify(result="fail", message="존재하지 않는 사용자입니다."), 400
+        return jsonify(result="fail", message="존재하지 않는 사용자입니다."), 404
 
     try:
-        user.token = None
+        user.access_token = None
+        user.refresh_token = None
         db.session.commit()
         return jsonify(result="success"), 200
     except Exception:
@@ -98,22 +104,34 @@ def auth_signout():
 
 
 @bp.route("/refresh", methods=["POST"])
+@jwt_required()
 def refresh_token():
+    token_identity = get_jwt_identity()
     user_id = request.json.get("id")
-    user = get_user_by_id(user_id=user_id)
-    refresh_token = user.token
+    if token_identity != user_id:
+        return jsonify(result="fail", message="권한이 없습니다."), 403
 
-    if not user.token:
-        return jsonify(result="fail", message="로그인 해주세요"), 400
+    user = get_user_by_id(user_id=user_id)
+    if user is None:
+        return jsonify(result="fail", message="존재하지 않는 회원입니다."), 404
+
+    access_token = user.access_token
+    refresh_token = user.refresh_token
+    if not user.refresh_token:
+        return jsonify(result="fail", message="권한이 없습니다."), 403
 
     try:
-        decoded_token = decode_token(refresh_token)
-        access_token = create_access_token(
-            identity=decoded_token.get("sub"),
+        decoded_access_token = decode_token(access_token, allow_expired=True)
+        if get_jwt().get("exp") != decoded_access_token.get("exp"):
+            return jsonify(result="fail", message="권한이 없습니다."), 403
+
+        decoded_refresh_token = decode_token(refresh_token)
+        new_access_token = create_access_token(
+            identity=decoded_refresh_token.get("sub"),
             additional_claims={"email": user.email, "name": user.name},
         )
-        return jsonify(result="success", access_token=access_token), 200
+        user.access_token = new_access_token
+        return jsonify(result="success", access_token=new_access_token), 200
     except Exception:
-        user.token = None
         db.session.commit()
-        return jsonify(result="fail", message="다시 로그인 해주세요"), 400
+        raise
