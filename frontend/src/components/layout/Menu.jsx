@@ -51,7 +51,7 @@ const Menu = () => {
       >
         {/* <MyTab value="home" label="홈" /> */}
         <MyTab value="intro" label="딜푸파가 뭐야?" />
-        <MyTab value="analysis" label="배달 데이터 분석" />
+        <MyTab value="analysis" label="배달, 얼마나 많아?" />
         <MyTab value="board" label="쩝쩝박사 다모여!" />
         <MyTab value="logdata" label="쩝쩝박사 성향분석" />
       </Tabs>

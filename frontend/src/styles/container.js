@@ -4,7 +4,7 @@ export const WholeContainer = styled.div`
   height: 100%;
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 3fr 2fr;
+  grid-template-columns: minmax(168px, 1fr) 3fr 2fr;
   column-gap: 32px;
   grid-template-rows: minmax(106px, 15vh) auto;
 `
