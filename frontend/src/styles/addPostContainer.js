@@ -1,9 +1,8 @@
 import styled from "styled-components"
-import { style, styled as styledMUI } from "@mui/system"
 import { Button, TextField } from "@mui/material"
 
-export const AddPostContainer = styled.div`
-  /* padding: 1rem; */
+export const ImgTextWrapper = styled.div`
+  overflow: auto;
 `
 
 export const FileBox = styled.div`
@@ -14,7 +13,7 @@ export const FileBox = styled.div`
 `
 export const ButtonBox = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   margin-top: 1rem;
 `
 export const MyTextField = styled(TextField)`

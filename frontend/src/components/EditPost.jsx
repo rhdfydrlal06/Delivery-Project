@@ -1,20 +1,11 @@
-import { useState, useRef, useEffect, useCallback } from "react"
-import dummy from "../data/dummy"
+import { useState, useCallback } from "react"
 import DropBox from "./DropBox"
 import styled from "styled-components"
-import { TextField, Button } from "@mui/material"
 import { updatePostRequest, wholeBoardRequest } from "../apis/boardApi"
 import postValueCheck from "../utils/postValueCheck"
-import {
-  AddPostContainer,
-  ButtonBox,
-  FileBox,
-  MyTextField,
-  MyButton,
-} from "../styles/addPostContainer"
+import { ButtonBox, FileBox, MyTextField, MyButton } from "../styles/addPostContainer"
 
-
-// 컬러 속성을 지정하여 파일 선택창에서 원하지 않는 텍스트는 안보이도록 함 
+// 컬러 속성을 지정하여 파일 선택창에서 원하지 않는 텍스트는 안보이도록 함
 const Input = styled.div`
   color: transparent;
   max-width: 8vw;
@@ -28,8 +19,7 @@ const Input = styled.div`
 // image: 이미지 url
 // user: 작성자
 
-const EditPost = ({ postData, popClose, updatePost }) => {
-  console.log(postData)
+const EditPost = ({ handleClose, postData, updatePost }) => {
   const { location1, location2, food, post, image, id } = postData
   const [inputValue, setInputValue] = useState({
     location1: location1,
@@ -67,15 +57,14 @@ const EditPost = ({ postData, popClose, updatePost }) => {
 
     if (!check) return
 
-    const newData = {
-      image: inputImg,
-      location1: location1,
-      location2: location2,
-      food: food,
-      post: post,
-    }
+    const formData = new FormData()
+    formData.append("image", inputImg)
+    formData.append("location1", inputValue.location1)
+    formData.append("location2", inputValue.location2)
+    formData.append("food", inputValue.food)
+    formData.append("post", inputText)
 
-    updatePostRequest({ newData, id })
+    updatePostRequest({ formData, id })
       .then(data => {
         console.log(data)
       })
@@ -90,34 +79,32 @@ const EditPost = ({ postData, popClose, updatePost }) => {
       .catch(error => {
         console.error(error)
       })
-
-    popClose()
+    handleClose()
   }, [inputValue, inputText, inputImg])
 
   const clickCancel = useCallback(() => {
-    popClose()
-  }, [inputValue, inputText, inputImg])
+    handleClose()
+  }, [])
 
   return (
-    <AddPostContainer>
+    <>
       <DropBox
-        options={dummy}
         onChange={handleSelectChange}
         defaultValue={{ location1: location1, location2: location2, food: food }}
       />
       <FileBox>
         <div>
-        <Input>
-        <input
-          name="img"
-          type="file"
-          id="aa"
-          title="Choose a video please" 
-          accept="image/jpg,image/jpeg,image/png"
-          onChange={handleImgChange}
-        />
-        </Input>
-        <img src={postData.image} alt="new"/>
+          <Input>
+            <input
+              name="img"
+              type="file"
+              id="img"
+              title="Choose a img please"
+              accept="image/jpg,image/jpeg,image/png"
+              onChange={handleImgChange}
+            />
+          </Input>
+          <Img src={postData.image} alt="new" />
         </div>
       </FileBox>
       <MyTextField
@@ -137,11 +124,16 @@ const EditPost = ({ postData, popClose, updatePost }) => {
           취소
         </MyButton>
         <MyButton onClick={clickSubmit} variant="outlined">
-          글쓰기
+          수정
         </MyButton>
       </ButtonBox>
-    </AddPostContainer>
+    </>
   )
 }
 
 export default EditPost
+
+const Img = styled.img`
+  width: 100%;
+  height: 20%;
+`

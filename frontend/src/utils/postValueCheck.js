@@ -13,7 +13,7 @@ export const isValue = inputValue => {
   const keys = Object.keys(inputValue)
   const notValue = []
   keys.forEach(key => !inputValue[key] && notValue.push(key))
-  return notValue.length == 0 ? true : false
+  return notValue.length === 0 ? true : false
 }
 
 const isText = inputText => {

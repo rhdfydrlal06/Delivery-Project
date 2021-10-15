@@ -1,15 +1,8 @@
-import { useState, useRef, useEffect, useCallback } from "react"
-import dummy from "../data/dummy"
+import { useState, useCallback } from "react"
 import DropBox from "./DropBox"
 import { addBoardRequest } from "../apis/boardApi"
 import postValueCheck from "../utils/postValueCheck"
-import {
-  AddPostContainer,
-  ButtonBox,
-  FileBox,
-  MyTextField,
-  MyButton,
-} from "../styles/addPostContainer"
+import { ButtonBox, FileBox, MyTextField, MyButton } from "../styles/addPostContainer"
 import updatePostList from "../utils/updatePostList"
 
 // location1: 시도 이름
@@ -19,7 +12,7 @@ import updatePostList from "../utils/updatePostList"
 // image: 이미지 url
 // user: 작성자
 
-const AddPost = ({ popClose, updatePost }) => {
+const AddPost = ({ handleClose, updatePost }) => {
   const [inputValue, setInputValue] = useState({
     location1: null,
     location2: null,
@@ -73,17 +66,16 @@ const AddPost = ({ popClose, updatePost }) => {
       .catch(error => {
         console.error(error)
       })
-
-    popClose()
+    handleClose()
   }, [inputValue, inputText, inputImg])
 
   const clickCancel = useCallback(() => {
-    popClose()
+    handleClose()
   }, [inputValue, inputText, inputImg])
 
   return (
-    <AddPostContainer>
-      <DropBox options={dummy} onChange={handleSelectChange} />
+    <>
+      <DropBox onChange={handleSelectChange} />
       <FileBox>
         <input
           name="img"
@@ -96,7 +88,7 @@ const AddPost = ({ popClose, updatePost }) => {
         name="text"
         id="text"
         multiline
-        rows={3}
+        rows={10}
         placeholder="내용을 입력해주세요"
         value={inputText}
         onChange={handleTextChange}
@@ -109,10 +101,10 @@ const AddPost = ({ popClose, updatePost }) => {
           취소
         </MyButton>
         <MyButton onClick={clickSubmit} variant="outlined">
-          글쓰기
+          완료
         </MyButton>
       </ButtonBox>
-    </AddPostContainer>
+    </>
   )
 }
 

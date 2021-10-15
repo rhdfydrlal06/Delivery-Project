@@ -70,7 +70,6 @@ export const LikeBox = styled.div`
   font-weight: normal;
 `
 
-export const TagBox = styled.div``
-
 export const MyChip = styledMUI(Chip)`
+  margin-right: 4px;
 `
