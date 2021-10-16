@@ -20,9 +20,10 @@
 3. flask db init
 4. flask db migrate
 5. flask db upgrade
-    - `(geodata요청에 쓰이는 address테이블 초기화 하는 방법이 바뀌었습니다. 첫 마이그레이션 이후 data폴더에있는 region_datasql파일을 이용해 데이터를 넣어주세요)`
+    - geodata요청에 쓰이는 address테이블 초기화 하는 방법이 바뀌었습니다.
+    - 첫 마이그레이션 이후 가장 상위의 data폴더에 있는 `region_data.sql`파일을 이용해 데이터를 넣어주세요
 6. flask run : 개발환경 실행
-7. `배포환경 실행` : `backend 폴더`에서 `source production.sh` 실행
+7. `배포환경 실행` : 환경변수 설정 후 docker-compose 실행
 8. `pre-commit 으로 백엔드 코드 포맷팅하기`
     - requirements.txt 설치 -> pre-commit 패키지가 설치됩니다.
     - .pre-commit-config.yaml파일이 있는 backend 폴더에서 `pre-commit install`명령을 실행합니다.
