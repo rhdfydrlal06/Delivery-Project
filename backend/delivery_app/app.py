@@ -10,7 +10,6 @@ from flask_jwt_extended import JWTManager
 
 from delivery_app import config
 from delivery_app.db_connect import db
-from delivery_app.services.address import set_default as set_address_default
 from delivery_app.apis import geodata_api, board_api, auth_api, logdata_api
 
 
@@ -24,7 +23,7 @@ def create_app():
     CORS(app, supports_credentials=True)
     app.config["JSON_AS_ASCII"] = False
 
-    app.config["JWT_SECRET_KEY"] = "temporal-secret-key"
+    app.config["JWT_SECRET_KEY"] = config.JWT_SECRET_KEY
     app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(hours=1)
     app.config["JWT_REFRESH_TOKEN_EXPIRES"] = timedelta(days=14)
 
@@ -33,10 +32,6 @@ def create_app():
     app.config.from_object(config)
     db.init_app(app)
     Migrate().init_app(app, db)
-
-    with app.app_context():
-        db.create_all()
-        set_address_default()
 
     app.register_blueprint(geodata_api.bp, url_prefix="/api/geodata")
     app.register_blueprint(board_api.bp, url_prefix="/api/board")
