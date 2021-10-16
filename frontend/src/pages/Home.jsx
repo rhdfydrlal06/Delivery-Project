@@ -1,8 +1,11 @@
+import { useState } from "react"
 import styled from "styled-components"
 import Layout from "../components/layout/Layout"
 import { DescBox, MainTitle, MenuName } from "../components/skeleton/AnalysisContents"
 import { colors } from "../styles/theme"
-import { ContentsBox } from "../styles/container"
+import { ContentsBox, NotMapBox } from "../styles/container"
+
+import { getCurrentUserInfo } from "../apis/authApi"
 
 export const Bold = styled.span`
   font-weight: bold;
@@ -16,9 +19,10 @@ const Comment = styled.span`
 `
 
 const Home = () => {
+  const [currentUser, setCurrentUser] = useState(getCurrentUserInfo())
   return (
-    <Layout>
-      <ContentsBox>
+    <Layout isMap={false} currentUser={currentUser} setCurrentUser={setCurrentUser}>
+      <NotMapBox>
         <MenuName>배달 정보 타파 서비스!</MenuName>
         <MainTitle>
           <span>딜리버리 푸드 파이터</span>에서
@@ -26,7 +30,7 @@ const Home = () => {
           배달의 모든 것을 알아보아요
         </MainTitle>
         <DescBox>
-          <p >
+          <p>
             <Comment> &#127828; 허한 마음은 음식으로 달래야지!</Comment>
             코로나 이후 꼼짝없이 집에 갇혀버린 우리들, 집에서 모든 것을 해결하는 것이 일상이
             되었습니다.
@@ -51,7 +55,7 @@ const Home = () => {
             거에요!
           </p>
         </DescBox>
-      </ContentsBox>
+      </NotMapBox>
     </Layout>
   )
 }

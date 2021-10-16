@@ -25,4 +25,15 @@ const theme = createTheme({
   },
 })
 
+export const blur = createTheme({
+  typography: {
+    fontFamily: "'Elice Digital Baeum', sans-serif",
+  },
+  palette: {
+    primary: {
+      main: "#9e9e9e",
+    },
+  },
+})
+
 export default theme

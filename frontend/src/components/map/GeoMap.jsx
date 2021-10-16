@@ -62,7 +62,7 @@ const GeoMap = ({ changePickedRegion, style, data }) => {
   return (
     <>
       <GeoJSON ref={mapRef} style={style} data={data} onEachFeature={onEachRegion}></GeoJSON>
-      {position === null ? null : <PopupMark name={regionName} position={position} />}
+      {position && <PopupMark name={regionName} position={position} />}
     </>
   )
 }
