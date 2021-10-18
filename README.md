@@ -40,10 +40,8 @@
     - id에 해당하는 지역의 데이터, 배달상점분포 그래프와 설명을 반환
 - `<id>는 /api/geodata/list 요청을 통해 얻은 지역들의 id`
 
-### api 문서
-- [api문서](https://lumbar-sloth-e92.notion.site/api-c6f79e4c2e4d41b888ebccd34a9450e2)
 
-# (서비스 명)
-- 최종 서비스 명을 위 괄호 부분에 작성하세요.
-- 최종 서비스의 한 줄 소개를 작성하세요.
+# 딜리버리 푸드 파이터 (딜.푸.파.)
+- 홈페이지 바로가기: http://kdt-vm-0202014.koreacentral.cloudapp.azure.com/
+- 개발 과정 바로가기: https://www.notion.so/hawaiiangomdolhee/Elice-Delivery-Project-c2091e47fecc40e6b70852332a644f95
 
