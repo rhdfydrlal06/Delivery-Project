@@ -42,6 +42,5 @@
 
 
 # 딜리버리 푸드 파이터 (딜.푸.파.)
-- 홈페이지 바로가기: http://kdt-vm-0202014.koreacentral.cloudapp.azure.com/
 - 개발 과정 바로가기: https://www.notion.so/hawaiiangomdolhee/Elice-Delivery-Project-c2091e47fecc40e6b70852332a644f95
 
