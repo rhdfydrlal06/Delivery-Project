@@ -43,4 +43,5 @@
 
 # 딜리버리 푸드 파이터 (딜.푸.파.)
 - 개발 과정 바로가기: https://www.notion.so/hawaiiangomdolhee/Elice-Delivery-Project-c2091e47fecc40e6b70852332a644f95
+- 프로젝트 화면 캡쳐: [딜푸파_화면캡쳐.pdf](https://github.com/rhdfydrlal06/Delivery-Project/files/7539168/_.pdf)
 
